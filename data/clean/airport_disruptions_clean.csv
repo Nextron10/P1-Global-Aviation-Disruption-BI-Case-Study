@@ -1,0 +1,228 @@
+airport_name,iata_code,country,region,disruption_type,severity_level,flights_affected,duration_hours,date
+King Khalid International Airport,RUH,Saudi Arabia,Middle East,Arrival Diversions,Critical,150,38.3,2026-02-27
+King Abdulaziz International Airport,JED,Saudi Arabia,Middle East,Full Closure,Severe,80,16.4,2026-02-27
+Imam Khomeini International Airport,IKA,Iran,Middle East,Arrival Diversions,Critical,178,24.0,2026-02-28
+Kuwait International Airport,KWI,Kuwait,Middle East,Fuel Shortage,Severe,253,50.0,2026-03-01
+Abu Dhabi International Airport,AUH,UAE,Middle East,Flight Cancellations,Moderate,125,49.5,2026-03-01
+Helsinki-Vantaa Airport,HEL,Finland,Europe,Flight Cancellations,High,12,55.0,2026-03-01
+Hamad International Airport,DOH,Qatar,Middle East,Flight Cancellations,High,255,7.3,2026-03-01
+São Paulo-Guarulhos International Airport,GRU,Brazil,Latin America,ATC Flow Restriction,Low,72,21.1,2026-03-01
+Soekarno-Hatta International Airport,CGK,Indonesia,Asia Pacific,GPS Interference Advisory,High,74,40.9,2026-03-01
+Changi Airport,SIN,Singapore,Asia Pacific,GPS Interference Advisory,High,216,34.0,2026-03-02
+King Khalid International Airport,RUH,Saudi Arabia,Middle East,Fuel Shortage,High,202,66.8,2026-03-02
+Warsaw Chopin Airport,WAW,Poland,Europe,GPS Interference Advisory,Moderate,124,43.8,2026-03-03
+Ben Gurion Airport,TLV,Israel,Middle East,Partial Closure,Moderate,191,35.3,2026-03-03
+Sydney Kingsford Smith Airport,SYD,Australia,Asia Pacific,Staff Evacuation,Moderate,158,68.3,2026-03-04
+Damascus International Airport,DAM,Syria,Middle East,Staff Evacuation,Critical,150,24.0,2026-03-05
+Lisbon Humberto Delgado Airport,LIS,Portugal,Europe,Flight Cancellations,Low,226,52.1,2026-03-05
+Ben Gurion Airport,TLV,Israel,Middle East,GPS Interference Advisory,Severe,208,56.2,2026-03-05
+Baghdad International Airport,BGW,Iraq,Middle East,Security Lockdown,High,65,57.1,2026-03-07
+Basra International Airport,BSR,Iraq,Middle East,Partial Closure,Critical,150,64.2,2026-03-07
+Cairo International Airport,CAI,Egypt,North Africa,Arrival Diversions,Low,148,62.0,2026-03-07
+Sydney Kingsford Smith Airport,SYD,Australia,Asia Pacific,Ground Stop,Severe,292,56.0,2026-03-08
+Bahrain International Airport,BAH,Bahrain,Middle East,Partial Closure,Critical,150,24.0,2026-03-09
+Auckland International Airport,AKL,New Zealand,Asia Pacific,Partial Closure,Low,247,61.1,2026-03-09
+Narita International Airport,NRT,Japan,Asia Pacific,ATC Flow Restriction,Moderate,220,15.0,2026-03-10
+Soekarno-Hatta International Airport,CGK,Indonesia,Asia Pacific,Partial Closure,Moderate,239,71.4,2026-03-10
+Basra International Airport,BSR,Iraq,Middle East,Arrival Diversions,High,163,62.9,2026-03-10
+Abu Dhabi International Airport,AUH,UAE,Middle East,ATC Flow Restriction,High,140,3.7,2026-03-10
+O.R. Tambo International Airport,JNB,South Africa,Africa,Ground Stop,High,16,21.7,2026-03-10
+Bahrain International Airport,BAH,Bahrain,Middle East,Staff Evacuation,Critical,249,69.4,2026-03-11
+O'Hare International Airport,ORD,USA,North America,Departure Delays,Moderate,282,69.6,2026-03-12
+Incheon International Airport,ICN,South Korea,Asia Pacific,Departure Delays,Low,295,30.3,2026-03-12
+Chhatrapati Shivaji Maharaj International Airport,BOM,India,South Asia,Security Lockdown,Moderate,37,22.4,2026-03-12
+Baghdad International Airport,BGW,Iraq,Middle East,Arrival Diversions,Critical,157,24.0,2026-03-12
+Basra International Airport,BSR,Iraq,Middle East,Fuel Shortage,Severe,111,12.0,2026-03-12
+Queen Alia International Airport,AMM,Jordan,Middle East,Partial Closure,Moderate,177,25.2,2026-03-13
+Mohammed V International Airport,CMN,Morocco,Africa,Full Closure,Moderate,220,48.6,2026-03-13
+Istanbul Airport,IST,Turkey,Middle East,Partial Closure,Moderate,77,35.1,2026-03-14
+Los Angeles International Airport,LAX,USA,North America,Partial Closure,Moderate,79,65.4,2026-03-14
+Bahrain International Airport,BAH,Bahrain,Middle East,Ground Stop,Moderate,90,55.2,2026-03-14
+Beirut-Rafic Hariri International Airport,BEY,Lebanon,Middle East,Partial Closure,Severe,300,65.2,2026-03-14
+Kuwait International Airport,KWI,Kuwait,Middle East,ATC Flow Restriction,Critical,180,37.4,2026-03-14
+Abu Dhabi International Airport,AUH,UAE,Middle East,Fuel Shortage,Critical,261,24.0,2026-03-15
+Madrid Barajas Airport,MAD,Spain,Europe,Staff Evacuation,Moderate,66,4.7,2026-03-15
+Kuwait International Airport,KWI,Kuwait,Middle East,Ground Stop,Critical,286,24.0,2026-03-16
+Imam Khomeini International Airport,IKA,Iran,Middle East,ATC Flow Restriction,Critical,167,24.0,2026-03-17
+Mexico City International Airport,MEX,Mexico,Latin America,Flight Cancellations,High,185,51.2,2026-03-17
+King Khalid International Airport,RUH,Saudi Arabia,Middle East,Security Lockdown,Severe,223,32.0,2026-03-17
+King Khalid International Airport,RUH,Saudi Arabia,Middle East,Departure Delays,High,200,37.0,2026-03-17
+Muscat International Airport,MCT,Oman,Middle East,Fuel Shortage,High,231,44.2,2026-03-17
+John F. Kennedy International Airport,JFK,USA,North America,Staff Evacuation,Moderate,48,43.6,2026-03-17
+Guangzhou Baiyun International Airport,CAN,China,Asia Pacific,Ground Stop,Moderate,118,8.6,2026-03-17
+Baghdad International Airport,BGW,Iraq,Middle East,ATC Flow Restriction,Severe,149,70.2,2026-03-19
+Cairo International Airport,CAI,Egypt,North Africa,ATC Flow Restriction,Low,137,20.7,2026-03-19
+Abu Dhabi International Airport,AUH,UAE,Middle East,GPS Interference Advisory,Critical,150,24.0,2026-03-19
+Abu Dhabi International Airport,AUH,UAE,Middle East,Fuel Shortage,Severe,80,71.5,2026-03-21
+Haneda Airport,HND,Japan,Asia Pacific,Arrival Diversions,Low,82,21.4,2026-03-22
+King Abdulaziz International Airport,JED,Saudi Arabia,Middle East,ATC Flow Restriction,High,138,24.0,2026-03-23
+King Khalid International Airport,RUH,Saudi Arabia,Middle East,Flight Cancellations,Critical,150,30.8,2026-03-23
+Mehrabad International Airport,THR,Iran,Middle East,Staff Evacuation,High,62,60.4,2026-03-23
+Imam Khomeini International Airport,IKA,Iran,Middle East,Fuel Shortage,Critical,150,60.7,2026-03-24
+Islamabad International Airport,ISB,Pakistan,South Asia,Staff Evacuation,High,277,47.3,2026-03-24
+Auckland International Airport,AKL,New Zealand,Asia Pacific,Full Closure,Moderate,163,38.6,2026-03-24
+Queen Alia International Airport,AMM,Jordan,Middle East,Arrival Diversions,Moderate,280,62.8,2026-03-24
+Narita International Airport,NRT,Japan,Asia Pacific,Ground Stop,Low,95,50.8,2026-03-24
+Imam Khomeini International Airport,IKA,Iran,Middle East,ATC Flow Restriction,Critical,175,24.0,2026-03-25
+Haneda Airport,HND,Japan,Asia Pacific,Partial Closure,High,14,12.8,2026-03-26
+Dubai International Airport,DXB,UAE,Middle East,Staff Evacuation,Severe,209,52.0,2026-03-26
+King Abdulaziz International Airport,JED,Saudi Arabia,Middle East,Ground Stop,High,224,13.3,2026-03-27
+Mehrabad International Airport,THR,Iran,Middle East,Flight Cancellations,High,259,36.2,2026-03-28
+Jinnah International Airport,KHI,Pakistan,South Asia,Full Closure,Severe,165,38.3,2026-03-28
+Jinnah International Airport,KHI,Pakistan,South Asia,GPS Interference Advisory,Critical,192,33.6,2026-03-29
+Jomo Kenyatta International Airport,NBO,Kenya,Africa,GPS Interference Advisory,High,19,54.9,2026-03-29
+Jinnah International Airport,KHI,Pakistan,South Asia,GPS Interference Advisory,Moderate,241,2.2,2026-03-29
+Damascus International Airport,DAM,Syria,Middle East,Fuel Shortage,High,122,22.6,2026-03-29
+Islamabad International Airport,ISB,Pakistan,South Asia,Full Closure,Severe,181,56.6,2026-03-30
+Dubai International Airport,DXB,UAE,Middle East,Partial Closure,Severe,80,37.1,2026-03-31
+Frankfurt Airport,FRA,Germany,Europe,Departure Delays,High,41,13.3,2026-03-31
+Imam Khomeini International Airport,IKA,Iran,Middle East,Departure Delays,Severe,115,51.5,2026-03-31
+Ben Gurion Airport,TLV,Israel,Middle East,Flight Cancellations,High,180,2.5,2026-04-02
+Muscat International Airport,MCT,Oman,Middle East,Partial Closure,Moderate,117,20.5,2026-04-02
+Muscat International Airport,MCT,Oman,Middle East,Arrival Diversions,Severe,80,52.7,2026-04-02
+Hamad International Airport,DOH,Qatar,Middle East,Arrival Diversions,Severe,220,12.0,2026-04-02
+Mehrabad International Airport,THR,Iran,Middle East,Fuel Shortage,High,30,45.3,2026-04-02
+Baghdad International Airport,BGW,Iraq,Middle East,Departure Delays,High,182,29.4,2026-04-02
+Istanbul Airport,IST,Turkey,Middle East,Security Lockdown,Critical,213,24.0,2026-04-03
+Cairo International Airport,CAI,Egypt,North Africa,Ground Stop,Moderate,17,38.9,2026-04-04
+Lisbon Humberto Delgado Airport,LIS,Portugal,Europe,ATC Flow Restriction,Low,10,58.3,2026-04-04
+El Dorado International Airport,BOG,Colombia,Latin America,Staff Evacuation,High,172,55.7,2026-04-04
+Imam Khomeini International Airport,IKA,Iran,Middle East,Fuel Shortage,High,262,32.1,2026-04-04
+Muscat International Airport,MCT,Oman,Middle East,GPS Interference Advisory,Critical,191,71.2,2026-04-04
+King Abdulaziz International Airport,JED,Saudi Arabia,Middle East,Ground Stop,High,80,7.8,2026-04-05
+Chhatrapati Shivaji Maharaj International Airport,BOM,India,South Asia,Full Closure,Moderate,122,7.4,2026-04-05
+London Heathrow Airport,LHR,UK,Europe,Flight Cancellations,Moderate,178,10.0,2026-04-05
+El Dorado International Airport,BOG,Colombia,Latin America,Flight Cancellations,Low,181,69.1,2026-04-06
+Damascus International Airport,DAM,Syria,Middle East,Ground Stop,Severe,108,41.8,2026-04-06
+Incheon International Airport,ICN,South Korea,Asia Pacific,Full Closure,Low,38,11.6,2026-04-06
+Los Angeles International Airport,LAX,USA,North America,Staff Evacuation,Moderate,98,52.5,2026-04-07
+Bahrain International Airport,BAH,Bahrain,Middle East,Departure Delays,Severe,80,44.0,2026-04-07
+King Abdulaziz International Airport,JED,Saudi Arabia,Middle East,ATC Flow Restriction,High,89,10.0,2026-04-07
+Dubai International Airport,DXB,UAE,Middle East,GPS Interference Advisory,Critical,158,24.0,2026-04-08
+São Paulo-Guarulhos International Airport,GRU,Brazil,Latin America,Departure Delays,High,268,71.7,2026-04-08
+Charles de Gaulle Airport,CDG,France,Europe,Departure Delays,Moderate,243,17.6,2026-04-08
+Beirut-Rafic Hariri International Airport,BEY,Lebanon,Middle East,Fuel Shortage,Severe,80,35.5,2026-04-08
+Guangzhou Baiyun International Airport,CAN,China,Asia Pacific,Full Closure,Moderate,257,21.9,2026-04-09
+Hamad International Airport,DOH,Qatar,Middle East,Flight Cancellations,High,70,3.0,2026-04-09
+Zurich Airport,ZRH,Switzerland,Europe,Departure Delays,Low,172,7.1,2026-04-09
+São Paulo-Guarulhos International Airport,GRU,Brazil,Latin America,ATC Flow Restriction,Severe,80,27.5,2026-04-09
+Lisbon Humberto Delgado Airport,LIS,Portugal,Europe,Full Closure,Low,265,8.5,2026-04-09
+Muscat International Airport,MCT,Oman,Middle East,Flight Cancellations,Critical,156,28.8,2026-04-09
+Charles de Gaulle Airport,CDG,France,Europe,Flight Cancellations,Severe,214,16.0,2026-04-10
+Hamad International Airport,DOH,Qatar,Middle East,GPS Interference Advisory,High,88,52.6,2026-04-12
+Mehrabad International Airport,THR,Iran,Middle East,Staff Evacuation,High,34,69.1,2026-04-14
+Shanghai Pudong International Airport,PVG,China,Asia Pacific,GPS Interference Advisory,Moderate,130,19.9,2026-04-14
+Abu Dhabi International Airport,AUH,UAE,Middle East,Partial Closure,Severe,156,18.5,2026-04-16
+Bahrain International Airport,BAH,Bahrain,Middle East,Staff Evacuation,Critical,150,24.0,2026-04-16
+Santiago Arturo Merino Benítez Airport,SCL,Chile,Latin America,Departure Delays,Moderate,243,29.8,2026-04-17
+Baghdad International Airport,BGW,Iraq,Middle East,ATC Flow Restriction,Severe,80,21.6,2026-04-17
+King Abdulaziz International Airport,JED,Saudi Arabia,Middle East,Staff Evacuation,Moderate,7,20.4,2026-04-17
+King Abdulaziz International Airport,JED,Saudi Arabia,Middle East,Partial Closure,Moderate,300,20.3,2026-04-18
+Beirut-Rafic Hariri International Airport,BEY,Lebanon,Middle East,Fuel Shortage,High,114,66.3,2026-04-18
+Muscat International Airport,MCT,Oman,Middle East,Security Lockdown,High,232,68.0,2026-04-19
+John F. Kennedy International Airport,JFK,USA,North America,Full Closure,Low,43,37.6,2026-04-19
+Warsaw Chopin Airport,WAW,Poland,Europe,Fuel Shortage,Severe,80,50.9,2026-04-19
+Damascus International Airport,DAM,Syria,Middle East,Flight Cancellations,Moderate,205,2.1,2026-04-20
+El Dorado International Airport,BOG,Colombia,Latin America,Fuel Shortage,Low,30,49.6,2026-04-21
+O.R. Tambo International Airport,JNB,South Africa,Africa,ATC Flow Restriction,High,196,44.7,2026-04-21
+Toronto Pearson International Airport,YYZ,Canada,North America,Fuel Shortage,Moderate,230,14.1,2026-04-22
+Zurich Airport,ZRH,Switzerland,Europe,ATC Flow Restriction,Low,167,30.2,2026-04-22
+Kuwait International Airport,KWI,Kuwait,Middle East,Departure Delays,Severe,80,70.3,2026-04-22
+Damascus International Airport,DAM,Syria,Middle East,Partial Closure,High,293,14.3,2026-04-23
+O.R. Tambo International Airport,JNB,South Africa,Africa,Partial Closure,Moderate,168,24.1,2026-04-23
+Basra International Airport,BSR,Iraq,Middle East,Fuel Shortage,Critical,259,24.0,2026-04-24
+Sheremetyevo International Airport,SVO,Russia,Europe,GPS Interference Advisory,Moderate,273,25.4,2026-04-26
+Frankfurt Airport,FRA,Germany,Europe,ATC Flow Restriction,Moderate,41,57.2,2026-04-26
+São Paulo-Guarulhos International Airport,GRU,Brazil,Latin America,Security Lockdown,Moderate,71,29.6,2026-04-27
+King Abdulaziz International Airport,JED,Saudi Arabia,Middle East,GPS Interference Advisory,Severe,292,13.6,2026-04-27
+Basra International Airport,BSR,Iraq,Middle East,Flight Cancellations,Severe,91,12.0,2026-04-28
+Beijing Capital International Airport,PEK,China,Asia Pacific,Arrival Diversions,Moderate,33,31.1,2026-04-28
+Stockholm Arlanda Airport,ARN,Sweden,Europe,GPS Interference Advisory,Moderate,134,32.7,2026-04-28
+Istanbul Airport,IST,Turkey,Middle East,Security Lockdown,High,111,69.0,2026-04-29
+Istanbul Airport,IST,Turkey,Middle East,Arrival Diversions,Severe,237,45.5,2026-04-29
+O'Hare International Airport,ORD,USA,North America,Arrival Diversions,Moderate,5,35.4,2026-04-29
+Indira Gandhi International Airport,DEL,India,South Asia,Full Closure,High,57,23.5,2026-04-29
+Queen Alia International Airport,AMM,Jordan,Middle East,GPS Interference Advisory,Moderate,195,38.4,2026-04-29
+Jinnah International Airport,KHI,Pakistan,South Asia,Partial Closure,Moderate,38,63.3,2026-04-30
+Warsaw Chopin Airport,WAW,Poland,Europe,GPS Interference Advisory,Low,39,58.3,2026-04-30
+Abu Dhabi International Airport,AUH,UAE,Middle East,Partial Closure,High,8,41.6,2026-04-30
+Stockholm Arlanda Airport,ARN,Sweden,Europe,GPS Interference Advisory,High,26,20.4,2026-04-30
+Narita International Airport,NRT,Japan,Asia Pacific,Partial Closure,Moderate,33,31.9,2026-04-30
+Shanghai Pudong International Airport,PVG,China,Asia Pacific,GPS Interference Advisory,Moderate,212,30.4,2026-04-30
+Haneda Airport,HND,Japan,Asia Pacific,GPS Interference Advisory,Low,221,4.7,2026-05-01
+Imam Khomeini International Airport,IKA,Iran,Middle East,Departure Delays,Moderate,242,6.3,2026-05-02
+Queen Alia International Airport,AMM,Jordan,Middle East,Staff Evacuation,Moderate,39,22.8,2026-05-02
+Bahrain International Airport,BAH,Bahrain,Middle East,Ground Stop,Severe,177,12.0,2026-05-02
+Queen Alia International Airport,AMM,Jordan,Middle East,Staff Evacuation,High,32,34.3,2026-05-02
+Queen Alia International Airport,AMM,Jordan,Middle East,Security Lockdown,Moderate,163,70.1,2026-05-02
+Frankfurt Airport,FRA,Germany,Europe,ATC Flow Restriction,Low,272,34.0,2026-05-03
+Basra International Airport,BSR,Iraq,Middle East,Arrival Diversions,Severe,180,39.3,2026-05-03
+Madrid Barajas Airport,MAD,Spain,Europe,Ground Stop,Moderate,251,58.2,2026-05-03
+John F. Kennedy International Airport,JFK,USA,North America,Partial Closure,Low,112,41.4,2026-05-03
+Mehrabad International Airport,THR,Iran,Middle East,Security Lockdown,Critical,278,41.3,2026-05-04
+King Khalid International Airport,RUH,Saudi Arabia,Middle East,Departure Delays,High,100,31.6,2026-05-04
+Muscat International Airport,MCT,Oman,Middle East,ATC Flow Restriction,Critical,150,42.0,2026-05-05
+Mexico City International Airport,MEX,Mexico,Latin America,Security Lockdown,High,180,2.3,2026-05-06
+Basra International Airport,BSR,Iraq,Middle East,Security Lockdown,High,292,63.3,2026-05-06
+Chhatrapati Shivaji Maharaj International Airport,BOM,India,South Asia,Partial Closure,High,54,59.1,2026-05-06
+Bole International Airport,ADD,Ethiopia,Africa,ATC Flow Restriction,Low,154,14.2,2026-05-06
+King Abdulaziz International Airport,JED,Saudi Arabia,Middle East,Staff Evacuation,Moderate,57,10.4,2026-05-06
+Basra International Airport,BSR,Iraq,Middle East,Arrival Diversions,Critical,167,24.0,2026-05-07
+Changi Airport,SIN,Singapore,Asia Pacific,ATC Flow Restriction,Low,292,68.1,2026-05-08
+Islamabad International Airport,ISB,Pakistan,South Asia,Full Closure,Moderate,227,7.3,2026-05-09
+Istanbul Airport,IST,Turkey,Middle East,Departure Delays,Severe,100,69.8,2026-05-09
+Sheremetyevo International Airport,SVO,Russia,Europe,Flight Cancellations,Severe,143,29.2,2026-05-09
+Ben Gurion Airport,TLV,Israel,Middle East,GPS Interference Advisory,Severe,80,70.9,2026-05-10
+Toronto Pearson International Airport,YYZ,Canada,North America,Staff Evacuation,Severe,264,71.3,2026-05-11
+Queen Alia International Airport,AMM,Jordan,Middle East,Staff Evacuation,Severe,252,29.5,2026-05-11
+Baghdad International Airport,BGW,Iraq,Middle East,GPS Interference Advisory,Critical,150,24.0,2026-05-12
+Beijing Capital International Airport,PEK,China,Asia Pacific,Flight Cancellations,Low,220,26.7,2026-05-12
+Mohammed V International Airport,CMN,Morocco,Africa,ATC Flow Restriction,Moderate,249,37.7,2026-05-12
+John F. Kennedy International Airport,JFK,USA,North America,Staff Evacuation,High,239,12.0,2026-05-13
+Madrid Barajas Airport,MAD,Spain,Europe,Arrival Diversions,Moderate,30,63.9,2026-05-13
+Los Angeles International Airport,LAX,USA,North America,Departure Delays,High,117,26.2,2026-05-13
+Dubai International Airport,DXB,UAE,Middle East,Departure Delays,Moderate,181,64.5,2026-05-13
+Bahrain International Airport,BAH,Bahrain,Middle East,Fuel Shortage,Severe,196,46.0,2026-05-13
+Chhatrapati Shivaji Maharaj International Airport,BOM,India,South Asia,Arrival Diversions,Severe,209,12.0,2026-05-13
+Muscat International Airport,MCT,Oman,Middle East,Staff Evacuation,Critical,188,53.3,2026-05-16
+Sydney Kingsford Smith Airport,SYD,Australia,Asia Pacific,Fuel Shortage,High,225,23.6,2026-05-17
+Santiago Arturo Merino Benítez Airport,SCL,Chile,Latin America,Flight Cancellations,Low,234,30.6,2026-05-19
+Guangzhou Baiyun International Airport,CAN,China,Asia Pacific,Staff Evacuation,Low,130,67.4,2026-05-19
+Islamabad International Airport,ISB,Pakistan,South Asia,GPS Interference Advisory,Severe,271,41.9,2026-05-19
+O'Hare International Airport,ORD,USA,North America,Full Closure,Low,35,8.8,2026-05-19
+Beirut-Rafic Hariri International Airport,BEY,Lebanon,Middle East,Departure Delays,Critical,150,32.3,2026-05-20
+Indira Gandhi International Airport,DEL,India,South Asia,Arrival Diversions,High,144,12.7,2026-05-20
+Islamabad International Airport,ISB,Pakistan,South Asia,Full Closure,Severe,279,48.0,2026-05-20
+Damascus International Airport,DAM,Syria,Middle East,ATC Flow Restriction,Severe,80,34.8,2026-05-21
+Jinnah International Airport,KHI,Pakistan,South Asia,Flight Cancellations,High,246,2.1,2026-05-21
+Bahrain International Airport,BAH,Bahrain,Middle East,ATC Flow Restriction,Critical,155,55.1,2026-05-23
+Basra International Airport,BSR,Iraq,Middle East,Partial Closure,Low,134,66.2,2026-05-24
+Bahrain International Airport,BAH,Bahrain,Middle East,ATC Flow Restriction,Critical,182,24.0,2026-05-26
+Damascus International Airport,DAM,Syria,Middle East,Fuel Shortage,Severe,80,29.6,2026-05-26
+Mexico City International Airport,MEX,Mexico,Latin America,Full Closure,Moderate,242,38.3,2026-05-27
+Noi Bai International Airport,HAN,Vietnam,Asia Pacific,Partial Closure,Low,300,66.7,2026-05-27
+Abu Dhabi International Airport,AUH,UAE,Middle East,Staff Evacuation,Moderate,272,69.2,2026-05-27
+Dubai International Airport,DXB,UAE,Middle East,GPS Interference Advisory,Severe,270,36.2,2026-05-28
+Imam Khomeini International Airport,IKA,Iran,Middle East,Arrival Diversions,Moderate,134,34.8,2026-05-29
+Dubai International Airport,DXB,UAE,Middle East,Arrival Diversions,High,199,59.1,2026-05-29
+O'Hare International Airport,ORD,USA,North America,Security Lockdown,High,30,27.3,2026-05-29
+Imam Khomeini International Airport,IKA,Iran,Middle East,GPS Interference Advisory,Severe,228,12.0,2026-05-29
+Ben Gurion Airport,TLV,Israel,Middle East,Full Closure,High,268,9.2,2026-05-29
+Hamad International Airport,DOH,Qatar,Middle East,Departure Delays,High,247,31.1,2026-05-30
+Bahrain International Airport,BAH,Bahrain,Middle East,Partial Closure,Severe,80,33.6,2026-05-30
+King Khalid International Airport,RUH,Saudi Arabia,Middle East,Full Closure,High,133,12.0,2026-05-31
+Damascus International Airport,DAM,Syria,Middle East,Ground Stop,Critical,292,54.2,2026-05-31
+Queen Alia International Airport,AMM,Jordan,Middle East,Staff Evacuation,Severe,85,36.8,2026-06-01
+O.R. Tambo International Airport,JNB,South Africa,Africa,Ground Stop,Low,62,54.8,2026-06-01
+Damascus International Airport,DAM,Syria,Middle East,ATC Flow Restriction,Severe,161,12.0,2026-06-01
+Sheremetyevo International Airport,SVO,Russia,Europe,Arrival Diversions,Low,142,8.3,2026-06-02
+Queen Alia International Airport,AMM,Jordan,Middle East,Departure Delays,High,287,45.9,2026-06-02
+Hamad International Airport,DOH,Qatar,Middle East,Flight Cancellations,Severe,162,22.8,2026-06-03
+Baghdad International Airport,BGW,Iraq,Middle East,ATC Flow Restriction,Severe,183,25.2,2026-06-04
+Charles de Gaulle Airport,CDG,France,Europe,Fuel Shortage,Low,174,41.6,2026-06-04
+Bole International Airport,ADD,Ethiopia,Africa,Flight Cancellations,High,131,32.1,2026-06-04
+Dubai International Airport,DXB,UAE,Middle East,Full Closure,Moderate,250,31.8,2026-06-05
+Hamad International Airport,DOH,Qatar,Middle East,GPS Interference Advisory,Moderate,224,49.5,2026-06-06
+Guangzhou Baiyun International Airport,CAN,China,Asia Pacific,GPS Interference Advisory,High,50,3.3,2026-06-06
+King Abdulaziz International Airport,JED,Saudi Arabia,Middle East,Flight Cancellations,High,96,44.6,2026-06-06
+El Dorado International Airport,BOG,Colombia,Latin America,ATC Flow Restriction,Moderate,254,68.7,2026-06-07

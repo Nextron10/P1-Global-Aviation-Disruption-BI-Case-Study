@@ -1,0 +1,83 @@
+﻿date,event_type,event_description,severity,aviation_impact,location_name,country
+2025-12-15,Political,Widespread anti-government protests erupt across Iran after economic sanctions tighten,High,Minimal — early warning signs only,Tehran,Iran
+2026-01-10,Diplomatic,UN Security Council emergency session on Iran nuclear program,Medium,Airlines begin monitoring situation,New York,USA
+2026-01-25,Military,US deploys additional carrier strike group to Persian Gulf,High,Airlines issue internal risk advisories,Persian Gulf,
+2026-02-05,Diplomatic,Geneva nuclear talks begin — mediated by Oman and Switzerland,Medium,Brief de-escalation — normal flight ops,Geneva,Switzerland
+2026-02-14,Political,Iran announces uranium enrichment to 90% — talks collapse,Very High,Airlines begin contingency route planning,Tehran,Iran
+2026-02-20,Military,Israel conducts strikes on Iranian nuclear facilities,Very High,Iran closes airspace — immediate cancellations,Isfahan,Iran
+2026-02-22,Military,Iran launches retaliatory missile strikes against US bases in Iraq,Critical,"Iraq, Syria airspace closed — mass cancellations",Al Asad,Iraq
+2026-02-25,Military,US commences Operation Resolute Shield — air campaign against Iran,Critical,Entire ME airspace disrupted — global rerouting,Multiple locations,Iran
+2026-02-28,Military,US-Israeli coordinated military strikes on Iran commence,Critical,Full Middle East airspace lockdown,Iran — multiple targets,
+2026-03-01,Energy,Iran closes Strait of Hormuz to all commercial shipping,Critical,Oil supply shock — cargo flights disrupted,Strait of Hormuz,
+2026-03-02,Military,Iran-backed Houthi forces attack Saudi oil infrastructure,Critical,Saudi airports on high alert — diversions,Ras Tanura,Saudi Arabia
+2026-03-03,Military,US Navy clears mines from Strait of Hormuz — ongoing operations,High,Partial oil flow restoration attempts,Strait of Hormuz,
+2026-03-04,Energy,Qatar halts LNG production after drone strikes on facilities,Critical,Doha airport disruptions — fuel shortage,Ras Laffan,Qatar
+2026-03-05,Humanitarian,UNHCR declares refugee emergency — millions displaced,High,Humanitarian flights authorized,Iran-Iraq border,
+2026-03-06,Diplomatic,China and Russia call for immediate ceasefire at UNSC,Medium,Markets stabilize briefly — flights remain cancelled,New York,USA
+2026-03-07,Economic,Pakistan petrol prices surge 20.66% — largest single-day hike,High,Aviation fuel costs spike globally,Islamabad,Pakistan
+2026-03-08,Military,Iran launches ballistic missiles at US base in Bahrain,Critical,Bahrain airport closed — regional diversions,Manama,Bahrain
+2026-03-09,Economic,Brent crude hits $104.25/barrel — highest since 2022,Very High,Airlines announce capacity cuts worldwide,Global markets,
+2026-03-10,Diplomatic,Oman mediates preliminary ceasefire negotiations,Medium,Cautious optimism — no flight resumption yet,Muscat,Oman
+2026-03-11,Military,Sporadic clashes continue despite ceasefire talks,High,Airspace remains restricted,Iran-Iraq border,
+2026-03-12,Diplomatic,Temporary ceasefire announced — 72-hour humanitarian pause,High,Limited flight resumption — cautious reopening,Geneva,Switzerland
+2026-03-13,Diplomatic,72-hour ceasefire holds — humanitarian aid convoys enter Iran,Medium,Some airlines announce limited flight resumption plans,Iran-Iraq border,
+2026-03-14,Military,Iran partially reopens western airspace corridor under ICAO monitoring,High,Limited overflights resume via western Iran corridor,Tehran FIR,Iran
+2026-03-15,Diplomatic,US-Iran direct talks begin secretly in Oman — mediated by Oman and Switzerland,Medium,Markets respond positively — oil drops below $100/barrel,Muscat,Oman
+2026-03-16,Economic,Multiple airlines announce phased resumption of Middle East operations,Medium,"Emirates, Qatar Airways resume limited Dubai/Doha hub ops",Global,
+2026-03-17,Diplomatic,Extended ceasefire agreement signed — 30-day truce with phased airspace reopening,High,Phased airspace reopening begins — airlines ramp up operations,Muscat,Oman
+2026-03-18,Military,ICAO establishes provisional air corridors over western Iran and Iraq for commercial overflights,Medium,Commercial overflights resume on designated corridors — restrictions remain,Tehran FIR / Baghdad FIR,
+2026-03-19,Economic,Emirates and Qatar Airways resume 50% of pre-conflict schedules from Dubai and Doha hubs,Medium,Major ME hub operations ramping up — connecting traffic recovering,Dubai / Doha,
+2026-03-20,Economic,Brent crude falls to $92/barrel as ceasefire holds and Strait of Hormuz partially reopens,Medium,Fuel costs remain elevated but stabilizing — airline cost pressure easing,Global markets,
+2026-03-21,Diplomatic,"Turkey, Jordan, and Egypt fully reopen airspace — European carriers resume Middle East routes",Medium,European airlines resume direct ME services — rerouting decreases sharply,Ankara / Amman / Cairo,
+2026-03-22,Energy,Iran announces phased Strait of Hormuz reopening under international maritime monitoring,Medium,Oil supply stabilizing — cargo and freight flights resume gradually,Strait of Hormuz,
+2026-03-23,Economic,IATA estimates total industry losses at $4.7 billion — calls for global conflict-resilience framework,Medium,Industry assessment phase begins — insurance claims surge,Montreal,Canada
+2026-03-24,Military,ICAO expands provisional air corridors — Iran reopens eastern airspace corridor for overflights,Medium,Additional commercial overfly routes available — rerouting decreases further,Tehran FIR,Iran
+2026-03-25,Diplomatic,UN Security Council passes Resolution 2742 — establishes permanent ceasefire monitoring mechanism,Medium,International confidence rises — airlines accelerate schedule restoration,New York,USA
+2026-03-26,Economic,Emirates and Qatar Airways resume 75% of pre-conflict schedules — load factors recovering,Low,Major ME hub operations nearing normalization — connecting traffic at 70% of pre-conflict levels,Dubai / Doha,
+2026-03-27,Economic,Pakistan government announces fuel subsidy package — petrol prices stabilize after 20.66% spike,Low,Regional aviation fuel costs begin normalizing — PIA resumes full domestic and Gulf schedules,Islamabad,Pakistan
+2026-03-28,Military,Iran fully reopens airspace for commercial overflights — one month after conflict began,Medium,Full Iranian airspace available — airlines begin reverting to pre-conflict routing,Tehran FIR / Isfahan FIR,Iran
+2026-03-29,Economic,IATA revises total industry losses to $5.2 billion — recovery slower than projected,Medium,Insurance claims exceed $1.8 billion — airlines seek government compensation packages,Montreal,Canada
+2026-03-30,Diplomatic,"30-day truce verification — ICAO and UN confirm full compliance, airspace normalization complete",Low,Global aviation operations return to 90% of pre-conflict levels — remaining disruptions minimal,Geneva,Switzerland
+2026-03-31,Regulatory,FAA and EASA maintain elevated risk advisories for selected Middle East corridors,Medium,Night-time and route-specific restrictions remain for selected overflights,Washington / Cologne,
+2026-04-02,Security,Multiple carriers report temporary GPS spoofing alerts over Gulf transition corridors,Medium,Short-term reroutes and altitude restrictions reintroduced,Persian Gulf airspace,
+2026-04-05,Economic,IATA recovery bulletin projects cumulative airline losses reaching $5.8 billion,Medium,Recovery costs increase as war-risk insurance premiums stay high,Montreal,Canada
+2026-04-08,Economic,UAE and Qatar hubs restore 85% of pre-conflict schedules,Low,Transit network strengthens but buffers kept for operational resilience,Dubai / Doha,
+2026-04-10,Military,Iran and Iraq publish 48-hour military exercise NOTAMs over limited sectors,Medium,Temporary sector closures trigger targeted rerouting,Tehran FIR / Baghdad FIR,
+2026-04-12,Regulatory,ICAO issues harmonized conflict-zone NOTAM protocol for airlines and ANSPs,Low,Coordination improves and unplanned cancellations decline,Montreal,Canada
+2026-04-14,Economic,Global war-risk premium index for Middle East aviation remains 35% above baseline,Medium,Ticket prices and freight rates remain elevated,London insurance market,
+2026-04-16,Energy,Strait of Hormuz commercial traffic approaches 95% of pre-conflict throughput,Low,Jet fuel supply normalizes across major Gulf hubs,Strait of Hormuz,
+2026-04-18,Operational,Major European and Asian carriers restore near-full schedules with selective night restrictions,Low,Most long-haul routes normalized; contingency routings retained,Global,
+2026-04-20,Diplomatic,Joint truce monitoring mechanism extended for 60 days to prevent escalation,Low,Operational confidence improves for summer scheduling,Geneva / Muscat,
+2026-04-21,Situation,Latest status: stable but fragile aviation recovery with localized restrictions still possible,Low,Global aviation operating around 94-96% of pre-conflict baseline,Middle East corridor,
+2026-04-23,Economic,Global airline industry reports $6.1 billion in cumulative war-related losses since conflict began,Medium,IATA urges international compensation framework — insurance premiums stay 30% above baseline,Montreal,Canada
+2026-04-24,Regulatory,EASA lifts night-time restriction on select Gulf corridors; FAA maintains monitoring advisories,Low,European carriers resume full-frequency operations on Dubai and Doha routes,Cologne / Washington,
+2026-04-25,Operational,Emirates restores 95% of pre-conflict schedule; Qatar Airways resumes all long-haul routes,Low,ME hub connectivity at highest level since conflict began — connecting banks normalized,Dubai / Doha,
+2026-04-26,Security,NOTAM issued over eastern Iraq FIR following isolated drone activity near oil infrastructure,Medium,Airlines reroute around eastern Iraq sector — minor delays on South Asia-Europe routes,Basra,Iraq
+2026-04-27,Energy,Brent crude stabilizes at $84/barrel — war risk premium in jet fuel narrows to 12% above pre-conflict,Low,Fuel cost relief begins flowing through — airlines start revising fare surcharges downward,Global markets,
+2026-04-28,Diplomatic,Iran and US exchange prisoner release as confidence-building measure under truce framework,Low,Positive diplomatic signal — risk advisories for Iran overflights further relaxed,Muscat,Oman
+2026-04-29,Operational,Pakistan International Airlines and Air India resume direct Tehran routes under ICAO corridors,Low,South Asian carriers rebuild pre-conflict network — PIA and Air India Tehran services restart,Islamabad / Delhi,
+2026-04-30,Economic,Monthly aviation recovery index reaches 97% of pre-conflict baseline — strongest reading since Feb 2026,Low,Airlines cautiously optimistic for summer season — capacity additions announced for June,Global,
+2026-05-01,Regulatory,ICAO publishes final conflict-zone NOTAM framework; Iran and Iraq designated amber-watch corridors,Low,Standardized amber-watch protocol replaces patchwork NOTAMs — operational clarity improves,Montreal,Canada
+2026-05-02,Security,Isolated GPS spoofing incident near Qatar FIR prompts precautionary altitude restriction for 6 hours,Low,Short-lived restriction resolved by afternoon — no cancellations recorded,Qatar FIR,
+2026-05-03,Diplomatic,Joint Iran-US technical committee meets in Geneva to discuss permanent ceasefire verification mechanism,Low,Structural progress toward long-term stability — airline community cautiously increases forward bookings,Geneva,Switzerland
+2026-05-04,Situation,Current status as of 4 May 2026: Aviation recovery at 97-98% of pre-conflict baseline; residual risks monitored,Low,Near-normal operations globally; minor war-risk surcharges and selective corridor advisories remain,Global,
+2026-05-07,Economic,Jet fuel prices surge to $152/barrel average — 70% above 2025 levels — as Strait of Hormuz remains effectively blocked,High,Airlines face $100 billion added fuel costs globally — ticket prices climb sharply,Global markets,
+2026-05-10,Operational,Qatar Airways resumes daily flights to Dubai and Sharjah from Doha hub,Low,Phased ME network rebuild — connecting traffic slowly recovering,Dubai / Sharjah,
+2026-05-12,Diplomatic,Iran proposes Strait of Hormuz reopening under new transit-fee framework in cooperation with Oman,Medium,US opposes toll proposal — maritime and cargo uncertainty persists,Muscat,Oman
+2026-05-15,Economic,Fitch Ratings revises 2026 global airline sector outlook to 'deteriorating',Medium,Credit pressure on airlines increases — ME carriers face potential downgrades,Global,
+2026-05-18,Energy,Strait of Hormuz commercial traffic remains 90%+ below pre-war baseline — daily vessel count at historic lows,High,Cargo and freight aviation remains severely disrupted — supply chain diversions continue,Strait of Hormuz,
+2026-05-20,Operational,Qatar Airways resumes double-daily flights to Abu Dhabi; Damascus service restarts,Low,Further ME connectivity restoration — but recovery fragile amid ongoing tensions,Abu Dhabi / Damascus,
+2026-05-22,Economic,Indian government approves $1.05 billion fuel price stabilization fund to support domestic carriers,Medium,ATF costs had more than doubled — Air India and IndiGo cut capacity up to 22% on some routes,New Delhi,India
+2026-05-25,Regulatory,EASA issues updated Conflict Zone Information Bulletin for Middle East — recommends extreme caution,Medium,European carriers maintain reduced frequencies on ME routes — contingency routing mandatory,Cologne,Germany
+2026-05-28,Operational,PIA announces Islamabad–Beijing direct service resumption from July 3 amid cautious network expansion,Low,South Asian carriers tentatively rebuild long-haul network — Gulf routes remain fluid,Islamabad,Pakistan
+2026-05-30,Economic,Brent crude volatile at $97–98/barrel amid Hormuz uncertainty — war-risk insurance premiums at record highs,High,Aviation fuel crack spread hits historic $57/barrel premium over Brent crude,Global markets,
+2026-06-01,Diplomatic,April 8 ceasefire framework shows signs of strain as proxy group activity increases in Lebanon and Iraq,Medium,Airlines monitoring situation closely — contingency plans reactivated,Beirut / Baghdad,
+2026-06-03,Military,Ceasefire effectively collapses — Hezbollah-linked forces conduct cross-border operations from Lebanon,High,Regional security environment deteriorates rapidly — airlines issue internal risk alerts,Southern Lebanon,
+2026-06-04,Regulatory,"FAA issues emergency advisory for all Middle East corridors — recommends avoidance of Iran, Iraq, Lebanon airspace",High,US carriers suspend all remaining ME overflights — European carriers follow within hours,Washington,USA
+2026-06-05,Economic,IATA Director General at AGM in Rio: global airline profit forecast halved from $41 billion to $23 billion,High,ME carriers face $4.3 billion collective loss for 2026 — worst regional performance globally,Rio de Janeiro,Brazil
+2026-06-06,Economic,IATA AGM: ME passenger demand expected to decline 11.4% in 2026 with 4.4% capacity contraction,High,Industry-wide fuel bill surges to $350 billion from $252 billion in 2025 — margins collapse,Rio de Janeiro,Brazil
+2026-06-07,Military,Hezbollah rocket barrage on northern Israel prompts massive Israeli airstrikes on Beirut southern suburbs,Critical,Lebanon airspace closed — Beirut airport operations suspended — mass regional cancellations,Beirut / Northern Israel,
+2026-06-07,Military,Iran launches ballistic missile salvo against Israeli military targets in retaliation for Beirut strikes,Critical,Iran closes all airspace — Iraq closes airspace for 72 hours — Syria suspends Damascus operations,Multiple locations,Israel
+2026-06-08,Military,Israel conducts retaliatory strikes on Iranian military and nuclear infrastructure,Critical,Full Middle East airspace lockdown — Imam Khomeini and Mehrabad airports grounded indefinitely,Isfahan / Tehran,Iran
+2026-06-08,Security,Multiple nations issue emergency travel advisories — India urges citizens to leave Iran immediately,Critical,Kuwait and Bahrain impose temporary airspace closures — Emirates and Etihad suspend all operations,Global,
+2026-06-08,Situation,Current status as of 8 June 2026: Full re-escalation — ceasefire collapsed — aviation in crisis mode,Critical,Global aviation disrupted at levels exceeding February 2026 — recovery timeline unknown,Global,

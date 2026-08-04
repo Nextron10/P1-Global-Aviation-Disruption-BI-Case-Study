@@ -1,0 +1,71 @@
+airline,country,airline_type,estimated_loss_usd,cancellations_count,reroutes_count,revenue_loss_pct,region
+Gulf Air,Bahrain,Flag Carrier,1757410000.0,270,192,42.5,Middle East
+Oman Air,Oman,Flag Carrier,1625420000.0,182,75,26.3,Middle East
+Kuwait Airways,Kuwait,Flag Carrier,1554690000.0,348,54,53.1,Middle East
+Jazeera Airways,Kuwait,Low Cost,1499200000.0,118,53,45.1,Middle East
+Etihad Airways,UAE,Flag Carrier,1426030000.0,126,107,27.0,Middle East
+Iran Air,Iran,Flag Carrier,1398360000.0,184,181,38.3,Middle East
+Saudi Arabian Airlines,Saudi Arabia,Flag Carrier,1347320000.0,110,145,53.4,Middle East
+Emirates SkyCargo,UAE,Cargo,1210430000.0,233,117,33.5,Middle East
+flydubai,UAE,Low Cost,1154030000.0,315,151,46.6,Middle East
+flynas,Saudi Arabia,Low Cost,1075910000.0,219,198,43.0,Middle East
+Mahan Air,Iran,Private,711250000.0,340,142,35.8,Middle East
+Emirates,UAE,Flag Carrier,659880000.0,258,184,31.8,Middle East
+Air Arabia,UAE,Low Cost,604750000.0,81,132,53.4,Middle East
+Qatar Airways,Qatar,Flag Carrier,476490000.0,247,112,50.1,Middle East
+SpiceJet,India,Low Cost,315170000.0,32,102,25.2,South Asia
+Air India,India,Flag Carrier,222580000.0,45,78,19.9,South Asia
+Pakistan International Airlines,Pakistan,Flag Carrier,221030000.0,78,98,21.6,South Asia
+IndiGo,India,Low Cost,209430000.0,144,71,10.9,South Asia
+Turkish Airlines,Turkey,Flag Carrier,169700000.0,136,75,21.0,Middle East
+Cargolux,Luxembourg,Cargo,158700000.0,19,66,15.9,Europe
+DHL Aviation,Germany,Cargo,143700000.0,22,125,19.1,Europe
+SAS,Sweden,Flag Carrier,124760000.0,82,33,15.9,Europe
+LOT Polish Airlines,Poland,Flag Carrier,122210000.0,32,34,17.9,Europe
+Air Canada,Canada,Flag Carrier,121000000.0,54,25,3.8,North America
+Thai Airways,Thailand,Flag Carrier,120380000.0,77,69,9.1,Asia Pacific
+KLM,Netherlands,Flag Carrier,120220000.0,12,16,14.3,Europe
+Garuda Indonesia,Indonesia,Flag Carrier,119620000.0,63,38,6.4,Asia Pacific
+Air Algerie,Algeria,Flag Carrier,119030000.0,78,67,16.0,Africa
+Japan Airlines,Japan,Flag Carrier,116300000.0,73,61,7.2,Asia Pacific
+American Airlines,USA,Flag Carrier,114950000.0,32,29,17.9,North America
+Royal Air Maroc,Morocco,Flag Carrier,111640000.0,20,14,12.6,Africa
+South African Airways,South Africa,Flag Carrier,110900000.0,21,40,13.3,Africa
+Copa Airlines,Panama,Flag Carrier,109090000.0,17,56,11.2,Latin America
+Azul Brazilian Airlines,Brazil,Flag Carrier,108170000.0,58,43,3.6,Latin America
+Qantas,Australia,Flag Carrier,102700000.0,82,28,12.3,Asia Pacific
+easyJet,UK,Low Cost,101620000.0,60,27,9.6,Europe
+Wizz Air,Hungary,Low Cost,92130000.0,73,20,10.8,Europe
+FedEx Express,USA,Cargo,85150000.0,33,83,15.9,North America
+Kenya Airways,Kenya,Flag Carrier,83250000.0,68,70,14.4,Africa
+EgyptAir,Egypt,Flag Carrier,82190000.0,82,88,19.3,Africa
+UPS Airlines,USA,Cargo,80720000.0,32,128,12.4,North America
+Aeromexico,Mexico,Flag Carrier,74100000.0,40,69,4.2,Latin America
+WestJet,Canada,Low Cost,72840000.0,38,42,17.9,North America
+LATAM Airlines,Chile,Flag Carrier,72700000.0,52,70,13.4,Latin America
+Singapore Airlines,Singapore,Flag Carrier,70480000.0,40,14,11.3,Asia Pacific
+Malaysia Airlines,Malaysia,Flag Carrier,69100000.0,62,38,9.4,Asia Pacific
+Avianca,Colombia,Flag Carrier,69010000.0,23,19,6.9,Latin America
+Vietnam Airlines,Vietnam,Flag Carrier,67250000.0,56,37,17.7,Asia Pacific
+Air New Zealand,New Zealand,Flag Carrier,57030000.0,25,55,16.7,Asia Pacific
+Delta Air Lines,USA,Flag Carrier,56910000.0,79,49,5.6,North America
+Finnair,Finland,Flag Carrier,56610000.0,54,37,15.3,Europe
+British Airways,UK,Flag Carrier,56220000.0,83,17,16.2,Europe
+Aeroflot,Russia,Flag Carrier,53950000.0,81,22,15.1,Europe
+ANA,Japan,Flag Carrier,48060000.0,77,58,15.4,Asia Pacific
+Swiss International Air Lines,Switzerland,Flag Carrier,46230000.0,20,70,10.3,Europe
+China Southern,China,Flag Carrier,43400000.0,14,49,12.4,Asia Pacific
+Ryanair,Ireland,Low Cost,43120000.0,80,15,11.9,Europe
+Lufthansa,Germany,Flag Carrier,42720000.0,31,50,11.7,Europe
+China Eastern,China,Flag Carrier,40340000.0,69,44,13.2,Asia Pacific
+Ethiopian Airlines,Ethiopia,Flag Carrier,38990000.0,27,28,12.2,Africa
+Iberia,Spain,Flag Carrier,33860000.0,39,55,4.4,Europe
+Cathay Pacific,Hong Kong,Flag Carrier,33770000.0,57,16,9.6,Asia Pacific
+Atlas Air,USA,Cargo,32870000.0,14,65,21.0,North America
+Asiana Airlines,South Korea,Flag Carrier,28540000.0,28,26,6.4,Asia Pacific
+Air France,France,Flag Carrier,23970000.0,40,14,9.6,Europe
+United Airlines,USA,Flag Carrier,23680000.0,65,34,16.8,North America
+TAP Air Portugal,Portugal,Flag Carrier,23090000.0,79,25,16.7,Europe
+Southwest Airlines,USA,Low Cost,17150000.0,58,32,9.8,North America
+Air China,China,Flag Carrier,16060000.0,81,16,10.8,Asia Pacific
+Korean Air,South Korea,Flag Carrier,14770000.0,62,46,17.1,Asia Pacific

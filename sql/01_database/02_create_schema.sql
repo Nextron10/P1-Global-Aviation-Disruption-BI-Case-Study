@@ -1,0 +1,1 @@
+Create SCHEMA aviation;
