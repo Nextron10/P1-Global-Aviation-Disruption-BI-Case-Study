@@ -53,12 +53,50 @@ def check_text_columns(df):
     whitespace_total = 0
 
     for column in text_columns:
-        whitespace_count = df[column].str.strip().ne(df[column]).sum()
+        whitespace_count = (
+            df[column].fillna("").str.strip().ne(df[column].fillna("")).sum()
+        )
+
         whitespace_total += whitespace_count
 
         print(f"{column}: {whitespace_count}")
 
     return text_columns, whitespace_total
+
+
+# ==========================
+# Text Standardization
+# ==========================
+
+
+def standardize_text_columns(df):
+    """Remove leading and trailing whitespace from text columns."""
+
+    # Standardize whitespace across all text fields before analytical processing.
+    text_columns = df.select_dtypes(include=["object", "string"]).columns
+
+    for column in text_columns:
+        df[column] = df[column].apply(
+            lambda value: value.strip() if isinstance(value, str) else value
+        )
+
+    return df
+
+
+def standardize_airline_names(df):
+    """Standardize known airline aliases to the canonical airline names."""
+
+    # Standardize only known aliases so existing airline names remain unchanged.
+    airline_aliases = {
+        "PIA": "Pakistan International Airlines",
+        "Saudia": "Saudi Arabian Airlines",
+        "Swiss International": "Swiss International Air Lines",
+    }
+
+    if "airline" in df.columns:
+        df["airline"] = df["airline"].replace(airline_aliases)
+
+    return df
 
 
 # ==========================
@@ -83,7 +121,7 @@ def display_category_distribution(df, text_columns):
 
     for column in text_columns:
         print(f"\n{column}")
-        print(df[column].value_counts())
+        print(df[column].value_counts(dropna=False))
 
 
 # ==========================
@@ -105,6 +143,7 @@ def numerical_summary(df):
 
 def validation_summary(duplicates, missing_values, whitespace):
     """Show and return a summary of validation checks."""
+
     return {
         "duplicates": int(duplicates),
         "missing_values": int(missing_values.sum()),

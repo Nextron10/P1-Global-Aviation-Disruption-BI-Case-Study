@@ -1,1 +1,1 @@
-Create SCHEMA aviation;
+CREATE SCHEMA IF NOT EXISTS aviation;
