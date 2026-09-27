@@ -1,0 +1,21 @@
+table DimSeverity
+	lineageTag: a3c40b37-9215-4066-bf4c-bcbe83337d5b
+
+	column severity_level
+		lineageTag: 57f539ac-f40d-4fa3-97fb-6f3531efb366
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: aviation vw_airport_disruption[severity_level]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimSeverity = calculated
+		mode: import
+		source =
+				
+				DISTINCT(
+				    'aviation vw_airport_disruption'[severity_level]
+				)
+
+	annotation PBI_Id = d48b5d7cbd874ca7ad3b003c37f5eba8
+

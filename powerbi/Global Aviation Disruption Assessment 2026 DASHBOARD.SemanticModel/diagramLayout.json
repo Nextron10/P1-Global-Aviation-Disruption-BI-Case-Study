@@ -1,0 +1,230 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 433.42073687205732,
+        "y": 386.15678762095257
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 410.1118608901761,
+            "y": 1311.254403836223
+          },
+          "nodeIndex": "aviation vw_airline_operational_financial",
+          "nodeLineageTag": "1054dfcf-0aab-4305-9cc1-6ae956494925",
+          "size": {
+            "height": 300,
+            "width": 361.98819303272057
+          },
+          "zIndex": 8
+        },
+        {
+          "location": {
+            "x": 413.423264166984,
+            "y": 800.48702042465015
+          },
+          "nodeIndex": "aviation vw_airport_disruption",
+          "nodeLineageTag": "061396f1-5f62-48fc-ad1e-abc8a2c439f2",
+          "size": {
+            "height": 310.22091033696893,
+            "width": 297.20404594208424
+          },
+          "zIndex": 15
+        },
+        {
+          "location": {
+            "x": 431.95070279428421,
+            "y": 0
+          },
+          "nodeIndex": "aviation vw_airspace_closure",
+          "nodeLineageTag": "d6145509-a343-46d4-b8f0-f2b220e0fb67",
+          "size": {
+            "height": 295.7015172282816,
+            "width": 295.62394479353213
+          },
+          "zIndex": 9
+        },
+        {
+          "location": {
+            "x": 1255.5737658328853,
+            "y": 603.2629926664215
+          },
+          "nodeIndex": "aviation vw_executive_kpi",
+          "nodeLineageTag": "5b6ee9a1-e3f6-4d74-ad56-06c41dc229fe",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 14
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 17.381112634073158
+          },
+          "nodeIndex": "aviation vw_geopolitical_daily_impact",
+          "nodeLineageTag": "6fc4ba40-37ab-4c64-a26d-f9741071b146",
+          "size": {
+            "height": 248,
+            "width": 282.98313560511525
+          },
+          "zIndex": 10
+        },
+        {
+          "location": {
+            "x": 405.95434740153883,
+            "y": 411.61810813422943
+          },
+          "nodeIndex": "aviation vw_regional_vulnerability",
+          "nodeLineageTag": "bb1326bc-d894-4ade-a508-ec557b552176",
+          "size": {
+            "height": 318.12141607972944,
+            "width": 314.58515857615737
+          },
+          "zIndex": 11
+        },
+        {
+          "location": {
+            "x": 784.96943443558189,
+            "y": 564.88484839877026
+          },
+          "nodeIndex": "aviation vw_route_passenger_impact",
+          "nodeLineageTag": "36702132-647e-47c1-a565-16188e41d09d",
+          "size": {
+            "height": 376.5632367536673,
+            "width": 338.286675804439
+          },
+          "zIndex": 16
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 412.40639977209946
+          },
+          "nodeIndex": "DimDate",
+          "nodeLineageTag": "4687004b-811c-43cf-bdac-2319b3cc5ef4",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 12
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 1520.6364971494481
+          },
+          "nodeIndex": "DimAirline",
+          "nodeLineageTag": "6b7ed25b-71c4-4395-b070-ee163c66c93f",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 7
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 1107.1781433265282
+          },
+          "nodeIndex": "DimRegion",
+          "nodeLineageTag": "aa3b1df3-56bc-4d0a-b97a-160d2bcc7ebe",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 13
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 750.174040075537
+          },
+          "nodeIndex": "DimCountry",
+          "nodeLineageTag": "4c28bf25-c418-423f-a2f3-8f59d484c771",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 6
+        },
+        {
+          "location": {
+            "x": 915.98429383288624,
+            "y": 1041.1165480941613
+          },
+          "nodeIndex": "aviation flight_cancellations",
+          "nodeLineageTag": "6d292c26-d696-4317-8e97-0c9630f1cfa2",
+          "size": {
+            "height": 379.72024499999975,
+            "width": 267.65965900000003
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 1245.5387147200511,
+            "y": 1041.1165480941613
+          },
+          "nodeIndex": "aviation flight_reroutes",
+          "nodeLineageTag": "c7facae7-7eb9-451c-8d3e-92d50cee767d",
+          "size": {
+            "height": 496.64327099999969,
+            "width": 260.57341500000007
+          },
+          "zIndex": 4
+        },
+        {
+          "location": {
+            "x": 4.2246937200536649,
+            "y": 1809.8641692552319
+          },
+          "nodeIndex": "DimSeverity",
+          "nodeLineageTag": "a3c40b37-9215-4066-bf4c-bcbe83337d5b",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 5
+        },
+        {
+          "location": {
+            "x": 1596.5777650578314,
+            "y": 1048.8868188774227
+          },
+          "nodeIndex": "aviation conflict_events",
+          "nodeLineageTag": "4325468d-867a-4720-be82-8501d1d860a8",
+          "size": {
+            "height": 252.15781666942553,
+            "width": 252.9670701744999
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 1587.7083078070443,
+            "y": 765.89669023417594
+          },
+          "nodeIndex": "Operational Factor",
+          "nodeLineageTag": "fe86f80b-5b1d-431e-8c84-4ec0d3d39ada",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 2
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 79.553182037700068,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

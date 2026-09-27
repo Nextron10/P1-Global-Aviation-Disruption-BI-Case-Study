@@ -1,19 +1,12 @@
 {
+    "python.defaultInterpreterPath": "${workspaceFolder}\\.venv\\Scripts\\python.exe",
+    "python.analysis.typeCheckingMode": "basic",
+    "mssql.intelliSense.enableIntelliSense": false,
+    "mssql.intelliSense.enableErrorChecking": false,
+    "mssql.autoDisableNonTSqlLanguageService": true,
+    "pgsql.intelliSense.enableIntelliSense": true,
+    "database-client.enableFlexibleSQLParser": false,
     "sqltools.connections": [
-        {
-            "mysqlOptions": {
-                "authProtocol": "default",
-                "enableSsl": "Disabled"
-            },
-            "ssh": "Disabled",
-            "previewLimit": 50,
-            "server": "localhost",
-            "port": 3306,
-            "driver": "MySQL",
-            "name": "MySQL local",
-            "database": "mysql",
-            "username": "root"
-        },
         {
             "ssh": "Disabled",
             "previewLimit": 50,

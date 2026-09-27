@@ -1,66 +1,49 @@
-import pandas as pd
+"""Clean and validate the undated modeled airline daily-estimate table."""
 
-df = pd.read_csv("data/raw/airline_losses_estimate.csv")
+from pathlib import Path
+import sys
 
-print("\n\n\nDataset Shape:", df.shape)
-print("\nColumn Names:", df.columns)
+# Make the shared helper module available when this file runs directly.
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-print("\nDataset Information:")
-df.info()
-
-print("\nDuplicate Records:")
-duplicate_count = df.duplicated().sum()
-print(duplicate_count)
-
-print("\nMissing Values:")
-missing_values = df.isnull().sum()
-print(missing_values)
-
-text_columns = df.select_dtypes(include=["object", "string"]).columns
-print("\nText Columns:")
-print(text_columns)
-
-whitespace_total = 0
-
-for column in text_columns:
-    whitespace_count = df[column].str.strip().ne(df[column]).sum()
-    whitespace_total += whitespace_count
-    print(f"{column}: {whitespace_count}")
-
-print("\nUnique Values in Text Columns:")
-for column in text_columns:
-    print(f"\n{column}")
-    print(df[column].unique())
-
-print("\n Category Distribution:")
-for column in text_columns:
-    print(f"\n{column}")
-    print(df[column].value_counts())
+from utils.helpers import (
+    assert_row_preservation,
+    load_raw_csv,
+    print_validation_summary,
+    require_nonnegative,
+    require_values,
+    save_clean_csv,
+    standardize_airline_names,
+    trim_text,
+)
 
 
-# Standardize leading and trailing whitespace in all text fields before entity matching.
-for column in text_columns:
-    df[column] = df[column].str.strip()
+EXPECTED_COLUMNS = [
+    "airline", "country", "estimated_daily_loss_usd", "cancelled_flights",
+    "rerouted_flights", "additional_fuel_cost_usd", "passengers_impacted",
+]
 
 
-# Standardize known airline aliases to the canonical airline names used in airline_losses.
-airline_aliases = {
-    "PIA": "Pakistan International Airlines",
-    "Saudia": "Saudi Arabian Airlines",
-    "Swiss International": "Swiss International Air Lines",
-}
+def main():
+    # Step 1: load the raw file only if its columns match the expected schema.
+    frame = load_raw_csv("airline_losses_estimate.csv", EXPECTED_COLUMNS)
+    raw_count = len(frame)
 
-# Apply the approved airline aliases only to the airline field.
-df["airline"] = df["airline"].replace(airline_aliases)
+    # Step 2: trim text and apply the three documented airline-name aliases.
+    frame = standardize_airline_names(trim_text(frame))
+
+    # Step 3: validate required and nonnegative values, then preserve all rows.
+    require_values(frame, EXPECTED_COLUMNS)
+    require_nonnegative(frame, EXPECTED_COLUMNS[2:])
+    assert_row_preservation(raw_count, frame)
+
+    # Step 4: write the clean file and report exactly what was standardized.
+    output = save_clean_csv(frame, "airline_losses_estimate_clean.csv")
+    print_validation_summary(
+        "airline_losses_estimate", raw_count, frame, output,
+        aliases_applied="PIA; Saudia; Swiss International",
+    )
 
 
-print("\nStatistical Summary of Numerical Columns:")
-print(df.describe())
-
-validation_summary = {
-    "duplicate": duplicate_count,
-    "missing_values": missing_values.sum(),
-    "whitespace": whitespace_total,
-}
-
-df.to_csv("data/clean/airline_losses_estimate_clean.csv", index=False)
+if __name__ == "__main__":
+    main()

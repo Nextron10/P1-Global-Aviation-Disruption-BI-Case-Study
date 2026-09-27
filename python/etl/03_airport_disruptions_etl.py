@@ -1,60 +1,56 @@
-import pandas as pd
+"""Clean and validate simulated airport-level disruption records."""
 
-df = pd.read_csv("data/raw/airport_disruptions.csv")
+from pathlib import Path
+import sys
 
-print("\n\nDataset Shape:", df.shape)
-print("\nColumn Names:", df.columns)
+# Make the shared helper module available when this file runs directly.
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-print("\nDataset Information:")
-df.info()
-
-print("\nDuplicate Records:")
-duplicate_count = df.duplicated().sum()
-print(duplicate_count)
-
-print("\nMissing Values:")
-missing_values = df.isnull().sum()
-print(missing_values)
-
-text_columns = df.select_dtypes(include=["object", "string"]).columns
-print("\nText Columns:")
-print(text_columns)
-
-whitespace_total = 0
-
-for column in text_columns:
-    whitespace_count = df[column].str.strip().ne(df[column]).sum()
-    whitespace_total += whitespace_count
-    print(f"{column}: {whitespace_count}")
-
-print("\nUnique Values in Text Columns:")
-for column in text_columns:
-    print(f"\n{column}")
-    print(df[column].unique())
-
-print("\n Category Distribution:")
-for column in text_columns:
-    print(f"\n{column}")
-    print(df[column].value_counts())
+from utils.helpers import (
+    assert_row_preservation,
+    load_raw_csv,
+    parse_dates,
+    print_validation_summary,
+    require_nonnegative,
+    require_values,
+    save_clean_csv,
+    trim_text,
+)
 
 
-# Standardize leading and trailing whitespace in all text fields before analysis.
-for column in text_columns:
-    df[column] = df[column].str.strip()
+EXPECTED_COLUMNS = [
+    "airport_name", "iata_code", "country", "region", "disruption_type",
+    "severity_level", "flights_affected", "duration_hours", "date",
+]
 
 
-df["date"] = pd.to_datetime(df["date"])
+def main():
+    # Step 1: load the raw file only if its columns match the expected schema.
+    frame = load_raw_csv("airport_disruptions.csv", EXPECTED_COLUMNS)
+    raw_count = len(frame)
 
-print("\n updated Dataset Information:")
-df.info()
+    # Step 2: trim text and convert the date column to a real date value.
+    frame = parse_dates(trim_text(frame), ["date"])
 
-print("\nStatistical Summary:")
-print(df.describe())
+    # Step 3: validate required fields and reject negative measures.
+    require_values(frame, EXPECTED_COLUMNS)
+    require_nonnegative(frame, ["flights_affected", "duration_hours"])
 
-validation_summary = {
-    "duplicates": duplicate_count,
-    "missing_values": missing_values.sum(),
-    "whitespace": whitespace_total,
-}
+    # Step 4: one IATA code must not point to different airports or countries.
+    inconsistent_airports = (
+        frame.groupby("iata_code", dropna=False)[["airport_name", "country"]]
+        .nunique(dropna=False).gt(1).any(axis=1).sum()
+    )
+    if inconsistent_airports:
+        raise ValueError(f"{int(inconsistent_airports)} IATA codes map inconsistently.")
+    assert_row_preservation(raw_count, frame)
 
-df.to_csv("data/clean/airport_disruptions_clean.csv", index=False)
+    # Step 5: write an ISO-date clean file and print the result.
+    output = save_clean_csv(frame, "airport_disruptions_clean.csv", date_columns=["date"])
+    print_validation_summary(
+        "airport_disruptions", raw_count, frame, output, inconsistent_iata_mappings=0
+    )
+
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,25 @@
+table DimAirline
+	lineageTag: 6b7ed25b-71c4-4395-b070-ee163c66c93f
+
+	column airline
+		lineageTag: fcadb475-7446-41b5-893c-c6675682f504
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [airline]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimAirline = calculated
+		mode: import
+		source =
+				
+				DISTINCT(
+				    SELECTCOLUMNS(
+				        'aviation vw_airline_operational_financial',
+				        "airline",
+				        'aviation vw_airline_operational_financial'[airline]
+				    )
+				)
+
+	annotation PBI_Id = f43786ca022e4d2884b2697090da020e
+

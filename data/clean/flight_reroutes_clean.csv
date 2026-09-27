@@ -1,4 +1,4 @@
-﻿date,airline,flight_number,origin,destination,origin_country,destination_country,origin_region,destination_region,original_route,new_route,original_distance_km,new_distance_km,additional_distance_km,extra_fuel_cost_usd,delay_hours
+date,airline,flight_number,origin,destination,origin_country,destination_country,origin_region,destination_region,original_route,new_route,original_distance_km,new_distance_km,additional_distance_km,extra_fuel_cost_usd,delay_hours
 2026-02-28,Lufthansa,LU5449,Helsinki,Dubai,Finland,UAE,Europe,Middle East,Via Iran/Iraq corridor,Via Turkey–Kazakhstan northern route,5847,7279,1432,8327.43,4.8
 2026-02-28,Emirates,EM1077,Dubai,Tokyo,UAE,Japan,Middle East,Asia Pacific,Via Iran/Iraq corridor,Via Egypt–East Africa southern route,3533,4809,1276,7302.99,1.4
 2026-02-28,Garuda Indonesia,GA6169,Dubai,Johannesburg,UAE,South Africa,Middle East,Africa,Via Strait of Hormuz,Via Red Sea–Suez route,4257,5829,1572,6119.23,5.1

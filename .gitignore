@@ -216,3 +216,29 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Power BI project files that are local to one computer.
+**/.pbi/
+
+# Power BI binary exports are not source-controlled with the PBIP project.
+*.pbix
+*.pbit
+
+# Local database credentials and database backup files.
+.pgpass
+pgpass.conf
+.env
+.env.*
+*.backup
+*.dump
+
+# Temporary Microsoft Office and document-render files.
+~$*
+.docx_render/
+*.tmp
+
+# Historical Word sources retained locally after consolidation into two authoritative documents.
+documentation/Project Documentation.docx
+documentation/Cleaning Log - Python.docx
+documentation/Data Dictionary - SQL.docx
+documentation/Executive Key Findings & Business Implications.docx

@@ -1,0 +1,163 @@
+table 'aviation flight_reroutes'
+	lineageTag: c7facae7-7eb9-451c-8d3e-92d50cee767d
+
+	measure 'Total Reroutes' =
+			
+			COUNTROWS('aviation flight_reroutes')
+		formatString: 0
+		lineageTag: 5eaab4d7-961b-43e2-9642-4f95d15de124
+
+	measure 'Total Reroute Delay Hours' =
+			
+			SUM('aviation flight_reroutes'[delay_hours])
+		lineageTag: 588caf72-31f3-4ec5-a1a1-bb54058d1387
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: cf9444d1-9af0-41f6-9884-884cfe1e88c9
+		summarizeBy: none
+		sourceColumn: date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column airline
+		dataType: string
+		lineageTag: f991a30a-77d1-4229-8d4d-3bf2de0cd676
+		summarizeBy: none
+		sourceColumn: airline
+
+		annotation SummarizationSetBy = Automatic
+
+	column flight_number
+		dataType: string
+		lineageTag: 7a0dcfa6-8b08-4b9b-ae46-f1977d8de9fc
+		summarizeBy: none
+		sourceColumn: flight_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column origin
+		dataType: string
+		lineageTag: d5a1c217-446b-4ef5-bb0c-51c8d61928a4
+		summarizeBy: none
+		sourceColumn: origin
+
+		annotation SummarizationSetBy = Automatic
+
+	column destination
+		dataType: string
+		lineageTag: 16c0a49e-f43f-41e4-a6ad-28218ea04ba8
+		summarizeBy: none
+		sourceColumn: destination
+
+		annotation SummarizationSetBy = Automatic
+
+	column origin_country
+		dataType: string
+		lineageTag: 61bcf9eb-d3d8-4b07-b888-9df05d7f3840
+		summarizeBy: none
+		sourceColumn: origin_country
+
+		annotation SummarizationSetBy = Automatic
+
+	column destination_country
+		dataType: string
+		lineageTag: a42da720-c1e3-4967-9f6f-3ef67a02b297
+		summarizeBy: none
+		sourceColumn: destination_country
+
+		annotation SummarizationSetBy = Automatic
+
+	column origin_region
+		dataType: string
+		lineageTag: bcbe2cc9-6d11-44eb-8300-5678427bfc98
+		summarizeBy: none
+		sourceColumn: origin_region
+
+		annotation SummarizationSetBy = Automatic
+
+	column destination_region
+		dataType: string
+		lineageTag: 5a21d236-b660-4b6b-a8c2-7d9af7ff029b
+		summarizeBy: none
+		sourceColumn: destination_region
+
+		annotation SummarizationSetBy = Automatic
+
+	column original_route
+		dataType: string
+		lineageTag: 23850f4a-5594-4fe2-9fe8-f5f897015879
+		summarizeBy: none
+		sourceColumn: original_route
+
+		annotation SummarizationSetBy = Automatic
+
+	column new_route
+		dataType: string
+		lineageTag: f90370ad-b8a5-449f-b0ad-6aaf761982c4
+		summarizeBy: none
+		sourceColumn: new_route
+
+		annotation SummarizationSetBy = Automatic
+
+	column original_distance_km
+		dataType: int64
+		formatString: 0
+		lineageTag: 19076686-8d20-4bf3-b9ac-7c10c4995ee2
+		summarizeBy: sum
+		sourceColumn: original_distance_km
+
+		annotation SummarizationSetBy = Automatic
+
+	column new_distance_km
+		dataType: int64
+		formatString: 0
+		lineageTag: 771452a9-2ffa-40d2-b178-4af32d6ff61e
+		summarizeBy: sum
+		sourceColumn: new_distance_km
+
+		annotation SummarizationSetBy = Automatic
+
+	column additional_distance_km
+		dataType: int64
+		formatString: 0
+		lineageTag: cad60643-5b00-4514-99eb-7ba878c0000f
+		summarizeBy: sum
+		sourceColumn: additional_distance_km
+
+		annotation SummarizationSetBy = Automatic
+
+	column extra_fuel_cost_usd
+		dataType: double
+		lineageTag: 4adcdc3c-dd74-47c5-89a4-b218afb78b91
+		summarizeBy: sum
+		sourceColumn: extra_fuel_cost_usd
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column delay_hours
+		dataType: double
+		lineageTag: e1622141-ed42-46ee-88c1-587a289ab3b5
+		summarizeBy: sum
+		sourceColumn: delay_hours
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'aviation flight_reroutes' = m
+		mode: import
+		source =
+				let
+				    Source = PostgreSQL.Database("localhost", "aviation_bi"),
+				    aviation_flight_reroutes = Source{[Schema="aviation",Item="flight_reroutes"]}[Data]
+				in
+				    aviation_flight_reroutes
+

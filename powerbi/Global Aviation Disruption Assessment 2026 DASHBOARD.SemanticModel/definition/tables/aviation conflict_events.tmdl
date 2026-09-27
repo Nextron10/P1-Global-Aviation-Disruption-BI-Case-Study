@@ -1,0 +1,99 @@
+table 'aviation conflict_events'
+	lineageTag: 4325468d-867a-4720-be82-8501d1d860a8
+
+	measure 'Military Events' =
+			
+			CALCULATE(
+			    COUNTROWS('aviation conflict_events'),
+			    'aviation conflict_events'[event_type] = "Military",
+			    TREATAS(
+			        VALUES(DimDate[Date]),
+			        'aviation conflict_events'[date]
+			    )
+			)
+		formatString: 0
+		lineageTag: 7b1c4072-87fd-497c-a672-4fcc24986132
+
+	column date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: b14e937f-d5bf-4c97-a8e7-0a4145079b47
+		summarizeBy: none
+		sourceColumn: date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column event_type
+		dataType: string
+		lineageTag: a121936d-5256-4ab3-a9d6-1b46b75196a7
+		summarizeBy: none
+		sourceColumn: event_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column event_description
+		dataType: string
+		lineageTag: 0757d091-e5c5-4e21-a589-514c78134b85
+		summarizeBy: none
+		sourceColumn: event_description
+
+		annotation SummarizationSetBy = Automatic
+
+	column severity
+		dataType: string
+		lineageTag: 33e64ece-d595-47f4-ab4f-f072af7df34d
+		summarizeBy: none
+		sourceColumn: severity
+
+		annotation SummarizationSetBy = Automatic
+
+	column aviation_impact
+		dataType: string
+		lineageTag: 852980ab-7700-46ca-beb0-02def34ea858
+		summarizeBy: none
+		sourceColumn: aviation_impact
+
+		annotation SummarizationSetBy = Automatic
+
+	column location_name
+		dataType: string
+		lineageTag: f199ac8d-81af-4782-800b-11a7945b6f81
+		summarizeBy: none
+		sourceColumn: location_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column country
+		dataType: string
+		lineageTag: 5134d70f-e0b4-4c1c-885e-019c23e5b269
+		summarizeBy: none
+		sourceColumn: country
+
+		annotation SummarizationSetBy = Automatic
+
+	column source_location
+		dataType: string
+		lineageTag: 5289ee7a-1fa1-4aa4-a7f7-370c67ddcd31
+		summarizeBy: none
+		sourceColumn: source_location
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'aviation conflict_events' = m
+		mode: import
+		source =
+				let
+				    Source = PostgreSQL.Database("localhost", "aviation_bi"),
+				    aviation_conflict_events = Source{[Schema="aviation",Item="conflict_events"]}[Data],
+				    #"Replaced Value" = Table.ReplaceValue(aviation_conflict_events,"Very High","Severe",Replacer.ReplaceText,{"severity"}),
+				    #"Replaced Value1" = Table.ReplaceValue(#"Replaced Value","Medium","Moderate",Replacer.ReplaceText,{"severity"}),
+				    #"Filtered Rows" = Table.SelectRows(#"Replaced Value1", each true)
+				in
+				    #"Filtered Rows"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

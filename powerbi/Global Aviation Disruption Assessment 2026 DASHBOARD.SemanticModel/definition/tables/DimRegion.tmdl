@@ -1,0 +1,42 @@
+table DimRegion
+	lineageTag: aa3b1df3-56bc-4d0a-b97a-160d2bcc7ebe
+
+	column region
+		lineageTag: e7cc4b66-bd96-4908-9114-29b651a8cc28
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [region]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimRegion = calculated
+		mode: import
+		source =
+				
+				DISTINCT(
+				    UNION(
+				        SELECTCOLUMNS(
+				            'aviation vw_airline_operational_financial',
+				            "region",
+				            'aviation vw_airline_operational_financial'[region]
+				        ),
+				        SELECTCOLUMNS(
+				            'aviation vw_airport_disruption',
+				            "region",
+				            'aviation vw_airport_disruption'[region]
+				        ),
+				        SELECTCOLUMNS(
+				            'aviation vw_airspace_closure',
+				            "region",
+				            'aviation vw_airspace_closure'[region]
+				        ),
+				        SELECTCOLUMNS(
+				            'aviation vw_regional_vulnerability',
+				            "region",
+				            'aviation vw_regional_vulnerability'[region]
+				        )
+				    )
+				)
+
+	annotation PBI_Id = 0457688fffb94098a275ce4ac1618a36
+

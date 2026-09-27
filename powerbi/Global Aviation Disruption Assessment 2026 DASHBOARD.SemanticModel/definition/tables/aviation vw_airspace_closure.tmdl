@@ -1,0 +1,105 @@
+table 'aviation vw_airspace_closure'
+	lineageTag: d6145509-a343-46d4-b8f0-f2b220e0fb67
+
+	measure 'Airspace Closure Hours' =
+			
+			SUM('aviation vw_airspace_closure'[duration_hours])
+		formatString: 0
+		lineageTag: aaaaab51-0f19-496c-8764-79418c1e0819
+
+	measure 'Total Airspace Closures' =
+			
+			COUNTROWS('aviation vw_airspace_closure')
+		formatString: 0
+		lineageTag: 0c97994c-7e96-4733-82de-340e1daf2c19
+
+	measure 'Airspace Flights Affected' =
+			
+			SUM('aviation vw_airspace_closure'[flights_affected])
+		formatString: 0
+		lineageTag: 04166b7e-d0bb-4070-bd58-7535d5f2e01d
+
+	column country
+		dataType: string
+		lineageTag: a6b889f6-f85e-4e0a-acae-8bfebf0f989a
+		summarizeBy: none
+		sourceColumn: country
+
+		annotation SummarizationSetBy = Automatic
+
+	column region
+		dataType: string
+		lineageTag: 582656c5-448b-41eb-9ed0-5f76653627ff
+		summarizeBy: none
+		sourceColumn: region
+
+		annotation SummarizationSetBy = Automatic
+
+	column closure_start_date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 7c8605fe-8534-4c5c-8443-3556540641ef
+		summarizeBy: none
+		sourceColumn: closure_start_date
+
+		annotation SummarizationSetBy = Automatic
+
+	column closure_end_date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 3ed7d4af-f1d6-4a28-aafd-937487c95168
+		summarizeBy: none
+		sourceColumn: closure_end_date
+
+		variation Variation
+			isDefault
+			relationship: e4a4d95a-64e7-46c9-af28-bc5ad8a30278
+			defaultHierarchy: LocalDateTable_5be061df-08a9-479f-906a-b4bf52b2580b.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column duration_hours
+		dataType: double
+		formatString: 0
+		lineageTag: 7343e85a-882b-43b3-8818-cd29a1efd100
+		summarizeBy: sum
+		sourceColumn: duration_hours
+
+		annotation SummarizationSetBy = Automatic
+
+	column airspace_zone
+		dataType: string
+		lineageTag: 017def4a-4663-43a3-93d9-b9a3fa700f91
+		summarizeBy: none
+		sourceColumn: airspace_zone
+
+		annotation SummarizationSetBy = Automatic
+
+	column reason
+		dataType: string
+		lineageTag: ed75a456-e42d-4ca5-ba8b-a47878069ce4
+		summarizeBy: none
+		sourceColumn: reason
+
+		annotation SummarizationSetBy = Automatic
+
+	column flights_affected
+		dataType: int64
+		formatString: 0
+		lineageTag: 12a6a7f4-a961-4215-a303-faa51bf18dd4
+		summarizeBy: sum
+		sourceColumn: flights_affected
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'aviation vw_airspace_closure' = m
+		mode: import
+		source =
+				let
+				    Source = PostgreSQL.Database("localhost", "aviation_bi"),
+				    aviation_vw_airspace_closure = Source{[Schema="aviation",Item="vw_airspace_closure"]}[Data]
+				in
+				    aviation_vw_airspace_closure
+
+	annotation PBI_ResultType = Table
+

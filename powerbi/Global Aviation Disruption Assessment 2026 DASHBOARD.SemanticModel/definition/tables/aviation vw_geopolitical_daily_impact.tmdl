@@ -1,0 +1,87 @@
+table 'aviation vw_geopolitical_daily_impact'
+	lineageTag: 6fc4ba40-37ab-4c64-a26d-f9741071b146
+
+	column date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: b439afee-860f-4d69-8b9a-b11891a127f0
+		summarizeBy: none
+		sourceColumn: date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column military_events
+		dataType: int64
+		formatString: 0
+		lineageTag: 530dfa40-dce8-4104-90a1-a4928c37bd31
+		summarizeBy: sum
+		sourceColumn: military_events
+
+		annotation SummarizationSetBy = Automatic
+
+	column conflict_severity
+		dataType: string
+		lineageTag: e1e45946-33b5-4e77-955c-207b4ab04739
+		summarizeBy: none
+		sourceColumn: conflict_severity
+
+		annotation SummarizationSetBy = Automatic
+
+	column airport_disruptions
+		dataType: int64
+		formatString: 0
+		lineageTag: fc981636-7334-477b-8583-fe3f2267f990
+		summarizeBy: sum
+		sourceColumn: airport_disruptions
+
+		annotation SummarizationSetBy = Automatic
+
+	column airspace_closures
+		dataType: int64
+		formatString: 0
+		lineageTag: 46451c2a-8855-48ba-9d54-ad1684224a3a
+		summarizeBy: sum
+		sourceColumn: airspace_closures
+
+		annotation SummarizationSetBy = Automatic
+
+	column cancellations
+		dataType: int64
+		formatString: 0
+		lineageTag: 3959295a-1661-442c-ac08-68d59e814cf5
+		summarizeBy: sum
+		sourceColumn: cancellations
+
+		annotation SummarizationSetBy = Automatic
+
+	column reroutes
+		dataType: int64
+		formatString: 0
+		lineageTag: a4f8ae1b-3ba8-487c-a551-4e5c9bec063a
+		summarizeBy: sum
+		sourceColumn: reroutes
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_military_event_date
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 7b1ef700-6f86-4f86-9670-a74b65539e4f
+		summarizeBy: none
+		sourceColumn: is_military_event_date
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'aviation vw_geopolitical_daily_impact' = m
+		mode: import
+		source =
+				let
+				    Source = PostgreSQL.Database("localhost", "aviation_bi"),
+				    aviation_vw_geopolitical_daily_impact = Source{[Schema="aviation",Item="vw_geopolitical_daily_impact"]}[Data]
+				in
+				    aviation_vw_geopolitical_daily_impact
+
+	annotation PBI_ResultType = Table
+

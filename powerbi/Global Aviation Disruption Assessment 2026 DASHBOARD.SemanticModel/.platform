@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Global Aviation Disruption Assessment 2026 DASHBOARD"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "c8adb7b4-13bd-44fc-9207-2ece2fccfbac"
+  }
+}

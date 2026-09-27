@@ -1,0 +1,106 @@
+table 'aviation vw_airport_disruption'
+	lineageTag: 061396f1-5f62-48fc-ad1e-abc8a2c439f2
+
+	measure 'Airport Flights Affected' =
+			
+			SUM('aviation vw_airport_disruption'[flights_affected])
+		formatString: 0
+		lineageTag: 93876736-309a-4ee4-be16-39d0a5e17a94
+
+	measure 'Airport Disruption Events' =
+			
+			COUNTROWS('aviation vw_airport_disruption')
+		formatString: 0
+		lineageTag: 85c24a37-9065-4a01-ac64-6a4b815ce08e
+
+	column airport_name
+		dataType: string
+		lineageTag: 2f21527e-3448-448d-8c69-b041d507b56b
+		summarizeBy: none
+		sourceColumn: airport_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column iata_code
+		dataType: string
+		lineageTag: 261e4560-77af-4e5a-b609-a5abe2d76976
+		summarizeBy: none
+		sourceColumn: iata_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column country
+		dataType: string
+		lineageTag: 42a39247-b327-44b7-99a0-e463c1585bf7
+		summarizeBy: none
+		sourceColumn: country
+
+		annotation SummarizationSetBy = Automatic
+
+	column region
+		dataType: string
+		lineageTag: 5b1e8d7e-46ed-4abf-9f32-7e38e96cf551
+		summarizeBy: none
+		sourceColumn: region
+
+		annotation SummarizationSetBy = Automatic
+
+	column disruption_type
+		dataType: string
+		lineageTag: 282d1cfc-dbbc-4498-9542-bdb30a7319a4
+		summarizeBy: none
+		sourceColumn: disruption_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column severity_level
+		dataType: string
+		lineageTag: 71aa41fb-58ad-41d0-91de-64523242e94b
+		summarizeBy: none
+		sourceColumn: severity_level
+
+		annotation SummarizationSetBy = Automatic
+
+	column flights_affected
+		dataType: int64
+		formatString: 0
+		lineageTag: e1ca8bb1-29ef-4f45-89d9-77b2924702e8
+		summarizeBy: sum
+		sourceColumn: flights_affected
+
+		annotation SummarizationSetBy = Automatic
+
+	column duration_hours
+		dataType: double
+		lineageTag: 893e3649-4d40-47a9-8ec6-a15a48bf98a2
+		summarizeBy: sum
+		sourceColumn: duration_hours
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 1b1d2e1b-b398-4651-9682-7b750a13e7f1
+		summarizeBy: none
+		sourceColumn: date
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition 'aviation vw_airport_disruption' = m
+		mode: import
+		source =
+				let
+				    Source = PostgreSQL.Database("localhost", "aviation_bi"),
+				    aviation_vw_airport_disruption = Source{[Schema="aviation",Item="vw_airport_disruption"]}[Data]
+				in
+				    aviation_vw_airport_disruption
+
+	annotation PBI_ResultType = Table
+

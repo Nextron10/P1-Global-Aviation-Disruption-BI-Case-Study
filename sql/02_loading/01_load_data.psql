@@ -1,0 +1,57 @@
+/*
+This is a psql script. Do not run it in the pgAdmin Query Tool.
+Run it from the repository root while connected to aviation_bi. Client-side
+\copy reads the documented repository-relative clean-file paths.
+*/
+
+/* Stop at the first error and read every source file as UTF-8. */
+\set ON_ERROR_STOP on
+SET client_encoding = 'UTF8';
+
+/* Reload all seven tables as one transaction. */
+BEGIN;
+
+TRUNCATE TABLE
+    aviation.airline_losses,
+    aviation.airline_losses_estimate,
+    aviation.airport_disruptions,
+    aviation.airspace_closures,
+    aviation.conflict_events,
+    aviation.flight_cancellations,
+    aviation.flight_reroutes;
+
+/* Load each clean CSV with an explicit column list. */
+\copy aviation.airline_losses (airline, country, airline_type, estimated_loss_usd, cancellations_count, reroutes_count, revenue_loss_pct, region) FROM 'data/clean/airline_losses_clean.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8');
+
+\copy aviation.airline_losses_estimate (airline, country, estimated_daily_loss_usd, cancelled_flights, rerouted_flights, additional_fuel_cost_usd, passengers_impacted) FROM 'data/clean/airline_losses_estimate_clean.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8');
+
+\copy aviation.airport_disruptions (airport_name, iata_code, country, region, disruption_type, severity_level, flights_affected, duration_hours, date) FROM 'data/clean/airport_disruptions_clean.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8');
+
+\copy aviation.airspace_closures (country, region, closure_start_date, closure_end_date, duration_hours, airspace_zone, reason, flights_affected) FROM 'data/clean/airspace_closures_clean.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8');
+
+\copy aviation.conflict_events (date, event_type, event_description, source_location, location_name, country, severity, aviation_impact) FROM 'data/clean/conflict_events_clean.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8');
+
+\copy aviation.flight_cancellations (date, airline, flight_number, origin, destination, origin_country, destination_country, origin_region, destination_region, aircraft_type, passengers_affected, reason) FROM 'data/clean/flight_cancellations_clean.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8');
+
+\copy aviation.flight_reroutes (date, airline, flight_number, origin, destination, origin_country, destination_country, origin_region, destination_region, original_route, new_route, original_distance_km, new_distance_km, additional_distance_km, extra_fuel_cost_usd, delay_hours) FROM 'data/clean/flight_reroutes_clean.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8');
+
+/* Cancel the transaction if any loaded row count differs from the clean CSV. */
+DO $$
+DECLARE
+    counts BIGINT[];
+BEGIN
+    SELECT ARRAY[
+        (SELECT COUNT(*) FROM aviation.airline_losses),
+        (SELECT COUNT(*) FROM aviation.airline_losses_estimate),
+        (SELECT COUNT(*) FROM aviation.airport_disruptions),
+        (SELECT COUNT(*) FROM aviation.airspace_closures),
+        (SELECT COUNT(*) FROM aviation.conflict_events),
+        (SELECT COUNT(*) FROM aviation.flight_cancellations),
+        (SELECT COUNT(*) FROM aviation.flight_reroutes)
+    ] INTO counts;
+    IF counts <> CAST(ARRAY[70, 35, 227, 84, 82, 2200, 1500] AS BIGINT[]) THEN
+        RAISE EXCEPTION 'Post-load row counts do not match the clean files: %', counts;
+    END IF;
+END $$;
+
+COMMIT;

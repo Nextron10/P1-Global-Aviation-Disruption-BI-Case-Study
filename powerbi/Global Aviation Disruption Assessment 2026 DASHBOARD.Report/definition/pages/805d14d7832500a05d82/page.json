@@ -1,0 +1,78 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "805d14d7832500a05d82",
+  "displayName": "Financial Impact & Airline Resilience",
+  "displayOption": "FitToPage",
+  "height": 1080,
+  "width": 1920,
+  "pageBinding": {
+    "name": "f006d8e21369c0a45dbb",
+    "type": "Default",
+    "parameters": []
+  },
+  "objects": {
+    "background": [
+      {
+        "properties": {
+          "color": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "ThemeDataColor": {
+                    "ColorId": 0,
+                    "Percent": 0
+                  }
+                }
+              }
+            }
+          },
+          "transparency": {
+            "expr": {
+              "Literal": {
+                "Value": "20D"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "filterCard": [
+      {
+        "properties": {
+          "border": {
+            "expr": {
+              "Literal": {
+                "Value": "true"
+              }
+            }
+          }
+        },
+        "selector": {
+          "id": "Available"
+        }
+      }
+    ]
+  },
+  "visualInteractions": [
+    {
+      "source": "79df6a1b77079d4246d1",
+      "target": "9746c5089c3a5d724eb2",
+      "type": "DataFilter"
+    },
+    {
+      "source": "79df6a1b77079d4246d1",
+      "target": "32484ea84603c3c40011",
+      "type": "DataFilter"
+    },
+    {
+      "source": "04fc0231469362321905",
+      "target": "44e7b9f53caae490118c",
+      "type": "NoFilter"
+    },
+    {
+      "source": "04fc0231469362321905",
+      "target": "7cd1ce5064500d26200d",
+      "type": "NoFilter"
+    }
+  ]
+}

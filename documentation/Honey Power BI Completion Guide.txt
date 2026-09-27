@@ -1,0 +1,887 @@
+GLOBAL AVIATION DISRUPTION ASSESSMENT 2026
+POWER BI COMPLETION AND GITHUB HANDOFF GUIDE FOR HONEY
+
+Purpose
+=======
+
+This guide starts after Step 1. Step 1 is already complete: the PostgreSQL data was refreshed in Power BI Desktop and the project was saved with Ctrl+S.
+
+The project is a static, simulated portfolio case study. It is not a live aviation-monitoring product. Keep the existing four report pages and overall visual design. Correct the model, measures, filters, labels, and unsupported claims without rebuilding the complete dashboard.
+
+Important safety rules
+======================
+
+1. Never enter a database password in Git, a text file, Power Query code, screenshots, documentation, or chat.
+2. Enter the password only in the Power BI or PostgreSQL credential dialog on the local computer.
+3. Keep Import storage mode. This project does not need DirectQuery.
+4. Work on a new Git branch and commit in small checkpoints.
+5. Do not delete the old compatibility views until every visual has been moved to the new sources and tested.
+6. Do not combine detailed, modeled-summary, or modeled-estimate populations in one ratio.
+7. Do not claim that conflict events caused disruption. The data supports descriptive comparison only.
+
+
+STEP 2 - CLONE THE REPOSITORY AND CREATE A WORKING BRANCH
+==========================================================
+
+1. Install Git, PostgreSQL 18 or a compatible PostgreSQL version, Python, Visual Studio Code, and Power BI Desktop.
+2. Clone the repository:
+
+   git clone <REPOSITORY-URL>
+   cd P1-Global-Aviation-Disruption-BI-Case-Study
+
+3. Create a branch for the Power BI work:
+
+   git switch -c powerbi-remediation
+
+4. Confirm that these main folders exist:
+
+   data
+   documentation
+   powerbi
+   python
+   sql
+   visuals
+
+5. Do not create or copy a .pbix file into the repository. Work from the .pbip project in the powerbi folder.
+
+
+STEP 3 - PREPARE THE LOCAL PYTHON ENVIRONMENT
+==============================================
+
+1. Open the cloned repository folder in Visual Studio Code.
+2. Open Terminal > New Terminal.
+3. Create a local virtual environment:
+
+   python -m venv .venv
+
+4. Activate it in PowerShell:
+
+   .\.venv\Scripts\Activate.ps1
+
+5. Install the project dependency:
+
+   python -m pip install --upgrade pip
+   python -m pip install -r requirements.txt
+
+6. Run all seven ETL scripts from the repository root in this order:
+
+   python python/etl/01_airline_losses_etl.py
+   python python/etl/02_airline_losses_estimate_etl.py
+   python python/etl/03_airport_disruptions_etl.py
+   python python/etl/04_airspace_closures_etl.py
+   python python/etl/05_conflict_events_etl.py
+   python python/etl/06_flight_cancellations_etl.py
+   python python/etl/07_flight_reroutes_etl.py
+
+7. Confirm that every script ends successfully and preserves these row counts:
+
+   airline_losses: 70
+   airline_losses_estimate: 35
+   airport_disruptions: 227
+   airspace_closures: 84
+   conflict_events: 82
+   flight_cancellations: 2,200
+   flight_reroutes: 1,500
+
+
+STEP 4 - BUILD AND VALIDATE THE LOCAL POSTGRESQL DATABASE
+==========================================================
+
+Use a local PostgreSQL role that can create the database objects. Keep its password private.
+
+Run the files in this order:
+
+1. sql/01_database/01_create_database.sql
+2. sql/01_database/02_create_schema.sql
+3. sql/01_database/03_create_tables.sql
+4. sql/02_loading/01_load_data.psql
+5. sql/05_views/01_create_views.sql
+6. sql/03_validation/01_validation.sql
+7. Every file in sql/04_analysis, in numeric order
+
+Execution notes
+---------------
+
+1. Run 01_create_database.sql once while connected to the postgres maintenance database. If aviation_bi already exists and is the intended project database, skip this file instead of deleting the database.
+2. Reconnect to aviation_bi before running 02_create_schema.sql and every later file.
+3. Run normal .sql files through a PostgreSQL query editor connected to the correct database.
+4. Run 01_load_data.psql through psql, not through the pgAdmin Query Tool. The loader contains psql commands such as \copy and \set.
+5. From a terminal, a typical loader command is:
+
+   psql -U postgres -d aviation_bi -f sql/02_loading/01_load_data.psql
+
+6. Enter the password only when psql asks for it.
+7. If the loader cannot find CSV files, confirm that the command is being run from the repository root.
+8. Do not continue until the validation file completes without an error.
+
+
+STEP 5 - CONNECT POWER BI TO POSTGRESQL
+=======================================
+
+1. Open:
+
+   powerbi/Global Aviation Disruption Assessment 2026 DASHBOARD.pbip
+
+2. If Power BI asks for credentials, use:
+
+   Server: localhost
+   Database: aviation_bi
+   Data connectivity mode: Import
+   Authentication: Database
+   User name: postgres, or the local PostgreSQL role used for this project
+   Password: enter the local password in the dialog only
+   Apply settings to: localhost
+
+3. Select Connect.
+4. If a certificate warning appears for localhost, review it and accept it only for the local development database.
+5. Select Home > Transform data > Data source settings and confirm that every PostgreSQL query uses localhost and aviation_bi.
+6. Select Home > Refresh.
+7. Save with Ctrl+S.
+
+Connection troubleshooting
+--------------------------
+
+1. Confirm that the PostgreSQL Windows service is running.
+2. Confirm that aviation_bi exists and contains schema aviation.
+3. Confirm that the user can run SELECT on the seven tables and views.
+4. Confirm that PostgreSQL listens on localhost port 5432 unless a different local port was deliberately configured.
+5. Clear an incorrect Power BI credential through File > Options and settings > Data source settings > Clear Permissions, then reconnect.
+6. Do not place the password in an M query or repository file.
+
+
+STEP 6 - CLEAN THE POWER QUERY LAYER
+====================================
+
+Open Home > Transform data.
+
+1. Add these two authoritative financial views from schema aviation:
+
+   vw_airline_loss_summary
+   vw_airline_loss_estimate
+
+2. Use clear query names. Power BI may create names similar to:
+
+   aviation vw_airline_loss_summary
+   aviation vw_airline_loss_estimate
+
+3. In aviation flight_cancellations, remove the old text-replacement step that tries to repair a broken dash. The PostgreSQL reload already restored valid UTF-8 text.
+4. In aviation conflict_events, remove the old severity replacement steps that convert Very High to Severe and Medium to Moderate.
+5. Remove any no-operation filter step that keeps all conflict rows without applying a real rule.
+6. Do not add dates or regions to the undated financial tables.
+7. Confirm that data types match the SQL data dictionary.
+8. Select Close & Apply.
+9. Refresh and save.
+
+
+STEP 7 - TURN OFF AUTOMATIC DATE TABLES
+=======================================
+
+1. Open File > Options and settings > Options.
+2. Under Current File > Data Load, clear Auto date/time.
+3. Confirm the change.
+4. Hidden LocalDateTable objects may disappear after the model is saved and reopened.
+5. This project must use one explicit date dimension.
+
+
+STEP 8 - CREATE A DEDICATED MEASURES TABLE
+==========================================
+
+1. Select Home > Enter data.
+2. Create one column called Placeholder with one value of 1.
+3. Name the table Measures.
+4. Hide Placeholder from report view.
+5. Create the following measures in the Measures table.
+
+Detailed operational measures
+-----------------------------
+
+Detailed Cancellations =
+COUNTROWS('aviation flight_cancellations')
+
+Detailed Passengers Affected =
+SUM('aviation flight_cancellations'[passengers_affected])
+
+Detailed Reroutes =
+COUNTROWS('aviation flight_reroutes')
+
+Detailed Additional Distance Km =
+SUM('aviation flight_reroutes'[additional_distance_km])
+
+Detailed Extra Fuel Cost USD =
+SUM('aviation flight_reroutes'[extra_fuel_cost_usd])
+
+Detailed Reroute Delay Hours =
+SUM('aviation flight_reroutes'[delay_hours])
+
+Modeled summary measures
+------------------------
+
+Modeled Summary Airline Loss USD =
+SUM('aviation vw_airline_loss_summary'[estimated_loss_usd])
+
+Modeled Summary Cancellations =
+SUM('aviation vw_airline_loss_summary'[cancellations_count])
+
+Modeled Summary Reroutes =
+SUM('aviation vw_airline_loss_summary'[reroutes_count])
+
+Modeled Average Revenue Loss Pct =
+AVERAGE('aviation vw_airline_loss_summary'[revenue_loss_pct])
+
+Modeled estimate measures
+-------------------------
+
+Estimated Daily Loss USD =
+SUM('aviation vw_airline_loss_estimate'[estimated_daily_loss_usd])
+
+Estimated Cancellations =
+SUM('aviation vw_airline_loss_estimate'[cancelled_flights])
+
+Estimated Reroutes =
+SUM('aviation vw_airline_loss_estimate'[rerouted_flights])
+
+Estimated Fuel Cost USD =
+SUM('aviation vw_airline_loss_estimate'[additional_fuel_cost_usd])
+
+Estimated Passengers =
+SUM('aviation vw_airline_loss_estimate'[passengers_impacted])
+
+Estimated Cancellations per Estimated Reroute =
+DIVIDE([Estimated Cancellations], [Estimated Reroutes])
+
+Estimated Passengers per Estimated Reroute =
+DIVIDE([Estimated Passengers], [Estimated Reroutes])
+
+Estimated Fuel Cost per Estimated Reroute =
+DIVIDE([Estimated Fuel Cost USD], [Estimated Reroutes])
+
+Airport measures
+----------------
+
+Airport Flights Affected =
+SUM('aviation vw_airport_disruption'[flights_affected])
+
+Airport Disruption Records =
+COUNTROWS('aviation vw_airport_disruption')
+
+Airport Disruption Hours =
+SUM('aviation vw_airport_disruption'[duration_hours])
+
+Airspace measures
+-----------------
+
+Airspace Closure Records =
+COUNTROWS('aviation vw_airspace_closure')
+
+Airspace Closure Hours =
+SUM('aviation vw_airspace_closure'[duration_hours])
+
+Airspace Flights Affected =
+SUM('aviation vw_airspace_closure'[flights_affected])
+
+Conflict measures
+-----------------
+
+Conflict Events =
+COUNTROWS('aviation conflict_events')
+
+Military Event Records =
+CALCULATE(
+    [Conflict Events],
+    'aviation conflict_events'[event_type] = "Military"
+)
+
+Formatting rules
+----------------
+
+1. Format currency measures as USD with suitable display units.
+2. Format counts as whole numbers with thousands separators.
+3. Format distance and hours with suitable decimals.
+4. The source revenue percentage is stored on a 0 to 100 scale. Format Modeled Average Revenue Loss Pct as 0.00\% so 18.81 displays as 18.81%, not 1,881%.
+5. Add descriptions to every measure. State the source table, population, and whether the value is detailed, modeled summary, or modeled estimate.
+
+
+STEP 9 - REBUILD THE DATE DIMENSION
+===================================
+
+Replace the hard-coded DimDate expression with a date range derived from every dated fact table.
+
+DimDate =
+VAR AllDates =
+    UNION(
+        SELECTCOLUMNS('aviation flight_cancellations', "Date", 'aviation flight_cancellations'[date]),
+        SELECTCOLUMNS('aviation flight_reroutes', "Date", 'aviation flight_reroutes'[date]),
+        SELECTCOLUMNS('aviation vw_airport_disruption', "Date", 'aviation vw_airport_disruption'[date]),
+        SELECTCOLUMNS('aviation conflict_events', "Date", 'aviation conflict_events'[date]),
+        SELECTCOLUMNS('aviation vw_airspace_closure', "Date", DATEVALUE('aviation vw_airspace_closure'[closure_start_date])),
+        SELECTCOLUMNS('aviation vw_airspace_closure', "Date", DATEVALUE('aviation vw_airspace_closure'[closure_end_date]))
+    )
+VAR StartDate = MINX(AllDates, [Date])
+VAR EndDate = MAXX(AllDates, [Date])
+RETURN
+ADDCOLUMNS(
+    CALENDAR(StartDate, EndDate),
+    "Year", YEAR([Date]),
+    "Month", FORMAT([Date], "MMMM"),
+    "Month Number", MONTH([Date]),
+    "Year Month", FORMAT([Date], "YYYY-MM"),
+    "Quarter", "Q" & FORMAT([Date], "Q")
+)
+
+Then:
+
+1. Sort Month by Month Number.
+2. Select Table tools > Mark as date table > Date.
+3. Confirm the expected range is 15 December 2025 to 17 June 2026.
+4. Add these date-only calculated columns to the airspace table because the source fields contain timestamps:
+
+   Closure Start Date =
+   DATE(
+       YEAR('aviation vw_airspace_closure'[closure_start_date]),
+       MONTH('aviation vw_airspace_closure'[closure_start_date]),
+       DAY('aviation vw_airspace_closure'[closure_start_date])
+   )
+
+   Closure End Date =
+   DATE(
+       YEAR('aviation vw_airspace_closure'[closure_end_date]),
+       MONTH('aviation vw_airspace_closure'[closure_end_date]),
+       DAY('aviation vw_airspace_closure'[closure_end_date])
+   )
+
+5. Do not relate the date table to the undated financial summary or estimate views.
+
+
+STEP 10 - CORRECT THE DIMENSION TABLES
+======================================
+
+Update the dimension tables so that each business population is represented.
+
+Use these calculated-table expressions.
+
+DimAirline =
+FILTER(
+    DISTINCT(
+        UNION(
+            SELECTCOLUMNS('aviation vw_airline_loss_summary', "Airline", 'aviation vw_airline_loss_summary'[airline]),
+            SELECTCOLUMNS('aviation vw_airline_loss_estimate', "Airline", 'aviation vw_airline_loss_estimate'[airline]),
+            SELECTCOLUMNS('aviation flight_cancellations', "Airline", 'aviation flight_cancellations'[airline]),
+            SELECTCOLUMNS('aviation flight_reroutes', "Airline", 'aviation flight_reroutes'[airline])
+        )
+    ),
+    NOT ISBLANK([Airline])
+)
+
+DimCountry =
+FILTER(
+    DISTINCT(
+        UNION(
+            SELECTCOLUMNS('aviation vw_airline_loss_summary', "Country", 'aviation vw_airline_loss_summary'[country]),
+            SELECTCOLUMNS('aviation vw_airline_loss_estimate', "Country", 'aviation vw_airline_loss_estimate'[country]),
+            SELECTCOLUMNS('aviation vw_airport_disruption', "Country", 'aviation vw_airport_disruption'[country]),
+            SELECTCOLUMNS('aviation vw_airspace_closure', "Country", 'aviation vw_airspace_closure'[country]),
+            SELECTCOLUMNS('aviation conflict_events', "Country", 'aviation conflict_events'[country])
+        )
+    ),
+    NOT ISBLANK([Country])
+)
+
+DimRegion =
+FILTER(
+    DISTINCT(
+        UNION(
+            SELECTCOLUMNS('aviation vw_airline_loss_summary', "Region", 'aviation vw_airline_loss_summary'[region]),
+            SELECTCOLUMNS('aviation vw_airport_disruption', "Region", 'aviation vw_airport_disruption'[region]),
+            SELECTCOLUMNS('aviation vw_airspace_closure', "Region", 'aviation vw_airspace_closure'[region]),
+            SELECTCOLUMNS('aviation vw_regional_vulnerability', "Region", 'aviation vw_regional_vulnerability'[region])
+        )
+    ),
+    NOT ISBLANK([Region])
+)
+
+DimAirportSeverity =
+FILTER(
+    DISTINCT(
+        SELECTCOLUMNS(
+            'aviation vw_airport_disruption',
+            "Airport Severity",
+            'aviation vw_airport_disruption'[severity_level]
+        )
+    ),
+    NOT ISBLANK([Airport Severity])
+)
+
+DimConflictSeverity =
+FILTER(
+    DISTINCT(
+        SELECTCOLUMNS(
+            'aviation conflict_events',
+            "Conflict Severity",
+            'aviation conflict_events'[severity]
+        )
+    ),
+    NOT ISBLANK([Conflict Severity])
+)
+
+DimOriginCountry =
+FILTER(
+    DISTINCT(
+        UNION(
+            SELECTCOLUMNS('aviation flight_cancellations', "Origin Country", 'aviation flight_cancellations'[origin_country]),
+            SELECTCOLUMNS('aviation flight_reroutes', "Origin Country", 'aviation flight_reroutes'[origin_country])
+        )
+    ),
+    NOT ISBLANK([Origin Country])
+)
+
+DimDestinationCountry =
+FILTER(
+    DISTINCT(
+        UNION(
+            SELECTCOLUMNS('aviation flight_cancellations', "Destination Country", 'aviation flight_cancellations'[destination_country]),
+            SELECTCOLUMNS('aviation flight_reroutes', "Destination Country", 'aviation flight_reroutes'[destination_country])
+        )
+    ),
+    NOT ISBLANK([Destination Country])
+)
+
+DimOriginRegion =
+FILTER(
+    DISTINCT(
+        UNION(
+            SELECTCOLUMNS('aviation flight_cancellations', "Origin Region", 'aviation flight_cancellations'[origin_region]),
+            SELECTCOLUMNS('aviation flight_reroutes', "Origin Region", 'aviation flight_reroutes'[origin_region])
+        )
+    ),
+    NOT ISBLANK([Origin Region])
+)
+
+DimDestinationRegion =
+FILTER(
+    DISTINCT(
+        UNION(
+            SELECTCOLUMNS('aviation flight_cancellations', "Destination Region", 'aviation flight_cancellations'[destination_region]),
+            SELECTCOLUMNS('aviation flight_reroutes', "Destination Region", 'aviation flight_reroutes'[destination_region])
+        )
+    ),
+    NOT ISBLANK([Destination Region])
+)
+
+Use explicit slicer titles such as Origin Country or Destination Country. Do not use one Country slicer with two hidden meanings. Delete or hide the old DimSeverity only after all visuals use DimAirportSeverity or DimConflictSeverity.
+
+
+STEP 11 - CORRECT MODEL RELATIONSHIPS
+=====================================
+
+Use one-to-many relationships from each dimension to its facts. Use single-direction filtering from dimension to fact.
+
+Create or verify these exact relationships. The dimension field is the one side and the source field is the many side.
+
+Date relationships
+------------------
+
+1. DimDate[Date] to aviation flight_cancellations[date] - active.
+2. DimDate[Date] to aviation flight_reroutes[date] - active.
+3. DimDate[Date] to aviation vw_airport_disruption[date] - active.
+4. DimDate[Date] to aviation conflict_events[date] - active.
+5. DimDate[Date] to aviation vw_airspace_closure[Closure Start Date] - active.
+6. DimDate[Date] to aviation vw_airspace_closure[Closure End Date] - inactive.
+7. DimDate[Date] to aviation vw_geopolitical_daily_impact[date] - active.
+8. DimDate[Date] to aviation vw_route_passenger_impact[date] - active.
+
+Airline relationships
+---------------------
+
+1. DimAirline[Airline] to aviation vw_airline_loss_summary[airline].
+2. DimAirline[Airline] to aviation vw_airline_loss_estimate[airline].
+3. DimAirline[Airline] to aviation flight_cancellations[airline].
+4. DimAirline[Airline] to aviation flight_reroutes[airline].
+
+Country and region relationships
+--------------------------------
+
+1. DimCountry[Country] to each direct country field in the two financial views, airport view, airspace view, and conflict table.
+2. DimRegion[Region] to the direct region field in the summary financial view, airport view, airspace view, and regional supporting view.
+3. Do not connect DimCountry directly to cancellation or reroute geography. Use the role-based route dimensions below.
+
+Route-role relationships
+------------------------
+
+1. DimOriginCountry[Origin Country] to origin_country in cancellations and reroutes.
+2. DimDestinationCountry[Destination Country] to destination_country in cancellations and reroutes.
+3. DimOriginRegion[Origin Region] to origin_region in cancellations and reroutes.
+4. DimDestinationRegion[Destination Region] to destination_region in cancellations and reroutes.
+
+Severity relationships
+----------------------
+
+1. DimAirportSeverity[Airport Severity] to aviation vw_airport_disruption[severity_level].
+2. DimConflictSeverity[Conflict Severity] to aviation conflict_events[severity].
+
+Use USERELATIONSHIP only in a measure that explicitly needs closure end date.
+
+Relationship rules
+------------------
+
+1. Do not relate an undated financial table to DimDate.
+2. Do not create many-to-many relationships to make a slicer appear to work.
+3. Do not use bidirectional filtering unless a documented need is proven.
+4. Remove or deactivate old ambiguous relationships only after the replacement relationship works.
+5. Verify every slicer by selecting one value and checking the expected visuals.
+
+
+STEP 12 - CORRECT THE CORRIDOR LABEL
+====================================
+
+Recreate the Corridor calculated column with a valid arrow:
+
+Corridor =
+'aviation flight_reroutes'[origin_region]
+    & " " & UNICHAR(8594) & " "
+    & 'aviation flight_reroutes'[destination_region]
+
+Confirm that the displayed result looks like:
+
+Europe → Middle East
+
+
+STEP 13 - CORRECT THE EXECUTIVE OVERVIEW PAGE
+=============================================
+
+Keep the current layout and design. Correct the content as follows.
+
+1. Card 1: Detailed Cancellations. Expected total: 2,200.
+2. Card 2: Detailed Passengers Affected. Expected total: 575,710.
+3. Card 3: Detailed Reroutes. Expected total: 1,500.
+4. Card 4: Detailed Extra Fuel Cost. Expected total: USD 11,658,572.59.
+5. Card 5: Modeled Summary Airline Loss. Expected total: USD 21,414,330,000.
+6. Card 6: Conflict Events. Expected total: 82.
+7. Keep the daily cancellations and reroutes line chart on detailed tables only.
+8. Use the summary financial view for Top 5 Airlines by Modeled Loss.
+9. Use Airport Flights Affected for Top 5 Airports by Airport-Affected Flights.
+10. Rebuild the failed lower-left visual as a standard clustered bar chart:
+
+    Visual title: TOP 5 REGIONS BY AIRPORT-AFFECTED FLIGHTS
+    Axis: airport region
+    Value: [Airport Flights Affected]
+    Filter: Top 5 by [Airport Flights Affected]
+
+11. Remove the disruption donut. Detailed cancellations and detailed reroutes are separate event populations and are not parts of one shared total. Replace it with a two-bar comparison or a short data-scope note.
+12. Rename the severity visual to Airport Flights Affected by Airport Severity.
+13. Make it clear that the date slicer does not filter undated financial cards.
+
+
+STEP 14 - CORRECT THE FINANCIAL PAGE
+====================================
+
+1. Rename the page subtitle from Airline Resilience to Modeled Financial Scenarios.
+2. Remove the Date slicer from this page because both financial populations are undated.
+3. Use the summary view for:
+
+   Modeled Average Revenue Loss Pct
+   Modeled Summary Airline Loss USD
+   summary airline loss charts
+   summary cancellation and reroute comparisons
+
+4. Use the estimate view for:
+
+   Estimated Daily Loss USD
+   Estimated Fuel Cost USD
+   Estimated Cancellations per Estimated Reroute
+   Estimated Fuel Cost per Estimated Reroute
+   Estimated Passengers per Estimated Reroute
+
+5. Replace the existing Passengers per Rerouted Flight calculation. Its numerator and denominator currently come from different populations. Use Estimated Passengers per Estimated Reroute.
+6. Title every visual with Modeled Summary or Modeled Estimate where needed.
+7. Do not describe any airline as resilient or effective. The data has no performance baseline for that claim.
+
+
+STEP 15 - CORRECT THE GEOPOLITICAL AND OPERATIONAL PAGE
+========================================================
+
+1. Use Conflict Events or Military Event Records for conflict cards. State which one is used.
+2. Use Airspace Closure Records for the closure count. Expected total: 84.
+3. Use Airspace Closure Hours. Expected total: 7,014.
+4. Use Airport Flights Affected. Expected total: 35,844.
+5. Use Detailed Reroute Delay Hours. Expected total: 4,706.30.
+6. Keep airport and airspace measures separate. Their 35,844 and 35,502 affected-flight totals cannot be deduplicated because there is no common flight identifier.
+7. Use separate slicers for Airport Severity and Conflict Severity, or remove a slicer when its scope is not clear.
+8. Confirm that Date and Country actively filter conflict visuals.
+9. Describe event-date comparisons as association or context, not cause.
+10. Label the airport-versus-airspace chart as separate reported exposures, not total unique flights.
+
+
+STEP 16 - CORRECT THE REGIONAL AND CORRIDOR PAGE
+=================================================
+
+1. Rename Rerouted Flights to Detailed Reroutes.
+2. Rename Passengers Impacted to Detailed Cancellation Passengers. The value comes from cancellation records, not reroute records.
+3. Use Detailed Additional Distance Km, Detailed Extra Fuel Cost USD, and Detailed Reroute Delay Hours.
+4. Keep modeled regional loss clearly labelled as Modeled Summary Loss.
+5. Show airport and airspace exposure as separate series.
+6. Show airport and airspace duration separately. Never use a combined Regional Disruption Hours measure.
+7. Use corrected origin/destination role dimensions for corridor slicers and charts.
+8. Confirm that every corridor label uses the valid arrow.
+
+
+STEP 17 - REMOVE STALE VISUAL FILTERS AND TEST INTERACTIONS
+============================================================
+
+For every visual on all four pages:
+
+1. Open the Filters pane.
+2. Remove filters that refer to old compatibility columns or stale table fields.
+3. Recreate each Top N filter using the final dimension and final measure.
+4. Open Format > Edit interactions.
+5. Test every slicer against every visual on its page.
+6. Confirm that an undated financial visual is not presented as date-filtered.
+7. Confirm that a Country slicer has one stated geographic role.
+8. Confirm that conflict slicers filter conflict visuals.
+9. Confirm that no visual silently adds airport and airspace exposure.
+10. Check the visual title, subtitle, tooltip, units, display units, decimal places, and data label.
+
+
+STEP 18 - RETIRE THE POWER BI COMPATIBILITY OBJECTS SAFELY
+===========================================================
+
+The current report uses these deprecated SQL views:
+
+   vw_airline_operational_financial
+   vw_executive_kpi
+
+Use this safe order:
+
+1. Migrate one visual at a time to the authoritative financial views or explicit measures.
+2. After each page, refresh and check for visual errors.
+3. Use Performance Analyzer or field search to confirm that no visual references either deprecated view.
+4. Hide the deprecated Power BI tables first.
+5. Save, close, reopen, and refresh the PBIP.
+6. If the report has no error, remove the deprecated queries from the Power BI model.
+7. Keep the SQL views in PostgreSQL until the final portfolio review. They can remain marked deprecated without harming the report.
+8. Do not delete the SQL views merely to make the database look smaller.
+
+
+STEP 19 - VALIDATE CONTROL TOTALS
+=================================
+
+With all slicers cleared, confirm these values:
+
+Detailed operational population
+--------------------------------
+
+Detailed cancellations: 2,200
+Detailed cancellation passengers: 575,710
+Detailed reroutes: 1,500
+Detailed additional distance: 2,201,390 km
+Detailed extra fuel cost: USD 11,658,572.59
+Detailed reroute delay: 4,706.30 hours
+
+Modeled summary population
+--------------------------
+
+Modeled airline loss: USD 21,414,330,000
+Modeled summary cancellations: 6,030
+Modeled summary reroutes: 4,539
+Average revenue loss: 18.805714%, displayed as 18.81%
+
+Modeled estimate population
+---------------------------
+
+Estimated daily loss: USD 48,840,000
+Estimated cancellations: 195
+Estimated reroutes: 754
+Estimated fuel cost: USD 27,606,000
+Estimated passengers: 119,570
+Estimated cancellations per estimated reroute: 0.2586, displayed as 0.26
+Estimated passengers per estimated reroute: 158.58
+Estimated fuel cost per estimated reroute: USD 36,612.73
+
+Geographic populations
+----------------------
+
+Airport flights affected: 35,844
+Airport disruption hours: 8,218.8
+Airspace flights affected: 35,502
+Airspace closure hours: 7,014
+Conflict records: 82
+Conflict records with unresolved country: 42
+
+If any total differs, stop and inspect the visual filter, relationship, source table, and measure. Do not change the expected total simply to match the dashboard.
+
+
+STEP 20 - COMPLETE REPORT QUALITY CHECKS
+========================================
+
+1. Refresh the full report.
+2. Save, close Power BI Desktop, reopen the PBIP, and refresh again.
+3. Confirm that all four pages open without an error.
+4. Check titles, spelling, currency, percentages, units, and alignment.
+5. Add alt text to important visuals.
+6. Check tab order and keyboard navigation.
+7. Check color contrast and avoid relying only on color to explain meaning.
+8. Use standard Power BI visuals unless a custom visual has a clear reason and no licence warning.
+9. Add a compact footer or tooltip stating:
+
+   Static simulated case study. Metrics use different documented populations. Results show descriptive association, not causation.
+
+10. Confirm that the report still has exactly four pages.
+
+
+STEP 21 - COMPLETE THE POST-POWER BI ARTIFACTS
+==============================================
+
+Do these tasks only after the semantic model and report pass Step 20.
+
+1. Replace the ERD with a semantic-model diagram that shows:
+
+   dimensions
+   detailed fact tables
+   authoritative financial views
+   relationship cardinality
+   filter direction
+   inactive closure-end-date relationship
+   no false foreign keys between unrelated source populations
+
+2. Export a final PDF containing all four report pages.
+3. Capture clear screenshots of each page at a consistent resolution.
+4. Replace the old dashboard screenshot PDF in visuals/PowerBI_SS.
+5. Create a new document named:
+
+   documentation/Executive Findings and Business Implications.docx
+
+6. In that document, separate:
+
+   detailed observed simulated records
+   modeled summary values
+   modeled estimate values
+   descriptive event-date comparisons
+   limitations and unknowns
+
+7. Do not write that conflict caused the disruption, that rerouting prevented cancellations, or that a specific airline was resilient.
+8. Update README.md to change the Power BI status from remediation pending to completed only after all checks pass.
+9. Update the remediation change log with every Power BI, ERD, screenshot, and executive-document correction.
+
+
+STEP 22 - OPTIONAL POWER BI SERVICE PUBLISHING
+==============================================
+
+Publishing is optional for this portfolio project.
+
+1. Publish the final report to a controlled Power BI workspace.
+2. The semantic model uses Import mode.
+3. A local PostgreSQL source requires an on-premises data gateway for refresh in the Power BI service.
+4. Because the data is static, scheduled refresh may remain disabled. Document the snapshot date.
+5. If refresh is configured, store credentials in the gateway connection, not in the repository.
+6. Do not use Publish to web unless the report and every source file are intentionally public and the licence attribution is shown.
+7. Test the published report in a private browser session before sharing a link.
+
+
+STEP 23 - GITHUB RELEASE CONTENT
+================================
+
+Publish these items
+-------------------
+
+1. README.md, LICENSE, requirements.txt, extensions.txt, and .gitignore.
+2. The seven immutable raw CSV files and seven reproducible clean CSV files.
+3. All Python source files.
+4. All current SQL files.
+5. The PBIP project text and metadata files:
+
+   the .pbip file
+   Report .platform and definition files
+   report pages, visuals, themes, and registered resources
+   SemanticModel .platform, definition.pbism, TMDL files, and diagramLayout.json
+
+6. The consolidated technical documentation.
+7. The remediation change log.
+8. This Honey completion guide.
+9. The corrected architecture image.
+10. The final ERD and final Power BI screenshots after they are replaced.
+11. The final executive findings document after it is rewritten.
+
+Keep these items out of GitHub
+------------------------------
+
+1. Power BI .pbi folders, cache.abf, localSettings.json, and editorSettings.json.
+2. .pbix and .pbit binary files. A final PBIX may be attached separately to a GitHub Release only if a downloadable demo is needed.
+3. .venv, __pycache__, and local Python caches.
+4. Database passwords, .pgpass, pgpass.conf, .env files, API keys, tokens, or connection secrets.
+5. PostgreSQL .backup or .dump files unless a reviewed database export is deliberately released.
+6. Word lock files beginning with ~$.
+7. Temporary render folders, logs, and editor backups.
+8. Superseded local Word documents that were consolidated into the technical document.
+
+
+STEP 24 - FINAL GIT REVIEW AND COMMIT
+=====================================
+
+1. Run:
+
+   git status --short
+   git diff --stat
+
+2. Review .gitignore before staging.
+3. Stage named folders and files. Do not use git add . until ignored and temporary files have been checked.
+4. Review staged files:
+
+   git diff --cached --stat
+   git diff --cached
+
+5. Check for common secret words and inspect every match:
+
+   git grep -nI -E "password|api[_-]?key|secret|token"
+
+   Documentation may contain safety instructions using these words. Confirm that no real credential value is present.
+
+6. Confirm that raw data has not been changed unexpectedly:
+
+   git diff -- data/raw
+
+7. Confirm that no .pbi folder or PBIX file is staged:
+
+   git status --short
+
+8. Commit in clear checkpoints. Suggested commits:
+
+   git commit -m "Complete data and SQL remediation"
+   git commit -m "Correct Power BI semantic model and measures"
+   git commit -m "Update report visuals and portfolio documentation"
+
+9. Push the branch:
+
+   git push -u origin powerbi-remediation
+
+10. Open a pull request, review the changed files, and merge only after another person completes the final checklist.
+
+
+STEP 25 - FINAL PORTFOLIO ACCEPTANCE CHECKLIST
+==============================================
+
+The project is ready only when every answer is Yes.
+
+[ ] Seven raw files are unchanged and traceable to the stated Kaggle snapshot.
+[ ] Seven clean files reproduce from the Python scripts.
+[ ] PostgreSQL row counts and control totals pass.
+[ ] Text remains valid UTF-8.
+[ ] Every KPI has one documented source, grain, population, date scope, and formula.
+[ ] No ratio mixes detailed, summary, or estimate populations.
+[ ] Airport and airspace affected-flight values remain separate.
+[ ] Financial visuals do not imply date filtering.
+[ ] Conflict Date, Country, and Severity filters work as labelled.
+[ ] Origin and destination geography have explicit roles.
+[ ] All four report pages open without an error.
+[ ] The failed Executive Overview visual has been rebuilt.
+[ ] The misleading disruption donut has been removed or replaced.
+[ ] Deprecated Power BI compatibility tables have no remaining visual dependency.
+[ ] The ERD matches the final semantic model.
+[ ] Executive findings contain no unsupported causal or resilience claims.
+[ ] README, technical documentation, report, ERD, screenshots, and findings agree.
+[ ] No password, token, local cache, PBIX, virtual environment, or temporary file is staged.
+[ ] A fresh clone can reproduce the static project by following the documented steps.
+
+
+FINAL HANDOFF NOTE
+==================
+
+The project does not need an enterprise redesign. Its value is the clear treatment of difficult source populations. Keep the existing visual identity and four-page structure. Make every metric easy to trace and explain. In an interview, be prepared to explain why 6,030 is not the same population as 2,200, why 4,539 is not the same population as 1,500, and why preserving both values is more correct than forcing them to reconcile.

@@ -1,0 +1,246 @@
+table 'aviation vw_airline_operational_financial'
+	lineageTag: 1054dfcf-0aab-4305-9cc1-6ae956494925
+
+	measure 'Average Revenue Loss %' =
+			
+			AVERAGE(
+			    'aviation vw_airline_operational_financial'[revenue_loss_pct]
+			)
+		lineageTag: 72267873-1528-418c-9aff-86d96d7e3633
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Cancellations per Rerouted Flight' =
+			
+			DIVIDE(
+			    SUM('aviation vw_airline_operational_financial'[cancelled_flights]),
+			    SUM('aviation vw_airline_operational_financial'[rerouted_flights])
+			)
+		lineageTag: cf8c543a-520a-4a2c-8d07-205ad2b08c89
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Fuel Cost per Rerouted Flight' =
+			
+			DIVIDE(
+			    SUM(
+			        'aviation vw_airline_operational_financial'[additional_fuel_cost_usd]
+			    ),
+			    SUM(
+			        'aviation vw_airline_operational_financial'[rerouted_flights]
+			    )
+			)
+		lineageTag: cb603e7c-ce44-456f-8916-554ef098137b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Financial Cancellations' =
+			
+			SUM(
+			    'aviation vw_airline_operational_financial'[cancelled_flights]
+			)
+		formatString: 0
+		lineageTag: f2906c95-cb07-4e2b-9fba-165e4f21df81
+
+	measure 'Financial Fuel Cost' =
+			
+			SUM(
+			    'aviation vw_airline_operational_financial'[additional_fuel_cost_usd]
+			)
+		formatString: 0
+		lineageTag: 4939f0d4-b2db-4fd0-b235-5d65e5cb54ff
+
+	measure 'Estimated Airline Loss' =
+			
+			SUM(
+			    'aviation vw_airline_operational_financial'[estimated_loss_usd]
+			)
+		lineageTag: a4c669f9-c997-4a95-bc64-642a099b9fa6
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Passengers per Rerouted Flight' =
+			
+			DIVIDE(
+			    SUM('aviation vw_airline_operational_financial'[passengers_impacted]),
+			    [Total Reroutes],
+			    0
+			)
+		lineageTag: 17bcd046-cbb3-4aa9-89d7-b1abf870c90c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column airline
+		dataType: string
+		lineageTag: 4d79e81e-6cf0-485a-8e51-378a855f1af7
+		summarizeBy: none
+		sourceColumn: airline
+
+		annotation SummarizationSetBy = Automatic
+
+	column country
+		dataType: string
+		lineageTag: ac7bb3a8-ee4b-4131-a939-23a7258776b2
+		summarizeBy: none
+		sourceColumn: country
+
+		annotation SummarizationSetBy = Automatic
+
+	column airline_type
+		dataType: string
+		lineageTag: 733f4f54-9e3e-41f2-88b7-008c15dcd738
+		summarizeBy: none
+		sourceColumn: airline_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column region
+		dataType: string
+		lineageTag: 53498163-a305-425f-a3bc-80511b028293
+		summarizeBy: none
+		sourceColumn: region
+
+		annotation SummarizationSetBy = Automatic
+
+	column estimated_loss_usd
+		dataType: double
+		lineageTag: ae11e9bf-902d-4a73-af7d-647c938606ea
+		summarizeBy: sum
+		sourceColumn: estimated_loss_usd
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column cancellations_count
+		dataType: int64
+		formatString: 0
+		lineageTag: 30f6675c-b104-4251-b24b-b6c800a2c815
+		summarizeBy: sum
+		sourceColumn: cancellations_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column reroutes_count
+		dataType: int64
+		formatString: 0
+		lineageTag: 53145be4-0d1f-4b57-86e0-eba859ea131f
+		summarizeBy: sum
+		sourceColumn: reroutes_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column revenue_loss_pct
+		dataType: double
+		lineageTag: 676b96b9-ef9c-43ee-bbec-a526fea5944d
+		summarizeBy: sum
+		sourceColumn: revenue_loss_pct
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column estimated_daily_loss_usd
+		dataType: int64
+		formatString: 0
+		lineageTag: 21dd2f0b-61a8-4329-aa5b-ebabcb9283b3
+		summarizeBy: sum
+		sourceColumn: estimated_daily_loss_usd
+
+		annotation SummarizationSetBy = Automatic
+
+	column cancelled_flights
+		dataType: int64
+		formatString: 0
+		lineageTag: a9fa7b93-a901-452d-b6bc-e9ae8db9efec
+		summarizeBy: sum
+		sourceColumn: cancelled_flights
+
+		annotation SummarizationSetBy = Automatic
+
+	column rerouted_flights
+		dataType: int64
+		formatString: 0
+		lineageTag: 01fd22e2-6f47-40f0-95a0-f17671b062cc
+		summarizeBy: sum
+		sourceColumn: rerouted_flights
+
+		annotation SummarizationSetBy = Automatic
+
+	column additional_fuel_cost_usd
+		dataType: int64
+		formatString: 0
+		lineageTag: d5de7760-0022-47a5-bb14-8e6c6982dd6c
+		summarizeBy: sum
+		sourceColumn: additional_fuel_cost_usd
+
+		annotation SummarizationSetBy = Automatic
+
+	column passengers_impacted
+		dataType: int64
+		formatString: 0
+		lineageTag: 1415abfd-36e5-45df-b46c-f1810c163133
+		summarizeBy: sum
+		sourceColumn: passengers_impacted
+
+		annotation SummarizationSetBy = Automatic
+
+	column cancellations_per_rerouted_flight
+		dataType: double
+		lineageTag: ecdd3881-4ee0-4e2f-a510-150f3226b7ea
+		summarizeBy: sum
+		sourceColumn: cancellations_per_rerouted_flight
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column passengers_per_rerouted_flight
+		dataType: double
+		lineageTag: 479c961d-8695-4dc8-9d62-7e4f34004918
+		summarizeBy: sum
+		sourceColumn: passengers_per_rerouted_flight
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column fuel_cost_per_rerouted_flight
+		dataType: double
+		lineageTag: 1bfa21a3-f403-4f24-bc05-85bb6da3cad7
+		summarizeBy: sum
+		sourceColumn: fuel_cost_per_rerouted_flight
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column has_summary_data
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 51a31778-93bd-4601-8fb3-c06560cae541
+		summarizeBy: none
+		sourceColumn: has_summary_data
+
+		annotation SummarizationSetBy = Automatic
+
+	column has_estimate_data
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: fbda6791-731e-434a-9c6d-97419c0e608d
+		summarizeBy: none
+		sourceColumn: has_estimate_data
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'aviation vw_airline_operational_financial' = m
+		mode: import
+		source =
+				let
+				    Source = PostgreSQL.Database("localhost", "aviation_bi"),
+				    aviation_vw_airline_operational_financial = Source{[Schema="aviation",Item="vw_airline_operational_financial"]}[Data]
+				in
+				    aviation_vw_airline_operational_financial
+
+	annotation PBI_ResultType = Table
+

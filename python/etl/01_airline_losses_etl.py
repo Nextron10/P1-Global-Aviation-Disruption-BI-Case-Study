@@ -1,55 +1,49 @@
-import pandas as pd
+"""Clean and validate the undated modeled airline-loss summary."""
 
-df = pd.read_csv("data/raw/airline_losses.csv")
+from pathlib import Path
+import sys
 
-print("\n\n\nDataset Shape:", df.shape)
-print("\nColumn Names:", df.columns)
+# Make the shared helper module available when this file runs directly.
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-print("\nDataset Information:")
-df.info()
-
-print("\nDuplicate Records:")
-duplicate_count = df.duplicated().sum()
-print(duplicate_count)
-
-print("\nMissing Values:")
-missing_values = df.isnull().sum()
-print(missing_values)
-
-text_columns = df.select_dtypes(include=["object", "string"]).columns
-print("\nText Columns:")
-print(text_columns)
-
-whitespace_total = 0
-
-for column in text_columns:
-    whitespace_count = df[column].str.strip().ne(df[column]).sum()
-    whitespace_total += whitespace_count
-    print(f"{column}: {whitespace_count}")
-
-print("\nUnique Values in Text Columns:")
-for column in text_columns:
-    print(f"\n{column}")
-    print(df[column].unique())
-
-print("\n Category Distribution:")
-for column in text_columns:
-    print(f"\n{column}")
-    print(df[column].value_counts())
+from utils.helpers import (
+    assert_row_preservation,
+    load_raw_csv,
+    print_validation_summary,
+    require_categories,
+    require_nonnegative,
+    require_range,
+    require_values,
+    save_clean_csv,
+    trim_text,
+)
 
 
-# Standardize leading and trailing whitespace in all text fields before analysis.
-for column in text_columns:
-    df[column] = df[column].str.strip()
+EXPECTED_COLUMNS = [
+    "airline", "country", "airline_type", "estimated_loss_usd",
+    "cancellations_count", "reroutes_count", "revenue_loss_pct", "region",
+]
 
 
-print("\nStatistical Summary of Numerical Columns:")
-print(df.describe())
+def main():
+    # Step 1: load the raw file only if its columns match the expected schema.
+    frame = load_raw_csv("airline_losses.csv", EXPECTED_COLUMNS)
+    raw_count = len(frame)
 
-validation_summary = {
-    "duplicate": duplicate_count,
-    "missing_values": missing_values.sum(),
-    "whitespace": whitespace_total,
-}
+    # Step 2: remove accidental spaces around text values.
+    frame = trim_text(frame)
 
-df.to_csv("data/clean/airline_losses_clean.csv", index=False)
+    # Step 3: validate the rules that are defensible from this dataset.
+    require_values(frame, EXPECTED_COLUMNS)
+    require_nonnegative(frame, ["estimated_loss_usd", "cancellations_count", "reroutes_count"])
+    require_range(frame, "revenue_loss_pct", 0, 100)
+    require_categories(frame, "airline_type", {"Cargo", "Flag Carrier", "Low Cost", "Private"})
+    assert_row_preservation(raw_count, frame)
+
+    # Step 4: write the clean file and report the validation result.
+    output = save_clean_csv(frame, "airline_losses_clean.csv")
+    print_validation_summary("airline_losses", raw_count, frame, output)
+
+
+if __name__ == "__main__":
+    main()

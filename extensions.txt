@@ -14,7 +14,6 @@ ms-toolsai.jupyter-renderers
 ms-toolsai.vscode-jupyter-cell-tags
 ms-toolsai.vscode-jupyter-slideshow
 mtxr.sqltools
-mtxr.sqltools-driver-mysql
 mtxr.sqltools-driver-pg
 streetsidesoftware.code-spell-checker
 usernamehw.errorlens

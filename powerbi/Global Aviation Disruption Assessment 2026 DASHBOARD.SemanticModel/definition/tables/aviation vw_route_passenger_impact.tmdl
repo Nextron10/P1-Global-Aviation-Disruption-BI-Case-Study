@@ -1,0 +1,147 @@
+table 'aviation vw_route_passenger_impact'
+	lineageTag: 36702132-647e-47c1-a565-16188e41d09d
+
+	measure 'Total Passengers Impacted' =
+			
+			SUM('aviation vw_route_passenger_impact'[passengers_affected])
+		formatString: 0
+		lineageTag: f965431a-f6a7-4ff7-9d79-84f2426e699b
+
+	measure 'Total Additional Distance' =
+			
+			SUM('aviation vw_route_passenger_impact'[additional_distance_km])
+		formatString: 0
+		lineageTag: a995740f-3243-4e96-9749-d6f3d99571c5
+
+	measure 'Total Extra Fuel Cost' =
+			
+			SUM('aviation vw_route_passenger_impact'[additional_fuel_cost_usd])
+		lineageTag: f3432636-682d-4ff0-bebf-f26b2256ac6f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column origin_region
+		dataType: string
+		lineageTag: bdb111f7-0f37-4d98-97c6-b43fc381a6ea
+		summarizeBy: none
+		sourceColumn: origin_region
+
+		annotation SummarizationSetBy = Automatic
+
+	column destination_region
+		dataType: string
+		lineageTag: 99e89b4d-245b-421b-b66a-9a1d15526530
+		summarizeBy: none
+		sourceColumn: destination_region
+
+		annotation SummarizationSetBy = Automatic
+
+	column origin_country
+		dataType: string
+		lineageTag: 9848490c-3bec-4f14-9fff-951941e5d774
+		summarizeBy: none
+		sourceColumn: origin_country
+
+		annotation SummarizationSetBy = Automatic
+
+	column destination_country
+		dataType: string
+		lineageTag: cca7e733-0499-4f5d-94e5-0b7f2d8586eb
+		summarizeBy: none
+		sourceColumn: destination_country
+
+		annotation SummarizationSetBy = Automatic
+
+	column cancelled_flights
+		dataType: int64
+		formatString: 0
+		lineageTag: 9cbf1c03-4d68-4385-be47-85cac0925881
+		summarizeBy: sum
+		sourceColumn: cancelled_flights
+
+		annotation SummarizationSetBy = Automatic
+
+	column passengers_affected
+		dataType: int64
+		formatString: 0
+		lineageTag: 6ee8ea52-32e2-4fd3-b1f1-9a7a5f907c4c
+		summarizeBy: sum
+		sourceColumn: passengers_affected
+
+		annotation SummarizationSetBy = Automatic
+
+	column rerouted_flights
+		dataType: int64
+		formatString: 0
+		lineageTag: 7f254c32-1d87-4fdb-91f7-c33ed3e194d7
+		summarizeBy: sum
+		sourceColumn: rerouted_flights
+
+		annotation SummarizationSetBy = Automatic
+
+	column additional_distance_km
+		dataType: int64
+		formatString: 0
+		lineageTag: d4cac127-fcd0-4db2-b440-4abb8cd5e19b
+		summarizeBy: sum
+		sourceColumn: additional_distance_km
+
+		annotation SummarizationSetBy = Automatic
+
+	column additional_fuel_cost_usd
+		dataType: double
+		lineageTag: 41083e67-2ff5-47e7-8bf7-0b133a79693d
+		summarizeBy: sum
+		sourceColumn: additional_fuel_cost_usd
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column delay_hours
+		dataType: double
+		lineageTag: e0ed930e-629a-425f-93cf-ff2fbacacefe
+		summarizeBy: sum
+		sourceColumn: delay_hours
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Corridor =
+			
+			'aviation vw_route_passenger_impact'[origin_region]
+			    & " → " &
+			'aviation vw_route_passenger_impact'[destination_region]
+		lineageTag: a1d5926e-000f-46dd-a246-e7b8d6249666
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: c26b47af-86aa-432d-bca2-b49d3833f9b5
+		summarizeBy: none
+		sourceColumn: date
+
+		variation Variation
+			isDefault
+			relationship: ff27409c-62e1-4af3-bc03-5e3178d16034
+			defaultHierarchy: LocalDateTable_ff70b0a5-7cfc-4c18-9de0-264a758b1226.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition 'aviation vw_route_passenger_impact' = m
+		mode: import
+		source =
+				let
+				    Source = PostgreSQL.Database("localhost", "aviation_bi"),
+				    aviation_vw_route_passenger_impact = Source{[Schema="aviation",Item="vw_route_passenger_impact"]}[Data]
+				in
+				    aviation_vw_route_passenger_impact
+
+	annotation PBI_ResultType = Table
+

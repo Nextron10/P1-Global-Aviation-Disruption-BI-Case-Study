@@ -1,0 +1,123 @@
+table 'aviation flight_cancellations'
+	lineageTag: 6d292c26-d696-4317-8e97-0c9630f1cfa2
+
+	measure 'Total Cancellations' =
+			
+			COUNTROWS('aviation flight_cancellations')
+		formatString: 0
+		lineageTag: a98ffeec-e2b4-4f10-9268-22c02f20369c
+
+	column date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 5e0b6a79-a766-489c-a59f-5e0f7735cd40
+		summarizeBy: none
+		sourceColumn: date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column airline
+		dataType: string
+		lineageTag: a060e677-5b2a-4ff9-acac-dbbcd335afdd
+		summarizeBy: none
+		sourceColumn: airline
+
+		annotation SummarizationSetBy = Automatic
+
+	column flight_number
+		dataType: string
+		lineageTag: 6707d678-a477-4713-9e6a-015589df3a30
+		summarizeBy: none
+		sourceColumn: flight_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column origin
+		dataType: string
+		lineageTag: 1f3fa943-e44d-433a-a61e-84a298b085e8
+		summarizeBy: none
+		sourceColumn: origin
+
+		annotation SummarizationSetBy = Automatic
+
+	column destination
+		dataType: string
+		lineageTag: 7bd6a442-7f17-47cf-9025-a34cbdf3fbfc
+		summarizeBy: none
+		sourceColumn: destination
+
+		annotation SummarizationSetBy = Automatic
+
+	column origin_country
+		dataType: string
+		lineageTag: 3b238b5e-16a0-436b-bb14-c8505849d758
+		summarizeBy: none
+		sourceColumn: origin_country
+
+		annotation SummarizationSetBy = Automatic
+
+	column destination_country
+		dataType: string
+		lineageTag: 2a93b87a-bb2a-44ca-940d-2c9e3a8a1053
+		summarizeBy: none
+		sourceColumn: destination_country
+
+		annotation SummarizationSetBy = Automatic
+
+	column origin_region
+		dataType: string
+		lineageTag: 23e659d8-0e1b-4d3e-a57c-b85c700dd061
+		summarizeBy: none
+		sourceColumn: origin_region
+
+		annotation SummarizationSetBy = Automatic
+
+	column destination_region
+		dataType: string
+		lineageTag: 9444988c-8d81-4850-9666-4567389c14c4
+		summarizeBy: none
+		sourceColumn: destination_region
+
+		annotation SummarizationSetBy = Automatic
+
+	column aircraft_type
+		dataType: string
+		lineageTag: 22019cb8-4a6e-461b-a5eb-f75d2fcb6534
+		summarizeBy: none
+		sourceColumn: aircraft_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column passengers_affected
+		dataType: int64
+		formatString: 0
+		lineageTag: 2e3b3f95-7ea7-46cd-98b4-d9c074127c81
+		summarizeBy: sum
+		sourceColumn: passengers_affected
+
+		annotation SummarizationSetBy = Automatic
+
+	column reason
+		dataType: string
+		lineageTag: ecf4eeb1-ef59-499c-8eba-9d95bf8ae5b9
+		summarizeBy: none
+		sourceColumn: reason
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'aviation flight_cancellations' = m
+		mode: import
+		source =
+				let
+				    Source = PostgreSQL.Database("localhost", "aviation_bi"),
+				    aviation_flight_cancellations = Source{[Schema="aviation",Item="flight_cancellations"]}[Data],
+				    #"Replaced Value" = Table.ReplaceValue(aviation_flight_cancellations,"â€”"," - ",Replacer.ReplaceText,{"reason"})
+				in
+				    #"Replaced Value"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
