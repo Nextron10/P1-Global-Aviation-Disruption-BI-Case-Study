@@ -17,23 +17,19 @@
           "projections": [
             {
               "field": {
-                "Aggregation": {
+                "Measure": {
                   "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "aviation vw_airline_operational_financial"
-                        }
-                      },
-                      "Property": "estimated_daily_loss_usd"
+                    "SourceRef": {
+                      "Entity": "Report Measures"
                     }
                   },
-                  "Function": 0
+                  "Property": "Estimated Daily Loss USD"
                 }
               },
-              "queryRef": "Sum(aviation vw_airline_operational_financial.estimated_daily_loss_usd)",
-              "nativeQueryRef": "Sum of estimated_daily_loss_usd",
-              "format": "\\$#,0.00;(\\$#,0.00);\\$#,0.00"
+              "queryRef": "Report Measures.Estimated Daily Loss USD",
+              "nativeQueryRef": "Estimated Daily Loss USD",
+              "format": "$#,0.00;($#,0.00);$0.00",
+              "displayName": "Estimated Daily Loss USD"
             }
           ]
         }
@@ -42,18 +38,13 @@
         "sort": [
           {
             "field": {
-              "Aggregation": {
+              "Measure": {
                 "Expression": {
-                  "Column": {
-                    "Expression": {
-                      "SourceRef": {
-                        "Entity": "aviation vw_airline_operational_financial"
-                      }
-                    },
-                    "Property": "estimated_daily_loss_usd"
+                  "SourceRef": {
+                    "Entity": "Report Measures"
                   }
                 },
-                "Function": 0
+                "Property": "Estimated Daily Loss USD"
               }
             },
             "direction": "Descending"
@@ -325,7 +316,7 @@
             }
           },
           "selector": {
-            "metadata": "Sum(aviation vw_airline_operational_financial.estimated_daily_loss_usd)"
+            "metadata": "Report Measures.Estimated Daily Loss USD"
           }
         }
       ],
@@ -335,7 +326,7 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "false"
                 }
               }
             },
@@ -388,7 +379,7 @@
             }
           },
           "selector": {
-            "metadata": "Sum(aviation vw_airline_operational_financial.estimated_daily_loss_usd)"
+            "metadata": "Report Measures.Estimated Daily Loss USD"
           }
         }
       ],

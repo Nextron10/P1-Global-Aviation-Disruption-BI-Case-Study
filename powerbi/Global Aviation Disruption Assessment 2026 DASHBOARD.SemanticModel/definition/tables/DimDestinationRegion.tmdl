@@ -1,0 +1,19 @@
+/// Unique values from the listed source populations.
+table DimDestinationRegion
+	lineageTag: 519cbc7e-d1b6-4d17-8877-cb69c9915788
+
+	column destination_region
+		dataType: string
+		lineageTag: 554e81fa-3165-43b3-97e2-e3aab4c76191
+		summarizeBy: none
+		sourceColumn: [destination_region]
+
+	partition DimDestinationRegion = calculated
+		mode: import
+		source =
+				FILTER(DISTINCT(UNION(
+				    SELECTCOLUMNS('aviation flight_cancellations', "destination_region", 'aviation flight_cancellations'[destination_region]),
+				    SELECTCOLUMNS('aviation flight_reroutes', "destination_region", 'aviation flight_reroutes'[destination_region]),
+				    SELECTCOLUMNS('aviation vw_route_passenger_impact', "destination_region", 'aviation vw_route_passenger_impact'[destination_region])
+				)), NOT ISBLANK([destination_region]))
+

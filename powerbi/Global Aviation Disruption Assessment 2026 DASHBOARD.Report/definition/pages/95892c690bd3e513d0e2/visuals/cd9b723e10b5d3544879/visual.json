@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
   "name": "cd9b723e10b5d3544879",
   "position": {
-    "x": 0,
+    "x": 32,
     "y": 1.0312292358803941,
     "z": 11000,
     "height": 102.57009966777409,
-    "width": 470.20614254506404,
+    "width": 352,
     "tabOrder": 0
   },
   "visual": {
@@ -17,166 +17,27 @@
           "projections": [
             {
               "field": {
-                "HierarchyLevel": {
+                "Column": {
                   "Expression": {
-                    "Hierarchy": {
-                      "Expression": {
-                        "PropertyVariationSource": {
-                          "Expression": {
-                            "SourceRef": {
-                              "Entity": "DimDate"
-                            }
-                          },
-                          "Name": "Variation",
-                          "Property": "Date"
-                        }
-                      },
-                      "Hierarchy": "Date Hierarchy"
+                    "SourceRef": {
+                      "Entity": "DimDate"
                     }
                   },
-                  "Level": "Quarter"
+                  "Property": "Date"
                 }
               },
-              "queryRef": "DimDate.Date.Variation.Date Hierarchy.Quarter",
-              "nativeQueryRef": "Date Quarter",
-              "active": true
-            },
-            {
-              "field": {
-                "HierarchyLevel": {
-                  "Expression": {
-                    "Hierarchy": {
-                      "Expression": {
-                        "PropertyVariationSource": {
-                          "Expression": {
-                            "SourceRef": {
-                              "Entity": "DimDate"
-                            }
-                          },
-                          "Name": "Variation",
-                          "Property": "Date"
-                        }
-                      },
-                      "Hierarchy": "Date Hierarchy"
-                    }
-                  },
-                  "Level": "Month"
-                }
-              },
-              "queryRef": "DimDate.Date.Variation.Date Hierarchy.Month",
-              "nativeQueryRef": "Date Month",
-              "active": true
-            },
-            {
-              "field": {
-                "HierarchyLevel": {
-                  "Expression": {
-                    "Hierarchy": {
-                      "Expression": {
-                        "PropertyVariationSource": {
-                          "Expression": {
-                            "SourceRef": {
-                              "Entity": "DimDate"
-                            }
-                          },
-                          "Name": "Variation",
-                          "Property": "Date"
-                        }
-                      },
-                      "Hierarchy": "Date Hierarchy"
-                    }
-                  },
-                  "Level": "Day"
-                }
-              },
-              "queryRef": "DimDate.Date.Variation.Date Hierarchy.Day",
-              "nativeQueryRef": "Date Day",
-              "active": true
+              "queryRef": "DimDate.Date",
+              "nativeQueryRef": "Date",
+              "active": true,
+              "displayName": "Date"
             }
           ]
         }
+      },
+      "sortDefinition": {
+        "isDefaultSort": true
       }
     },
-    "expansionStates": [
-      {
-        "roles": [
-          "Values"
-        ],
-        "levels": [
-          {
-            "queryRefs": [
-              "DimDate.Date.Variation.Date Hierarchy.Quarter"
-            ],
-            "isCollapsed": true,
-            "identityKeys": [
-              {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "LocalDateTable_498e5301-6f25-46e2-907d-2f6f25c9d717"
-                    }
-                  },
-                  "Property": "Quarter"
-                }
-              }
-            ],
-            "isPinned": true
-          },
-          {
-            "queryRefs": [
-              "DimDate.Date.Variation.Date Hierarchy.Month"
-            ],
-            "isCollapsed": true,
-            "identityKeys": [
-              {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "LocalDateTable_498e5301-6f25-46e2-907d-2f6f25c9d717"
-                    }
-                  },
-                  "Property": "Month"
-                }
-              }
-            ],
-            "isPinned": true
-          },
-          {
-            "queryRefs": [
-              "DimDate.Date.Variation.Date Hierarchy.Day"
-            ],
-            "isCollapsed": true,
-            "isPinned": true
-          }
-        ],
-        "root": {
-          "children": [
-            {
-              "identityValues": [
-                {
-                  "Literal": {
-                    "Value": "'Qtr 3'"
-                  }
-                }
-              ],
-              "isToggled": true,
-              "children": [
-                {
-                  "identityValues": [
-                    {
-                      "Literal": {
-                        "Value": "'July'"
-                      }
-                    }
-                  ],
-                  "isToggled": true
-                }
-              ]
-            }
-          ]
-        }
-      }
-    ],
     "objects": {
       "data": [
         {
@@ -224,7 +85,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Date'"
+                  "Value": "'Record Date'"
                 }
               }
             },
@@ -310,7 +171,7 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "false"
                 }
               }
             },
@@ -431,6 +292,13 @@
               "expr": {
                 "Literal": {
                   "Value": "false"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Record Date'"
                 }
               }
             }

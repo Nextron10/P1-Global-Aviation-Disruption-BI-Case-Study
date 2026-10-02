@@ -17,23 +17,19 @@
           "projections": [
             {
               "field": {
-                "Aggregation": {
+                "Measure": {
                   "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "aviation flight_reroutes"
-                        }
-                      },
-                      "Property": "extra_fuel_cost_usd"
+                    "SourceRef": {
+                      "Entity": "Report Measures"
                     }
                   },
-                  "Function": 0
+                  "Property": "Detailed Extra Fuel Cost USD"
                 }
               },
-              "queryRef": "Sum(aviation flight_reroutes.extra_fuel_cost_usd)",
-              "nativeQueryRef": "Sum of extra_fuel_cost_usd",
-              "format": "\\$#,0.00;(\\$#,0.00);\\$#,0.00"
+              "queryRef": "Report Measures.Detailed Extra Fuel Cost USD",
+              "nativeQueryRef": "Detailed Extra Fuel Cost USD",
+              "format": "$#,0.00;($#,0.00);$0.00",
+              "displayName": "Detailed Extra Fuel Cost USD"
             }
           ]
         }
@@ -42,18 +38,13 @@
         "sort": [
           {
             "field": {
-              "Aggregation": {
+              "Measure": {
                 "Expression": {
-                  "Column": {
-                    "Expression": {
-                      "SourceRef": {
-                        "Entity": "aviation flight_reroutes"
-                      }
-                    },
-                    "Property": "extra_fuel_cost_usd"
+                  "SourceRef": {
+                    "Entity": "Report Measures"
                   }
                 },
-                "Function": 0
+                "Property": "Detailed Extra Fuel Cost USD"
               }
             },
             "direction": "Descending"
@@ -327,7 +318,7 @@
             }
           },
           "selector": {
-            "metadata": "Sum(aviation flight_reroutes.extra_fuel_cost_usd)"
+            "metadata": "Report Measures.Detailed Extra Fuel Cost USD"
           }
         }
       ],
@@ -337,7 +328,7 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "false"
                 }
               }
             },
@@ -390,7 +381,7 @@
             }
           },
           "selector": {
-            "metadata": "Sum(aviation flight_reroutes.extra_fuel_cost_usd)"
+            "metadata": "Report Measures.Detailed Extra Fuel Cost USD"
           }
         }
       ],
@@ -570,7 +561,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'ADDITIONAL FUEL COST'"
+                  "Value": "'DETAILED EXTRA FUEL COST'"
                 }
               }
             },
@@ -625,6 +616,13 @@
               "expr": {
                 "Literal": {
                   "Value": "'''Segoe UI'', wf_segoe-ui_normal, helvetica, arial, sans-serif'"
+                }
+              }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
                 }
               }
             }

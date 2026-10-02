@@ -36,24 +36,19 @@
           "projections": [
             {
               "field": {
-                "Aggregation": {
+                "Measure": {
                   "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "aviation vw_airline_operational_financial"
-                        }
-                      },
-                      "Property": "estimated_loss_usd"
+                    "SourceRef": {
+                      "Entity": "Report Measures"
                     }
                   },
-                  "Function": 0
+                  "Property": "Modeled Summary Airline Loss USD"
                 }
               },
-              "queryRef": "Sum(aviation vw_airline_operational_financial.estimated_loss_usd)",
-              "nativeQueryRef": "Estimated Loss",
-              "displayName": "Estimated Loss",
-              "format": "\\$#,0.0;(\\$#,0.0);\\$#,0.0"
+              "queryRef": "Report Measures.Modeled Summary Airline Loss USD",
+              "nativeQueryRef": "Modeled Summary Airline Loss USD",
+              "displayName": "Modeled Summary Airline Loss USD",
+              "format": "$#,0.00;($#,0.00);$0.00"
             }
           ]
         }
@@ -62,18 +57,13 @@
         "sort": [
           {
             "field": {
-              "Aggregation": {
+              "Measure": {
                 "Expression": {
-                  "Column": {
-                    "Expression": {
-                      "SourceRef": {
-                        "Entity": "aviation vw_airline_operational_financial"
-                      }
-                    },
-                    "Property": "estimated_loss_usd"
+                  "SourceRef": {
+                    "Entity": "Report Measures"
                   }
                 },
-                "Function": 0
+                "Property": "Modeled Summary Airline Loss USD"
               }
             },
             "direction": "Descending"
@@ -408,7 +398,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'TOP 10 AIRLINES BY ESTIMATED LOSS'"
+                  "Value": "'TOP 10 AIRLINES BY MODELED SUMMARY LOSS'"
                 }
               }
             },
@@ -504,7 +494,7 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "301f47d9dea00322a732",
+        "name": "dc2fc8aba18842ab8bce",
         "field": {
           "Column": {
             "Expression": {
@@ -527,13 +517,13 @@
                     "Version": 2,
                     "From": [
                       {
-                        "Name": "d",
+                        "Name": "a",
                         "Entity": "DimAirline",
                         "Type": 0
                       },
                       {
-                        "Name": "a",
-                        "Entity": "aviation vw_airline_operational_financial",
+                        "Name": "m",
+                        "Entity": "Report Measures",
                         "Type": 0
                       }
                     ],
@@ -542,7 +532,7 @@
                         "Column": {
                           "Expression": {
                             "SourceRef": {
-                              "Source": "d"
+                              "Source": "a"
                             }
                           },
                           "Property": "airline"
@@ -554,18 +544,13 @@
                       {
                         "Direction": 2,
                         "Expression": {
-                          "Aggregation": {
+                          "Measure": {
                             "Expression": {
-                              "Column": {
-                                "Expression": {
-                                  "SourceRef": {
-                                    "Source": "a"
-                                  }
-                                },
-                                "Property": "estimated_loss_usd"
+                              "SourceRef": {
+                                "Source": "m"
                               }
                             },
-                            "Function": 0
+                            "Property": "Modeled Summary Airline Loss USD"
                           }
                         }
                       }
@@ -577,7 +562,7 @@
               "Type": 2
             },
             {
-              "Name": "d",
+              "Name": "a",
               "Entity": "DimAirline",
               "Type": 0
             }
@@ -591,7 +576,7 @@
                       "Column": {
                         "Expression": {
                           "SourceRef": {
-                            "Source": "d"
+                            "Source": "a"
                           }
                         },
                         "Property": "airline"
@@ -607,7 +592,8 @@
               }
             }
           ]
-        }
+        },
+        "howCreated": "User"
       }
     ]
   }

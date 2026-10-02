@@ -36,83 +36,67 @@
           "projections": [
             {
               "field": {
-                "Aggregation": {
+                "Measure": {
                   "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "aviation vw_route_passenger_impact"
-                        }
-                      },
-                      "Property": "cancelled_flights"
+                    "SourceRef": {
+                      "Entity": "Report Measures"
                     }
                   },
-                  "Function": 0
+                  "Property": "Corridor Detailed Cancellations"
                 }
               },
-              "queryRef": "Sum(aviation vw_route_passenger_impact.cancelled_flights)",
-              "nativeQueryRef": "Sum of Cancelled Flights",
-              "displayName": "Sum of Cancelled Flights"
+              "queryRef": "Report Measures.Corridor Detailed Cancellations",
+              "nativeQueryRef": "Corridor Detailed Cancellations",
+              "displayName": "Corridor Detailed Cancellations",
+              "format": "#,0"
             },
             {
               "field": {
-                "Aggregation": {
+                "Measure": {
                   "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "aviation vw_route_passenger_impact"
-                        }
-                      },
-                      "Property": "passengers_affected"
+                    "SourceRef": {
+                      "Entity": "Report Measures"
                     }
                   },
-                  "Function": 0
+                  "Property": "Corridor Cancellation Passengers"
                 }
               },
-              "queryRef": "Sum(aviation vw_route_passenger_impact.passengers_affected)",
-              "nativeQueryRef": "Sum of Passengers Affected",
-              "displayName": "Sum of Passengers Affected"
+              "queryRef": "Report Measures.Corridor Cancellation Passengers",
+              "nativeQueryRef": "Corridor Cancellation Passengers",
+              "displayName": "Corridor Cancellation Passengers",
+              "format": "#,0"
             },
             {
               "field": {
-                "Aggregation": {
+                "Measure": {
                   "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "aviation vw_route_passenger_impact"
-                        }
-                      },
-                      "Property": "additional_distance_km"
+                    "SourceRef": {
+                      "Entity": "Report Measures"
                     }
                   },
-                  "Function": 0
+                  "Property": "Corridor Additional Distance Km"
                 }
               },
-              "queryRef": "Sum(aviation vw_route_passenger_impact.additional_distance_km)",
-              "nativeQueryRef": "Sum of additional_distance_km",
-              "format": "### km"
+              "queryRef": "Report Measures.Corridor Additional Distance Km",
+              "nativeQueryRef": "Corridor Additional Distance Km",
+              "format": "#,0",
+              "displayName": "Corridor Additional Distance Km"
             },
             {
               "field": {
-                "Aggregation": {
+                "Measure": {
                   "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "aviation vw_route_passenger_impact"
-                        }
-                      },
-                      "Property": "additional_fuel_cost_usd"
+                    "SourceRef": {
+                      "Entity": "Report Measures"
                     }
                   },
-                  "Function": 0
+                  "Property": "Corridor Extra Fuel Cost USD"
                 }
               },
-              "queryRef": "Sum(aviation vw_route_passenger_impact.additional_fuel_cost_usd)",
-              "nativeQueryRef": "Sum of additional_fuel_cost_usd",
-              "format": "\\$#,0;(\\$#,0);\\$#,0"
+              "queryRef": "Report Measures.Corridor Extra Fuel Cost USD",
+              "nativeQueryRef": "Corridor Extra Fuel Cost USD",
+              "format": "$#,0.00",
+              "displayName": "Corridor Extra Fuel Cost USD"
             }
           ]
         },
@@ -120,23 +104,19 @@
           "projections": [
             {
               "field": {
-                "Aggregation": {
+                "Measure": {
                   "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "aviation vw_route_passenger_impact"
-                        }
-                      },
-                      "Property": "rerouted_flights"
+                    "SourceRef": {
+                      "Entity": "Report Measures"
                     }
                   },
-                  "Function": 0
+                  "Property": "Corridor Detailed Reroutes"
                 }
               },
-              "queryRef": "Sum(aviation vw_route_passenger_impact.rerouted_flights)",
-              "nativeQueryRef": "Sum of Rerouted Flights",
-              "displayName": "Sum of Rerouted Flights"
+              "queryRef": "Report Measures.Corridor Detailed Reroutes",
+              "nativeQueryRef": "Corridor Detailed Reroutes",
+              "displayName": "Corridor Detailed Reroutes",
+              "format": "#,0"
             }
           ]
         }
@@ -145,18 +125,13 @@
         "sort": [
           {
             "field": {
-              "Aggregation": {
+              "Measure": {
                 "Expression": {
-                  "Column": {
-                    "Expression": {
-                      "SourceRef": {
-                        "Entity": "aviation vw_route_passenger_impact"
-                      }
-                    },
-                    "Property": "rerouted_flights"
+                  "SourceRef": {
+                    "Entity": "Report Measures"
                   }
                 },
-                "Function": 0
+                "Property": "Corridor Detailed Reroutes"
               }
             },
             "direction": "Descending"
@@ -511,7 +486,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'TOP 10 REROUTED CORRIDORS'"
+                  "Value": "'LEADING REROUTED CORRIDORS (TIES INCLUDED)'"
                 }
               }
             },
@@ -643,7 +618,7 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "259c07a5b7aa0ba6140b",
+        "name": "dc85535104a0418e8ac1",
         "field": {
           "Column": {
             "Expression": {
@@ -669,6 +644,11 @@
                         "Name": "a",
                         "Entity": "aviation vw_route_passenger_impact",
                         "Type": 0
+                      },
+                      {
+                        "Name": "m",
+                        "Entity": "Report Measures",
+                        "Type": 0
                       }
                     ],
                     "Select": [
@@ -688,18 +668,13 @@
                       {
                         "Direction": 2,
                         "Expression": {
-                          "Aggregation": {
+                          "Measure": {
                             "Expression": {
-                              "Column": {
-                                "Expression": {
-                                  "SourceRef": {
-                                    "Source": "a"
-                                  }
-                                },
-                                "Property": "rerouted_flights"
+                              "SourceRef": {
+                                "Source": "m"
                               }
                             },
-                            "Function": 0
+                            "Property": "Corridor Detailed Reroutes"
                           }
                         }
                       }
@@ -741,7 +716,8 @@
               }
             }
           ]
-        }
+        },
+        "howCreated": "User"
       }
     ]
   }

@@ -1,0 +1,63 @@
+/// One undated modeled row per source airline. Keep this population separate.
+table 'aviation vw_airline_loss_summary'
+	lineageTag: 16ffe7c3-06d4-48ed-baa4-0a076af57357
+
+	column airline
+		dataType: string
+		lineageTag: 53af0596-876c-4e8c-9bff-ade87076c501
+		summarizeBy: none
+		sourceColumn: airline
+
+	column country
+		dataType: string
+		lineageTag: 2c5f7799-7575-42a7-a259-b35990ac959c
+		summarizeBy: none
+		sourceColumn: country
+
+	column airline_type
+		dataType: string
+		lineageTag: 4e7cfe42-62bf-4017-8da4-522423d5e093
+		summarizeBy: none
+		sourceColumn: airline_type
+
+	column region
+		dataType: string
+		lineageTag: 4cb55bf7-92ac-4376-b4c9-ecced59deef8
+		summarizeBy: none
+		sourceColumn: region
+
+	column estimated_loss_usd
+		dataType: double
+		lineageTag: 7fd28a4e-2525-4926-9de0-e283d2f5a80e
+		summarizeBy: sum
+		sourceColumn: estimated_loss_usd
+
+	column cancellations_count
+		dataType: int64
+		lineageTag: 7e9fe471-fb23-4486-b89f-f8f95da5eec5
+		summarizeBy: sum
+		sourceColumn: cancellations_count
+
+	column reroutes_count
+		dataType: int64
+		lineageTag: 3a87db91-400a-4f62-b7fa-3910d91e32ee
+		summarizeBy: sum
+		sourceColumn: reroutes_count
+
+	column revenue_loss_pct
+		dataType: double
+		lineageTag: 7b1b8bfe-4065-409a-affd-e35e022644b9
+		summarizeBy: none
+		sourceColumn: revenue_loss_pct
+
+	partition 'aviation vw_airline_loss_summary' = m
+		mode: import
+		source =
+				let
+				    Source = PostgreSQL.Database("localhost", "aviation_bi"),
+				    Records = Source{[Schema="aviation",Item="vw_airline_loss_summary"]}[Data]
+				in
+				    Records
+
+	annotation PBI_ResultType = Table
+

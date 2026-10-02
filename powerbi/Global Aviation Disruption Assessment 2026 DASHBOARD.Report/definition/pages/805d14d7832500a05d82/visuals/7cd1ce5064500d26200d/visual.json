@@ -39,14 +39,16 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "aviation vw_airline_operational_financial"
+                      "Entity": "Report Measures"
                     }
                   },
-                  "Property": "Average Revenue Loss %"
+                  "Property": "Modeled Average Revenue Loss Pct"
                 }
               },
-              "queryRef": "aviation vw_airline_operational_financial.Average Revenue Loss %",
-              "nativeQueryRef": "Average Revenue Loss %"
+              "queryRef": "Report Measures.Modeled Average Revenue Loss Pct",
+              "nativeQueryRef": "Modeled Average Revenue Loss Pct",
+              "displayName": "Modeled Average Revenue Loss Pct",
+              "format": "0.00%"
             }
           ]
         }
@@ -58,10 +60,10 @@
               "Measure": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "aviation vw_airline_operational_financial"
+                    "Entity": "Report Measures"
                   }
                 },
-                "Property": "Average Revenue Loss %"
+                "Property": "Modeled Average Revenue Loss Pct"
               }
             },
             "direction": "Descending"
@@ -403,7 +405,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'TOP 5 AIRLINES BY REVENUE LOSS %'"
+                  "Value": "'TOP 5 AIRLINES BY MODELED REVENUE LOSS %'"
                 }
               }
             },
@@ -499,22 +501,7 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "730b6ec53e2b5cc2919c",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "aviation vw_airport_disruption"
-              }
-            },
-            "Property": "airport_name"
-          }
-        },
-        "type": "TopN",
-        "howCreated": "User"
-      },
-      {
-        "name": "2bbf9e34232c3bb53a73",
+        "name": "895e1250ad854d5fba3f",
         "field": {
           "Column": {
             "Expression": {
@@ -537,13 +524,13 @@
                     "Version": 2,
                     "From": [
                       {
-                        "Name": "d",
+                        "Name": "a",
                         "Entity": "DimAirline",
                         "Type": 0
                       },
                       {
-                        "Name": "a",
-                        "Entity": "aviation vw_airline_operational_financial",
+                        "Name": "m",
+                        "Entity": "Report Measures",
                         "Type": 0
                       }
                     ],
@@ -552,7 +539,7 @@
                         "Column": {
                           "Expression": {
                             "SourceRef": {
-                              "Source": "d"
+                              "Source": "a"
                             }
                           },
                           "Property": "airline"
@@ -567,10 +554,10 @@
                           "Measure": {
                             "Expression": {
                               "SourceRef": {
-                                "Source": "a"
+                                "Source": "m"
                               }
                             },
-                            "Property": "Average Revenue Loss %"
+                            "Property": "Modeled Average Revenue Loss Pct"
                           }
                         }
                       }
@@ -582,7 +569,7 @@
               "Type": 2
             },
             {
-              "Name": "d",
+              "Name": "a",
               "Entity": "DimAirline",
               "Type": 0
             }
@@ -596,7 +583,7 @@
                       "Column": {
                         "Expression": {
                           "SourceRef": {
-                            "Source": "d"
+                            "Source": "a"
                           }
                         },
                         "Property": "airline"
@@ -612,7 +599,110 @@
               }
             }
           ]
-        }
+        },
+        "howCreated": "User"
+      },
+      {
+        "name": "dd63b6f3f17142ff9b07",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "DimAirline"
+              }
+            },
+            "Property": "airline"
+          }
+        },
+        "type": "TopN",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "subquery",
+              "Expression": {
+                "Subquery": {
+                  "Query": {
+                    "Version": 2,
+                    "From": [
+                      {
+                        "Name": "a",
+                        "Entity": "DimAirline",
+                        "Type": 0
+                      },
+                      {
+                        "Name": "m",
+                        "Entity": "Report Measures",
+                        "Type": 0
+                      }
+                    ],
+                    "Select": [
+                      {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Source": "a"
+                            }
+                          },
+                          "Property": "airline"
+                        },
+                        "Name": "field"
+                      }
+                    ],
+                    "OrderBy": [
+                      {
+                        "Direction": 2,
+                        "Expression": {
+                          "Measure": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Source": "m"
+                              }
+                            },
+                            "Property": "Modeled Average Revenue Loss Pct"
+                          }
+                        }
+                      }
+                    ],
+                    "Top": 5
+                  }
+                }
+              },
+              "Type": 2
+            },
+            {
+              "Name": "a",
+              "Entity": "DimAirline",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "a"
+                          }
+                        },
+                        "Property": "airline"
+                      }
+                    }
+                  ],
+                  "Table": {
+                    "SourceRef": {
+                      "Source": "subquery"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "howCreated": "User"
       }
     ]
   }

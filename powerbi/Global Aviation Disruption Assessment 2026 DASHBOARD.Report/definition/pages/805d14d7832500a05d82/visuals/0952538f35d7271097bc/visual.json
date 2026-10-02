@@ -39,14 +39,16 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "aviation vw_airline_operational_financial"
+                      "Entity": "Report Measures"
                     }
                   },
-                  "Property": "Passengers per Rerouted Flight"
+                  "Property": "Estimated Passengers per Estimated Reroute"
                 }
               },
-              "queryRef": "aviation vw_airline_operational_financial.Passengers per Rerouted Flight",
-              "nativeQueryRef": "Passengers per Rerouted Flight"
+              "queryRef": "Report Measures.Estimated Passengers per Estimated Reroute",
+              "nativeQueryRef": "Estimated Passengers per Estimated Reroute",
+              "displayName": "Estimated Passengers per Estimated Reroute",
+              "format": "0.00"
             }
           ]
         }
@@ -58,10 +60,10 @@
               "Measure": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "aviation vw_airline_operational_financial"
+                    "Entity": "Report Measures"
                   }
                 },
-                "Property": "Passengers per Rerouted Flight"
+                "Property": "Estimated Passengers per Estimated Reroute"
               }
             },
             "direction": "Descending"
@@ -404,7 +406,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'TOP 5 AIRLINES BY PASSENGERS IMPACTED PER REROUTED FLIGHT'"
+                  "Value": "'TOP 5 AIRLINES: ESTIMATED PASSENGERS / REROUTE'"
                 }
               }
             },
@@ -500,22 +502,7 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "cbbc9d979a94b094ed51",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "aviation vw_airport_disruption"
-              }
-            },
-            "Property": "airport_name"
-          }
-        },
-        "type": "TopN",
-        "howCreated": "User"
-      },
-      {
-        "name": "d25f2bd42d29a035e02b",
+        "name": "3e3c440970bd4e8e8442",
         "field": {
           "Column": {
             "Expression": {
@@ -538,13 +525,13 @@
                     "Version": 2,
                     "From": [
                       {
-                        "Name": "d",
+                        "Name": "a",
                         "Entity": "DimAirline",
                         "Type": 0
                       },
                       {
-                        "Name": "a",
-                        "Entity": "aviation vw_airline_operational_financial",
+                        "Name": "m",
+                        "Entity": "Report Measures",
                         "Type": 0
                       }
                     ],
@@ -553,7 +540,7 @@
                         "Column": {
                           "Expression": {
                             "SourceRef": {
-                              "Source": "d"
+                              "Source": "a"
                             }
                           },
                           "Property": "airline"
@@ -568,10 +555,10 @@
                           "Measure": {
                             "Expression": {
                               "SourceRef": {
-                                "Source": "a"
+                                "Source": "m"
                               }
                             },
-                            "Property": "Passengers per Rerouted Flight"
+                            "Property": "Estimated Passengers per Estimated Reroute"
                           }
                         }
                       }
@@ -583,7 +570,7 @@
               "Type": 2
             },
             {
-              "Name": "d",
+              "Name": "a",
               "Entity": "DimAirline",
               "Type": 0
             }
@@ -597,7 +584,7 @@
                       "Column": {
                         "Expression": {
                           "SourceRef": {
-                            "Source": "d"
+                            "Source": "a"
                           }
                         },
                         "Property": "airline"
@@ -613,7 +600,110 @@
               }
             }
           ]
-        }
+        },
+        "howCreated": "User"
+      },
+      {
+        "name": "31ef7a828c6e4417951e",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "DimAirline"
+              }
+            },
+            "Property": "airline"
+          }
+        },
+        "type": "TopN",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "subquery",
+              "Expression": {
+                "Subquery": {
+                  "Query": {
+                    "Version": 2,
+                    "From": [
+                      {
+                        "Name": "a",
+                        "Entity": "DimAirline",
+                        "Type": 0
+                      },
+                      {
+                        "Name": "m",
+                        "Entity": "Report Measures",
+                        "Type": 0
+                      }
+                    ],
+                    "Select": [
+                      {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Source": "a"
+                            }
+                          },
+                          "Property": "airline"
+                        },
+                        "Name": "field"
+                      }
+                    ],
+                    "OrderBy": [
+                      {
+                        "Direction": 2,
+                        "Expression": {
+                          "Measure": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Source": "m"
+                              }
+                            },
+                            "Property": "Estimated Passengers per Estimated Reroute"
+                          }
+                        }
+                      }
+                    ],
+                    "Top": 5
+                  }
+                }
+              },
+              "Type": 2
+            },
+            {
+              "Name": "a",
+              "Entity": "DimAirline",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "a"
+                          }
+                        },
+                        "Property": "airline"
+                      }
+                    }
+                  ],
+                  "Table": {
+                    "SourceRef": {
+                      "Source": "subquery"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "howCreated": "User"
       }
     ]
   }

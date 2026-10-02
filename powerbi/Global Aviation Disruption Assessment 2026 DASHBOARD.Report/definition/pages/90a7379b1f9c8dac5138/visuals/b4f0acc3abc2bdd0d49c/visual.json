@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
   "name": "b4f0acc3abc2bdd0d49c",
   "position": {
     "x": 32,
@@ -28,7 +28,8 @@
               },
               "queryRef": "DimRegion.region",
               "nativeQueryRef": "region",
-              "active": true
+              "active": true,
+              "displayName": "region"
             }
           ]
         },
@@ -36,24 +37,18 @@
           "projections": [
             {
               "field": {
-                "Aggregation": {
+                "Measure": {
                   "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "aviation vw_airport_disruption"
-                        }
-                      },
-                      "Property": "flights_affected"
+                    "SourceRef": {
+                      "Entity": "Report Measures"
                     }
                   },
-                  "Function": 0
+                  "Property": "Airport Flights Affected"
                 }
               },
-              "queryRef": "Sum(aviation vw_airport_disruption.flights_affected)",
-              "nativeQueryRef": "Flights Affected",
-              "displayName": "Flights Affected",
-              "format": "#,0"
+              "queryRef": "Report Measures.Airport Flights Affected",
+              "nativeQueryRef": "Airport Flights Affected",
+              "displayName": "Airport Flights Affected"
             }
           ]
         }
@@ -62,24 +57,18 @@
         "sort": [
           {
             "field": {
-              "Aggregation": {
+              "Measure": {
                 "Expression": {
-                  "Column": {
-                    "Expression": {
-                      "SourceRef": {
-                        "Entity": "aviation vw_airport_disruption"
-                      }
-                    },
-                    "Property": "flights_affected"
+                  "SourceRef": {
+                    "Entity": "Report Measures"
                   }
                 },
-                "Function": 0
+                "Property": "Airport Flights Affected"
               }
             },
             "direction": "Descending"
           }
-        ],
-        "isDefaultSort": true
+        ]
       }
     },
     "objects": {
@@ -437,7 +426,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'TOP 5 REGIONS BY FLIGHTS AFFECTED'"
+                  "Value": "'TOP 5 REGIONS BY AIRPORT-AFFECTED FLIGHTS'"
                 }
               }
             },
@@ -463,6 +452,13 @@
               "expr": {
                 "Literal": {
                   "Value": "'left'"
+                }
+              }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
                 }
               }
             }
@@ -533,12 +529,12 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "7b9d0d34ab0d30b5b2ce",
+        "name": "4be49b9f145242c2a215",
         "field": {
           "Column": {
             "Expression": {
               "SourceRef": {
-                "Entity": "aviation vw_airport_disruption"
+                "Entity": "DimRegion"
               }
             },
             "Property": "region"
@@ -557,7 +553,12 @@
                     "From": [
                       {
                         "Name": "a",
-                        "Entity": "aviation vw_airport_disruption",
+                        "Entity": "DimRegion",
+                        "Type": 0
+                      },
+                      {
+                        "Name": "m",
+                        "Entity": "Report Measures",
                         "Type": 0
                       }
                     ],
@@ -578,18 +579,13 @@
                       {
                         "Direction": 2,
                         "Expression": {
-                          "Aggregation": {
+                          "Measure": {
                             "Expression": {
-                              "Column": {
-                                "Expression": {
-                                  "SourceRef": {
-                                    "Source": "a"
-                                  }
-                                },
-                                "Property": "flights_affected"
+                              "SourceRef": {
+                                "Source": "m"
                               }
                             },
-                            "Function": 0
+                            "Property": "Airport Flights Affected"
                           }
                         }
                       }
@@ -602,7 +598,7 @@
             },
             {
               "Name": "a",
-              "Entity": "aviation vw_airport_disruption",
+              "Entity": "DimRegion",
               "Type": 0
             }
           ],

@@ -17,23 +17,19 @@
           "projections": [
             {
               "field": {
-                "Aggregation": {
+                "Measure": {
                   "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "aviation vw_airline_operational_financial"
-                        }
-                      },
-                      "Property": "additional_fuel_cost_usd"
+                    "SourceRef": {
+                      "Entity": "Report Measures"
                     }
                   },
-                  "Function": 0
+                  "Property": "Estimated Fuel Cost USD"
                 }
               },
-              "queryRef": "Sum(aviation vw_airline_operational_financial.additional_fuel_cost_usd)",
-              "nativeQueryRef": "Sum of additional_fuel_cost_usd",
-              "format": "\\$#,0.00;(\\$#,0.00);\\$#,0.00"
+              "queryRef": "Report Measures.Estimated Fuel Cost USD",
+              "nativeQueryRef": "Estimated Fuel Cost USD",
+              "format": "$#,0.00;($#,0.00);$0.00",
+              "displayName": "Estimated Fuel Cost USD"
             }
           ]
         }
@@ -42,18 +38,13 @@
         "sort": [
           {
             "field": {
-              "Aggregation": {
+              "Measure": {
                 "Expression": {
-                  "Column": {
-                    "Expression": {
-                      "SourceRef": {
-                        "Entity": "aviation vw_airline_operational_financial"
-                      }
-                    },
-                    "Property": "additional_fuel_cost_usd"
+                  "SourceRef": {
+                    "Entity": "Report Measures"
                   }
                 },
-                "Function": 0
+                "Property": "Estimated Fuel Cost USD"
               }
             },
             "direction": "Descending"
@@ -326,7 +317,7 @@
             }
           },
           "selector": {
-            "metadata": "Sum(aviation vw_airline_operational_financial.additional_fuel_cost_usd)"
+            "metadata": "Report Measures.Estimated Fuel Cost USD"
           }
         }
       ],
@@ -396,7 +387,7 @@
             }
           },
           "selector": {
-            "metadata": "Sum(aviation vw_airline_operational_financial.additional_fuel_cost_usd)"
+            "metadata": "Report Measures.Estimated Fuel Cost USD"
           }
         }
       ],
@@ -577,7 +568,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'ADDITIONAL FUEL COST'"
+                  "Value": "'ESTIMATED FUEL COST'"
                 }
               }
             },

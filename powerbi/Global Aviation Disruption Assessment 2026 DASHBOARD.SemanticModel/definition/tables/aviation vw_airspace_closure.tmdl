@@ -1,24 +1,6 @@
 table 'aviation vw_airspace_closure'
 	lineageTag: d6145509-a343-46d4-b8f0-f2b220e0fb67
 
-	measure 'Airspace Closure Hours' =
-			
-			SUM('aviation vw_airspace_closure'[duration_hours])
-		formatString: 0
-		lineageTag: aaaaab51-0f19-496c-8764-79418c1e0819
-
-	measure 'Total Airspace Closures' =
-			
-			COUNTROWS('aviation vw_airspace_closure')
-		formatString: 0
-		lineageTag: 0c97994c-7e96-4733-82de-340e1daf2c19
-
-	measure 'Airspace Flights Affected' =
-			
-			SUM('aviation vw_airspace_closure'[flights_affected])
-		formatString: 0
-		lineageTag: 04166b7e-d0bb-4070-bd58-7535d5f2e01d
-
 	column country
 		dataType: string
 		lineageTag: a6b889f6-f85e-4e0a-acae-8bfebf0f989a
@@ -50,11 +32,6 @@ table 'aviation vw_airspace_closure'
 		lineageTag: 3ed7d4af-f1d6-4a28-aafd-937487c95168
 		summarizeBy: none
 		sourceColumn: closure_end_date
-
-		variation Variation
-			isDefault
-			relationship: e4a4d95a-64e7-46c9-af28-bc5ad8a30278
-			defaultHierarchy: LocalDateTable_5be061df-08a9-479f-906a-b4bf52b2580b.'Date Hierarchy'
 
 		annotation SummarizationSetBy = Automatic
 
@@ -91,6 +68,18 @@ table 'aviation vw_airspace_closure'
 		sourceColumn: flights_affected
 
 		annotation SummarizationSetBy = Automatic
+
+	column 'Closure Start Date' = DATE(YEAR('aviation vw_airspace_closure'[closure_start_date]), MONTH('aviation vw_airspace_closure'[closure_start_date]), DAY('aviation vw_airspace_closure'[closure_start_date]))
+		dataType: dateTime
+		formatString: dd MMM yyyy
+		lineageTag: 563e69eb-194a-49cb-a378-10847b747608
+		summarizeBy: none
+
+	column 'Closure End Date' = DATE(YEAR('aviation vw_airspace_closure'[closure_end_date]), MONTH('aviation vw_airspace_closure'[closure_end_date]), DAY('aviation vw_airspace_closure'[closure_end_date]))
+		dataType: dateTime
+		formatString: dd MMM yyyy
+		lineageTag: 59dd3e98-3b45-4006-89da-9150623faf60
+		summarizeBy: none
 
 	partition 'aviation vw_airspace_closure' = m
 		mode: import

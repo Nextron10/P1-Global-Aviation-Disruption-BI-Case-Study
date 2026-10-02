@@ -20,14 +20,16 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "aviation vw_airspace_closure"
+                      "Entity": "Report Measures"
                     }
                   },
-                  "Property": "Total Airspace Closures"
+                  "Property": "Airspace Closure Records"
                 }
               },
-              "queryRef": "aviation vw_airspace_closure.Total Airspace Closures",
-              "nativeQueryRef": "Total Airspace Closures"
+              "queryRef": "Report Measures.Airspace Closure Records",
+              "nativeQueryRef": "Airspace Closure Records",
+              "displayName": "Airspace Closure Records",
+              "format": "#,0"
             }
           ]
         }
@@ -39,10 +41,10 @@
               "Measure": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "aviation vw_airspace_closure"
+                    "Entity": "Report Measures"
                   }
                 },
-                "Property": "Total Airspace Closures"
+                "Property": "Airspace Closure Records"
               }
             },
             "direction": "Descending"
@@ -282,6 +284,13 @@
                   "Value": "''"
                 }
               }
+            },
+            "labelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
             }
           },
           "selector": {
@@ -294,6 +303,13 @@
               "expr": {
                 "Literal": {
                   "Value": "true"
+                }
+              }
+            },
+            "labelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
                 }
               }
             }
@@ -312,10 +328,17 @@
                   }
                 }
               }
+            },
+            "labelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
             }
           },
           "selector": {
-            "metadata": "aviation vw_airspace_closure.Total Airspace Closures"
+            "metadata": "Report Measures.Airspace Closure Records"
           }
         }
       ],
@@ -385,7 +408,7 @@
             }
           },
           "selector": {
-            "metadata": "aviation vw_airspace_closure.Total Airspace Closures"
+            "metadata": "Report Measures.Airspace Closure Records"
           }
         }
       ],

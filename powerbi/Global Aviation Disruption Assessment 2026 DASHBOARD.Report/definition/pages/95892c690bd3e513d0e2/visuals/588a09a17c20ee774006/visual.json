@@ -39,15 +39,16 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Operational Factor"
+                      "Entity": "Report Measures"
                     }
                   },
                   "Property": "Affected Flights by Factor"
                 }
               },
-              "queryRef": "Operational Factor.Affected Flights by Factor",
+              "queryRef": "Report Measures.Affected Flights by Factor",
               "nativeQueryRef": "Affected Flights by Factor",
-              "format": "#,0"
+              "format": "#,0",
+              "displayName": "Affected Flights by Factor"
             }
           ]
         }
@@ -59,7 +60,7 @@
               "Measure": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "Operational Factor"
+                    "Entity": "Report Measures"
                   }
                 },
                 "Property": "Affected Flights by Factor"
@@ -447,7 +448,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'FLIGHTS AFFECTED: AIRPORT VS AIRSPACE'"
+                  "Value": "'SEPARATE AIRPORT AND AIRSPACE EXPOSURES'"
                 }
               }
             },
@@ -617,18 +618,105 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "8a32055a6201cbdbdeea",
+        "name": "813f320f490c4e0fa3d6",
         "field": {
           "Column": {
             "Expression": {
               "SourceRef": {
-                "Entity": "DimAirline"
+                "Entity": "Operational Factor"
               }
             },
-            "Property": "airline"
+            "Property": "Factor"
           }
         },
         "type": "TopN",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "subquery",
+              "Expression": {
+                "Subquery": {
+                  "Query": {
+                    "Version": 2,
+                    "From": [
+                      {
+                        "Name": "a",
+                        "Entity": "Operational Factor",
+                        "Type": 0
+                      },
+                      {
+                        "Name": "m",
+                        "Entity": "Report Measures",
+                        "Type": 0
+                      }
+                    ],
+                    "Select": [
+                      {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Source": "a"
+                            }
+                          },
+                          "Property": "Factor"
+                        },
+                        "Name": "field"
+                      }
+                    ],
+                    "OrderBy": [
+                      {
+                        "Direction": 2,
+                        "Expression": {
+                          "Measure": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Source": "m"
+                              }
+                            },
+                            "Property": "Affected Flights by Factor"
+                          }
+                        }
+                      }
+                    ],
+                    "Top": 5
+                  }
+                }
+              },
+              "Type": 2
+            },
+            {
+              "Name": "a",
+              "Entity": "Operational Factor",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "a"
+                          }
+                        },
+                        "Property": "Factor"
+                      }
+                    }
+                  ],
+                  "Table": {
+                    "SourceRef": {
+                      "Source": "subquery"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
         "howCreated": "User"
       }
     ]

@@ -1,0 +1,14 @@
+/// Unique values from the listed source populations.
+table DimConflictSeverity
+	lineageTag: 378457b0-f69a-49fe-9d2a-2a507ec132b8
+
+	column severity
+		dataType: string
+		lineageTag: 1511bab7-3580-46cb-9585-d9223a818d58
+		summarizeBy: none
+		sourceColumn: [severity]
+
+	partition DimConflictSeverity = calculated
+		mode: import
+		source = FILTER(DISTINCT(SELECTCOLUMNS('aviation conflict_events', "severity", 'aviation conflict_events'[severity])), NOT ISBLANK([severity]))
+

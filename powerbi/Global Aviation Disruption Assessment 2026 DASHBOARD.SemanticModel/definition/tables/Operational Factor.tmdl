@@ -1,16 +1,6 @@
 table 'Operational Factor'
 	lineageTag: fe86f80b-5b1d-431e-8c84-4ec0d3d39ada
 
-	measure 'Affected Flights by Factor' =
-			
-			SWITCH(
-			    SELECTEDVALUE('Operational Factor'[Factor]),
-			    "Airport Disruption", [Airport Flights Affected],
-			    "Airspace Closure", SUM('aviation vw_airspace_closure'[flights_affected])
-			)
-		formatString: 0
-		lineageTag: d2b74eee-0623-468c-8039-3abbdeb6e3c6
-
 	column Factor
 		lineageTag: 4271e457-c0dd-4fb8-b749-2541ca31294a
 		summarizeBy: none
@@ -26,8 +16,8 @@ table 'Operational Factor'
 				DATATABLE(
 				    "Factor", STRING,
 				    {
-				        {"Airport Disruption"},
-				        {"Airspace Closure"}
+				        {"Airport exposure"},
+				        {"Airspace exposure"}
 				    }
 				)
 

@@ -20,15 +20,16 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "aviation vw_route_passenger_impact"
+                      "Entity": "Report Measures"
                     }
                   },
-                  "Property": "Total Extra Fuel Cost"
+                  "Property": "Detailed Extra Fuel Cost USD"
                 }
               },
-              "queryRef": "aviation vw_route_passenger_impact.Total Extra Fuel Cost",
-              "nativeQueryRef": "Total Extra Fuel Cost",
-              "format": "\\$#,0.00;(\\$#,0.00);\\$#,0.00"
+              "queryRef": "Report Measures.Detailed Extra Fuel Cost USD",
+              "nativeQueryRef": "Detailed Extra Fuel Cost USD",
+              "format": "$#,0.00;($#,0.00);$0.00",
+              "displayName": "Detailed Extra Fuel Cost USD"
             }
           ]
         }
@@ -40,10 +41,10 @@
               "Measure": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "aviation vw_route_passenger_impact"
+                    "Entity": "Report Measures"
                   }
                 },
-                "Property": "Total Extra Fuel Cost"
+                "Property": "Detailed Extra Fuel Cost USD"
               }
             },
             "direction": "Descending"
@@ -317,7 +318,7 @@
             }
           },
           "selector": {
-            "metadata": "aviation vw_route_passenger_impact.Total Extra Fuel Cost"
+            "metadata": "Report Measures.Detailed Extra Fuel Cost USD"
           }
         }
       ],
@@ -327,7 +328,7 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "false"
                 }
               }
             },
@@ -380,7 +381,7 @@
             }
           },
           "selector": {
-            "metadata": "aviation vw_route_passenger_impact.Total Extra Fuel Cost"
+            "metadata": "Report Measures.Detailed Extra Fuel Cost USD"
           }
         }
       ],
@@ -560,7 +561,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'EXTRA FUEL COST'"
+                  "Value": "'DETAILED EXTRA FUEL COST'"
                 }
               }
             },
@@ -615,6 +616,13 @@
               "expr": {
                 "Literal": {
                   "Value": "'''Segoe UI'', wf_segoe-ui_normal, helvetica, arial, sans-serif'"
+                }
+              }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
                 }
               }
             }

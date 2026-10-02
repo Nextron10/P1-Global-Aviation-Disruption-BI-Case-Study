@@ -39,15 +39,16 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "aviation vw_airline_operational_financial"
+                      "Entity": "Report Measures"
                     }
                   },
-                  "Property": "Fuel Cost per Rerouted Flight"
+                  "Property": "Estimated Fuel Cost per Estimated Reroute"
                 }
               },
-              "queryRef": "aviation vw_airline_operational_financial.Fuel Cost per Rerouted Flight",
-              "nativeQueryRef": "Fuel Cost per Rerouted Flight",
-              "format": "\\$#,0.0;(\\$#,0.0);\\$#,0.0"
+              "queryRef": "Report Measures.Estimated Fuel Cost per Estimated Reroute",
+              "nativeQueryRef": "Estimated Fuel Cost per Estimated Reroute",
+              "format": "$#,0.00;($#,0.00);$0.00",
+              "displayName": "Estimated Fuel Cost per Estimated Reroute"
             }
           ]
         }
@@ -59,10 +60,10 @@
               "Measure": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "aviation vw_airline_operational_financial"
+                    "Entity": "Report Measures"
                   }
                 },
-                "Property": "Fuel Cost per Rerouted Flight"
+                "Property": "Estimated Fuel Cost per Estimated Reroute"
               }
             },
             "direction": "Descending"
@@ -396,7 +397,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'TOP 5 AIRLINES BY FUEL COST PER REROUTE'"
+                  "Value": "'TOP 5 AIRLINES BY ESTIMATED FUEL COST / REROUTE'"
                 }
               }
             },
@@ -566,7 +567,7 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "3e2139351830d990d02c",
+        "name": "9770204a603e4cf6aeb8",
         "field": {
           "Column": {
             "Expression": {
@@ -589,13 +590,13 @@
                     "Version": 2,
                     "From": [
                       {
-                        "Name": "d",
+                        "Name": "a",
                         "Entity": "DimAirline",
                         "Type": 0
                       },
                       {
-                        "Name": "a",
-                        "Entity": "aviation vw_airline_operational_financial",
+                        "Name": "m",
+                        "Entity": "Report Measures",
                         "Type": 0
                       }
                     ],
@@ -604,7 +605,7 @@
                         "Column": {
                           "Expression": {
                             "SourceRef": {
-                              "Source": "d"
+                              "Source": "a"
                             }
                           },
                           "Property": "airline"
@@ -619,10 +620,10 @@
                           "Measure": {
                             "Expression": {
                               "SourceRef": {
-                                "Source": "a"
+                                "Source": "m"
                               }
                             },
-                            "Property": "Fuel Cost per Rerouted Flight"
+                            "Property": "Estimated Fuel Cost per Estimated Reroute"
                           }
                         }
                       }
@@ -634,7 +635,7 @@
               "Type": 2
             },
             {
-              "Name": "d",
+              "Name": "a",
               "Entity": "DimAirline",
               "Type": 0
             }
@@ -648,7 +649,7 @@
                       "Column": {
                         "Expression": {
                           "SourceRef": {
-                            "Source": "d"
+                            "Source": "a"
                           }
                         },
                         "Property": "airline"
@@ -664,7 +665,8 @@
               }
             }
           ]
-        }
+        },
+        "howCreated": "User"
       }
     ]
   }

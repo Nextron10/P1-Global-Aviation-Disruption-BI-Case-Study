@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "954fb2af74d097908a7c",
   "position": {
-    "x": 1426.6813481110285,
+    "x": 1160,
     "y": 8.3986710963455273,
     "z": 15000,
     "height": 102.57009966777409,
-    "width": 429.31865188897149,
+    "width": 352,
     "tabOrder": 3000
   },
   "visual": {
@@ -20,13 +20,13 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "DimSeverity"
+                      "Entity": "DimAirportSeverity"
                     }
                   },
                   "Property": "severity_level"
                 }
               },
-              "queryRef": "DimSeverity.severity_level",
+              "queryRef": "DimAirportSeverity.severity_level",
               "nativeQueryRef": "severity_level",
               "active": true
             }
@@ -84,7 +84,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Severity'"
+                  "Value": "'Airport Severity'"
                 }
               }
             },
@@ -170,7 +170,7 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "false"
                 }
               }
             },
@@ -291,6 +291,13 @@
               "expr": {
                 "Literal": {
                   "Value": "false"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Airport Severity'"
                 }
               }
             }

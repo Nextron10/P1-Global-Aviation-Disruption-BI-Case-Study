@@ -39,15 +39,16 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "aviation vw_airspace_closure"
+                      "Entity": "Report Measures"
                     }
                   },
                   "Property": "Airspace Closure Hours"
                 }
               },
-              "queryRef": "aviation vw_airspace_closure.Airspace Closure Hours",
+              "queryRef": "Report Measures.Airspace Closure Hours",
               "nativeQueryRef": "Airspace Closure Hours",
-              "format": "0"
+              "format": "#,0.0",
+              "displayName": "Airspace Closure Hours"
             }
           ]
         }
@@ -59,7 +60,7 @@
               "Measure": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "aviation vw_airspace_closure"
+                    "Entity": "Report Measures"
                   }
                 },
                 "Property": "Airspace Closure Hours"
@@ -513,7 +514,7 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "af24dcd1062e40cad7c9",
+        "name": "71c44a8315f84d47b07e",
         "field": {
           "Column": {
             "Expression": {
@@ -539,6 +540,11 @@
                         "Name": "a",
                         "Entity": "aviation vw_airspace_closure",
                         "Type": 0
+                      },
+                      {
+                        "Name": "m",
+                        "Entity": "Report Measures",
+                        "Type": 0
                       }
                     ],
                     "Select": [
@@ -561,7 +567,7 @@
                           "Measure": {
                             "Expression": {
                               "SourceRef": {
-                                "Source": "a"
+                                "Source": "m"
                               }
                             },
                             "Property": "Airspace Closure Hours"
@@ -606,7 +612,8 @@
               }
             }
           ]
-        }
+        },
+        "howCreated": "User"
       }
     ]
   }

@@ -20,15 +20,16 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "aviation flight_reroutes"
+                      "Entity": "Report Measures"
                     }
                   },
-                  "Property": "Total Reroute Delay Hours"
+                  "Property": "Detailed Reroute Delay Hours"
                 }
               },
-              "queryRef": "aviation flight_reroutes.Total Reroute Delay Hours",
-              "nativeQueryRef": "Total Reroute Delay Hours",
-              "format": "#,0"
+              "queryRef": "Report Measures.Detailed Reroute Delay Hours",
+              "nativeQueryRef": "Detailed Reroute Delay Hours",
+              "format": "#,0.00",
+              "displayName": "Detailed Reroute Delay Hours"
             }
           ]
         }
@@ -40,10 +41,10 @@
               "Measure": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "aviation flight_reroutes"
+                    "Entity": "Report Measures"
                   }
                 },
-                "Property": "Total Reroute Delay Hours"
+                "Property": "Detailed Reroute Delay Hours"
               }
             },
             "direction": "Descending"
@@ -282,6 +283,13 @@
                   "Value": "''"
                 }
               }
+            },
+            "labelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
             }
           },
           "selector": {
@@ -294,6 +302,13 @@
               "expr": {
                 "Literal": {
                   "Value": "true"
+                }
+              }
+            },
+            "labelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
                 }
               }
             }
@@ -329,7 +344,7 @@
             }
           },
           "selector": {
-            "metadata": "aviation flight_reroutes.Total Reroute Delay Hours"
+            "metadata": "Report Measures.Detailed Reroute Delay Hours"
           }
         }
       ],
@@ -399,7 +414,7 @@
             }
           },
           "selector": {
-            "metadata": "aviation flight_reroutes.Total Reroute Delay Hours"
+            "metadata": "Report Measures.Detailed Reroute Delay Hours"
           }
         }
       ],

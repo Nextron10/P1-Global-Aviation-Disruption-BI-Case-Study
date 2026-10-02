@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
   "name": "a1aa9c90a09a5d4990da",
   "position": {
     "x": 576,
@@ -20,102 +20,16 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "aviation vw_regional_vulnerability"
+                      "Entity": "DimRegion"
                     }
                   },
                   "Property": "region"
                 }
               },
-              "queryRef": "aviation vw_regional_vulnerability.region",
+              "queryRef": "DimRegion.region",
               "nativeQueryRef": "region",
-              "active": true
-            }
-          ]
-        },
-        "Tooltips": {
-          "projections": [
-            {
-              "field": {
-                "Aggregation": {
-                  "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "aviation vw_regional_vulnerability"
-                        }
-                      },
-                      "Property": "airport_disruption_hours"
-                    }
-                  },
-                  "Function": 0
-                }
-              },
-              "queryRef": "Sum(aviation vw_regional_vulnerability.airport_disruption_hours)",
-              "nativeQueryRef": "Airport Disruption Hours",
-              "displayName": "Airport Disruption Hours",
-              "format": "0"
-            },
-            {
-              "field": {
-                "Aggregation": {
-                  "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "aviation vw_regional_vulnerability"
-                        }
-                      },
-                      "Property": "airspace_closure_hours"
-                    }
-                  },
-                  "Function": 0
-                }
-              },
-              "queryRef": "Sum(aviation vw_regional_vulnerability.airspace_closure_hours)",
-              "nativeQueryRef": "Airspace Closure Hours",
-              "displayName": "Airspace Closure Hours",
-              "format": "0"
-            },
-            {
-              "field": {
-                "Aggregation": {
-                  "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "aviation vw_regional_vulnerability"
-                        }
-                      },
-                      "Property": "airports_affected"
-                    }
-                  },
-                  "Function": 0
-                }
-              },
-              "queryRef": "Sum(aviation vw_regional_vulnerability.airports_affected)",
-              "nativeQueryRef": "Airports Affected",
-              "displayName": "Airports Affected"
-            },
-            {
-              "field": {
-                "Aggregation": {
-                  "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "aviation vw_regional_vulnerability"
-                        }
-                      },
-                      "Property": "estimated_loss_usd"
-                    }
-                  },
-                  "Function": 0
-                }
-              },
-              "queryRef": "Sum(aviation vw_regional_vulnerability.estimated_loss_usd)",
-              "nativeQueryRef": "Estimated Loss USD",
-              "displayName": "Estimated Loss USD",
-              "format": "\\$#,0;(\\$#,0);\\$#,0"
+              "active": true,
+              "displayName": "region"
             }
           ]
         },
@@ -126,15 +40,30 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "aviation vw_regional_vulnerability"
+                      "Entity": "Report Measures"
                     }
                   },
-                  "Property": "Regional Disruption Hours"
+                  "Property": "Airport Disruption Hours"
                 }
               },
-              "queryRef": "aviation vw_regional_vulnerability.Regional Disruption Hours",
-              "nativeQueryRef": "Regional Disruption Hours",
-              "format": "0"
+              "queryRef": "Report Measures.Airport Disruption Hours",
+              "nativeQueryRef": "Airport Disruption Hours",
+              "displayName": "Airport Disruption Hours"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Report Measures"
+                    }
+                  },
+                  "Property": "Airspace Closure Hours"
+                }
+              },
+              "queryRef": "Report Measures.Airspace Closure Hours",
+              "nativeQueryRef": "Airspace Closure Hours",
+              "displayName": "Airspace Closure Hours"
             }
           ]
         }
@@ -146,10 +75,10 @@
               "Measure": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "aviation vw_regional_vulnerability"
+                    "Entity": "Report Measures"
                   }
                 },
-                "Property": "Regional Disruption Hours"
+                "Property": "Airport Disruption Hours"
               }
             },
             "direction": "Descending"
@@ -370,13 +299,6 @@
                   "Value": "0D"
                 }
               }
-            },
-            "end": {
-              "expr": {
-                "Literal": {
-                  "Value": "12000D"
-                }
-              }
             }
           }
         }
@@ -511,7 +433,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'TOP 5 REGIONS BY DISRUPTION DURATION'"
+                  "Value": "'TOP 5 REGIONS: AIRPORT AND AIRSPACE HOURS'"
                 }
               }
             },
@@ -537,6 +459,13 @@
               "expr": {
                 "Literal": {
                   "Value": "'left'"
+                }
+              }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
                 }
               }
             }
@@ -681,12 +610,12 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "e367c91b0ad00aae793d",
+        "name": "7cc20fad2b9a40ab8a8c",
         "field": {
           "Column": {
             "Expression": {
               "SourceRef": {
-                "Entity": "aviation vw_regional_vulnerability"
+                "Entity": "DimRegion"
               }
             },
             "Property": "region"
@@ -705,7 +634,12 @@
                     "From": [
                       {
                         "Name": "a",
-                        "Entity": "aviation vw_regional_vulnerability",
+                        "Entity": "DimRegion",
+                        "Type": 0
+                      },
+                      {
+                        "Name": "m",
+                        "Entity": "Report Measures",
                         "Type": 0
                       }
                     ],
@@ -729,10 +663,10 @@
                           "Measure": {
                             "Expression": {
                               "SourceRef": {
-                                "Source": "a"
+                                "Source": "m"
                               }
                             },
-                            "Property": "Regional Disruption Hours"
+                            "Property": "Airport Disruption Hours"
                           }
                         }
                       }
@@ -745,7 +679,7 @@
             },
             {
               "Name": "a",
-              "Entity": "aviation vw_regional_vulnerability",
+              "Entity": "DimRegion",
               "Type": 0
             }
           ],
@@ -774,7 +708,8 @@
               }
             }
           ]
-        }
+        },
+        "howCreated": "User"
       }
     ]
   }

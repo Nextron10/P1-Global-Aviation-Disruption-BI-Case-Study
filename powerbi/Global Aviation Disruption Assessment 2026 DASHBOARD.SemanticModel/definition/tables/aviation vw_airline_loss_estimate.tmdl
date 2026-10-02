@@ -1,0 +1,57 @@
+/// One undated modeled row per source airline. Keep this population separate.
+table 'aviation vw_airline_loss_estimate'
+	lineageTag: 5ec62dec-8968-4136-826c-896305617ff8
+
+	column airline
+		dataType: string
+		lineageTag: 8b1f02e5-2658-4f52-afe6-e8c354eed6e4
+		summarizeBy: none
+		sourceColumn: airline
+
+	column country
+		dataType: string
+		lineageTag: efa47da6-7894-453e-8ae1-209bbd26a20d
+		summarizeBy: none
+		sourceColumn: country
+
+	column estimated_daily_loss_usd
+		dataType: int64
+		lineageTag: 5e537d22-6810-4e1b-85c9-c6d343649ddf
+		summarizeBy: sum
+		sourceColumn: estimated_daily_loss_usd
+
+	column cancelled_flights
+		dataType: int64
+		lineageTag: 9c116e74-5c39-4f2f-b270-39c73ea3e720
+		summarizeBy: sum
+		sourceColumn: cancelled_flights
+
+	column rerouted_flights
+		dataType: int64
+		lineageTag: 127f3692-73a1-444b-9247-59605e353586
+		summarizeBy: sum
+		sourceColumn: rerouted_flights
+
+	column additional_fuel_cost_usd
+		dataType: int64
+		lineageTag: f94b76e6-2e3a-41ef-8fc6-31c27aae544f
+		summarizeBy: sum
+		sourceColumn: additional_fuel_cost_usd
+
+	column passengers_impacted
+		dataType: int64
+		lineageTag: c8349b98-23c7-4ff1-9597-e868b4c90e13
+		summarizeBy: sum
+		sourceColumn: passengers_impacted
+
+	partition 'aviation vw_airline_loss_estimate' = m
+		mode: import
+		source =
+				let
+				    Source = PostgreSQL.Database("localhost", "aviation_bi"),
+				    Records = Source{[Schema="aviation",Item="vw_airline_loss_estimate"]}[Data]
+				in
+				    Records
+
+	annotation PBI_ResultType = Table
+

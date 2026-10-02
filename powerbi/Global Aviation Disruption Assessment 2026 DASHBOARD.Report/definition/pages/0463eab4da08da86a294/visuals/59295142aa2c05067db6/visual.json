@@ -36,24 +36,19 @@
           "projections": [
             {
               "field": {
-                "Aggregation": {
+                "Measure": {
                   "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "aviation vw_route_passenger_impact"
-                        }
-                      },
-                      "Property": "additional_fuel_cost_usd"
+                    "SourceRef": {
+                      "Entity": "Report Measures"
                     }
                   },
-                  "Function": 0
+                  "Property": "Corridor Extra Fuel Cost USD"
                 }
               },
-              "queryRef": "Sum(aviation vw_route_passenger_impact.additional_fuel_cost_usd)",
-              "nativeQueryRef": "Sum of Additional Fuel Cost USD",
-              "displayName": "Sum of Additional Fuel Cost USD",
-              "format": "\\$#,0;(\\$#,0);\\$#,0"
+              "queryRef": "Report Measures.Corridor Extra Fuel Cost USD",
+              "nativeQueryRef": "Corridor Extra Fuel Cost USD",
+              "displayName": "Corridor Extra Fuel Cost USD",
+              "format": "$#,0.00"
             }
           ]
         },
@@ -61,23 +56,19 @@
           "projections": [
             {
               "field": {
-                "Aggregation": {
+                "Measure": {
                   "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "aviation vw_route_passenger_impact"
-                        }
-                      },
-                      "Property": "delay_hours"
+                    "SourceRef": {
+                      "Entity": "Report Measures"
                     }
                   },
-                  "Function": 0
+                  "Property": "Corridor Reroute Delay Hours"
                 }
               },
-              "queryRef": "Sum(aviation vw_route_passenger_impact.delay_hours)",
-              "nativeQueryRef": "Sum of Delay Hours",
-              "displayName": "Sum of Delay Hours"
+              "queryRef": "Report Measures.Corridor Reroute Delay Hours",
+              "nativeQueryRef": "Corridor Reroute Delay Hours",
+              "displayName": "Corridor Reroute Delay Hours",
+              "format": "#,0.00"
             }
           ]
         },
@@ -85,24 +76,20 @@
           "projections": [
             {
               "field": {
-                "Aggregation": {
+                "Measure": {
                   "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "aviation vw_route_passenger_impact"
-                        }
-                      },
-                      "Property": "rerouted_flights"
+                    "SourceRef": {
+                      "Entity": "Report Measures"
                     }
                   },
-                  "Function": 0
+                  "Property": "Corridor Detailed Reroutes"
                 }
               },
-              "queryRef": "Sum(aviation vw_route_passenger_impact.rerouted_flights)",
-              "nativeQueryRef": "Sum of Rerouted Flights",
+              "queryRef": "Report Measures.Corridor Detailed Reroutes",
+              "nativeQueryRef": "Corridor Detailed Reroutes",
               "active": true,
-              "displayName": "Sum of Rerouted Flights"
+              "displayName": "Corridor Detailed Reroutes",
+              "format": "#,0"
             }
           ]
         },
@@ -110,24 +97,19 @@
           "projections": [
             {
               "field": {
-                "Aggregation": {
+                "Measure": {
                   "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "aviation vw_route_passenger_impact"
-                        }
-                      },
-                      "Property": "additional_distance_km"
+                    "SourceRef": {
+                      "Entity": "Report Measures"
                     }
                   },
-                  "Function": 0
+                  "Property": "Corridor Additional Distance Km"
                 }
               },
-              "queryRef": "Sum(aviation vw_route_passenger_impact.additional_distance_km)",
-              "nativeQueryRef": "Sum of Additional Distance_km",
-              "displayName": "Sum of Additional Distance_km",
-              "format": "# km"
+              "queryRef": "Report Measures.Corridor Additional Distance Km",
+              "nativeQueryRef": "Corridor Additional Distance Km",
+              "displayName": "Corridor Additional Distance Km",
+              "format": "#,0"
             }
           ]
         }

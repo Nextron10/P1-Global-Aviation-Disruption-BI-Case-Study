@@ -17,23 +17,19 @@
           "projections": [
             {
               "field": {
-                "Aggregation": {
+                "Measure": {
                   "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "aviation flight_cancellations"
-                        }
-                      },
-                      "Property": "passengers_affected"
+                    "SourceRef": {
+                      "Entity": "Report Measures"
                     }
                   },
-                  "Function": 0
+                  "Property": "Detailed Passengers Affected"
                 }
               },
-              "queryRef": "Sum(aviation flight_cancellations.passengers_affected)",
-              "nativeQueryRef": "Sum of passengers_affected",
-              "format": "#,0"
+              "queryRef": "Report Measures.Detailed Passengers Affected",
+              "nativeQueryRef": "Detailed Passengers Affected",
+              "format": "#,0",
+              "displayName": "Detailed Passengers Affected"
             }
           ]
         }
@@ -42,18 +38,13 @@
         "sort": [
           {
             "field": {
-              "Aggregation": {
+              "Measure": {
                 "Expression": {
-                  "Column": {
-                    "Expression": {
-                      "SourceRef": {
-                        "Entity": "aviation flight_cancellations"
-                      }
-                    },
-                    "Property": "passengers_affected"
+                  "SourceRef": {
+                    "Entity": "Report Measures"
                   }
                 },
-                "Function": 0
+                "Property": "Detailed Passengers Affected"
               }
             },
             "direction": "Descending"
@@ -293,6 +284,13 @@
                   "Value": "''"
                 }
               }
+            },
+            "labelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
             }
           },
           "selector": {
@@ -305,6 +303,13 @@
               "expr": {
                 "Literal": {
                   "Value": "true"
+                }
+              }
+            },
+            "labelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
                 }
               }
             }
@@ -340,7 +345,7 @@
             }
           },
           "selector": {
-            "metadata": "Sum(aviation flight_cancellations.passengers_affected)"
+            "metadata": "Report Measures.Detailed Passengers Affected"
           }
         }
       ],
@@ -410,7 +415,7 @@
             }
           },
           "selector": {
-            "metadata": "Sum(aviation flight_cancellations.passengers_affected)"
+            "metadata": "Report Measures.Detailed Passengers Affected"
           }
         }
       ],
@@ -591,7 +596,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'PASSENGERS AFFECTED'"
+                  "Value": "'CANCELLATION PASSENGERS'"
                 }
               }
             },
@@ -646,6 +651,13 @@
               "expr": {
                 "Literal": {
                   "Value": "'''Segoe UI'', wf_segoe-ui_normal, helvetica, arial, sans-serif'"
+                }
+              }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
                 }
               }
             }

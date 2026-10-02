@@ -1,19 +1,6 @@
 table 'aviation flight_reroutes'
 	lineageTag: c7facae7-7eb9-451c-8d3e-92d50cee767d
 
-	measure 'Total Reroutes' =
-			
-			COUNTROWS('aviation flight_reroutes')
-		formatString: 0
-		lineageTag: 5eaab4d7-961b-43e2-9642-4f95d15de124
-
-	measure 'Total Reroute Delay Hours' =
-			
-			SUM('aviation flight_reroutes'[delay_hours])
-		lineageTag: 588caf72-31f3-4ec5-a1a1-bb54058d1387
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
-
 	column date
 		dataType: dateTime
 		formatString: Long Date

@@ -1,25 +1,20 @@
+/// Unique values from the listed source populations.
 table DimAirline
-	lineageTag: 6b7ed25b-71c4-4395-b070-ee163c66c93f
+	lineageTag: 1d852127-e795-4ee9-805b-5180cf6ba59a
 
 	column airline
-		lineageTag: fcadb475-7446-41b5-893c-c6675682f504
+		dataType: string
+		lineageTag: 2aeb914c-1794-44ad-945a-08fea69aff00
 		summarizeBy: none
-		isNameInferred
 		sourceColumn: [airline]
-
-		annotation SummarizationSetBy = Automatic
 
 	partition DimAirline = calculated
 		mode: import
 		source =
-				
-				DISTINCT(
-				    SELECTCOLUMNS(
-				        'aviation vw_airline_operational_financial',
-				        "airline",
-				        'aviation vw_airline_operational_financial'[airline]
-				    )
-				)
-
-	annotation PBI_Id = f43786ca022e4d2884b2697090da020e
+				FILTER(DISTINCT(UNION(
+				    SELECTCOLUMNS('aviation vw_airline_loss_summary', "airline", 'aviation vw_airline_loss_summary'[airline]),
+				    SELECTCOLUMNS('aviation vw_airline_loss_estimate', "airline", 'aviation vw_airline_loss_estimate'[airline]),
+				    SELECTCOLUMNS('aviation flight_cancellations', "airline", 'aviation flight_cancellations'[airline]),
+				    SELECTCOLUMNS('aviation flight_reroutes', "airline", 'aviation flight_reroutes'[airline])
+				)), NOT ISBLANK([airline]))
 

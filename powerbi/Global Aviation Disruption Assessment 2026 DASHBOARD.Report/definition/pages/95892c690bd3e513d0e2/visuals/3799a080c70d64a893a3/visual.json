@@ -17,22 +17,19 @@
           "projections": [
             {
               "field": {
-                "Aggregation": {
+                "Measure": {
                   "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "aviation vw_geopolitical_daily_impact"
-                        }
-                      },
-                      "Property": "military_events"
+                    "SourceRef": {
+                      "Entity": "Report Measures"
                     }
                   },
-                  "Function": 0
+                  "Property": "Military Event Records"
                 }
               },
-              "queryRef": "Sum(aviation vw_geopolitical_daily_impact.military_events)",
-              "nativeQueryRef": "Sum of military_events"
+              "queryRef": "Report Measures.Military Event Records",
+              "nativeQueryRef": "Military Event Records",
+              "displayName": "Military Event Records",
+              "format": "#,0"
             }
           ]
         }
@@ -41,18 +38,13 @@
         "sort": [
           {
             "field": {
-              "Aggregation": {
+              "Measure": {
                 "Expression": {
-                  "Column": {
-                    "Expression": {
-                      "SourceRef": {
-                        "Entity": "aviation vw_geopolitical_daily_impact"
-                      }
-                    },
-                    "Property": "military_events"
+                  "SourceRef": {
+                    "Entity": "Report Measures"
                   }
                 },
-                "Function": 0
+                "Property": "Military Event Records"
               }
             },
             "direction": "Descending"
@@ -292,6 +284,13 @@
                   "Value": "''"
                 }
               }
+            },
+            "labelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
             }
           },
           "selector": {
@@ -306,6 +305,13 @@
                   "Value": "true"
                 }
               }
+            },
+            "labelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
             }
           }
         }
@@ -316,7 +322,7 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "false"
                 }
               }
             },
@@ -369,7 +375,7 @@
             }
           },
           "selector": {
-            "metadata": "Sum(aviation vw_geopolitical_daily_impact.military_events)"
+            "metadata": "Report Measures.Military Event Records"
           }
         }
       ],

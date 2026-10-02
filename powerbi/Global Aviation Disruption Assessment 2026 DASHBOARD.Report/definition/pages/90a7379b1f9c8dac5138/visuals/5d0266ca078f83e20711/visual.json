@@ -20,13 +20,13 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "DimSeverity"
+                      "Entity": "DimAirportSeverity"
                     }
                   },
                   "Property": "severity_level"
                 }
               },
-              "queryRef": "DimSeverity.severity_level",
+              "queryRef": "DimAirportSeverity.severity_level",
               "nativeQueryRef": "severity_level",
               "active": true
             }
@@ -77,7 +77,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Severity'"
+                  "Value": "'Airport Severity'"
                 }
               }
             },
@@ -163,7 +163,7 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "false"
                 }
               }
             },
@@ -284,6 +284,13 @@
               "expr": {
                 "Literal": {
                   "Value": "false"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Airport Severity'"
                 }
               }
             }

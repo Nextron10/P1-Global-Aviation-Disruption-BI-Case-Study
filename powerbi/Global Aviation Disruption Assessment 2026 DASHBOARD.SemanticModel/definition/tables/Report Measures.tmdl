@@ -1,0 +1,213 @@
+/// Measures identify their source population. Ratios use one population.
+table 'Report Measures'
+	lineageTag: d79984db-72fd-4dfb-bd8d-b19075025af2
+
+	/// Simulated detailed records. Source: aviation flight_cancellations. Uses the source record date and applicable dimensions.
+	measure 'Detailed Cancellations' = COUNTROWS('aviation flight_cancellations')
+		formatString: #,0
+		displayFolder: Detailed operations
+		lineageTag: d694448e-11e7-4c7e-a6e7-2cae4b4f0468
+
+	/// Simulated detailed records. Source: aviation flight_cancellations. Uses the source record date and applicable dimensions.
+	measure 'Detailed Passengers Affected' = SUM('aviation flight_cancellations'[passengers_affected])
+		formatString: #,0
+		displayFolder: Detailed operations
+		lineageTag: 9c424607-b838-49ab-a9d3-690a6513ce1d
+
+	/// Simulated detailed records. Source: aviation flight_reroutes. Uses the source record date and applicable dimensions.
+	measure 'Detailed Reroutes' = COUNTROWS('aviation flight_reroutes')
+		formatString: #,0
+		displayFolder: Detailed operations
+		lineageTag: 9e7a41df-bfdc-4765-aef1-5fcb4baeea3e
+
+	/// Simulated detailed records. Source: aviation flight_reroutes. Uses the source record date and applicable dimensions.
+	measure 'Detailed Additional Distance Km' = SUM('aviation flight_reroutes'[additional_distance_km])
+		formatString: #,0
+		displayFolder: Detailed operations
+		lineageTag: 07d15342-acf2-436f-8bc7-4d6b52f532c0
+
+	/// Simulated detailed records. Source: aviation flight_reroutes. Uses the source record date and applicable dimensions.
+	measure 'Detailed Extra Fuel Cost USD' = SUM('aviation flight_reroutes'[extra_fuel_cost_usd])
+		formatString: $#,0.00;($#,0.00);$0.00
+		displayFolder: Detailed operations
+		lineageTag: 37d3739f-07f6-4419-805a-f08e95915c2c
+
+	/// Simulated detailed records. Source: aviation flight_reroutes. Uses the source record date and applicable dimensions.
+	measure 'Detailed Reroute Delay Hours' = SUM('aviation flight_reroutes'[delay_hours])
+		formatString: #,0.00
+		displayFolder: Detailed operations
+		lineageTag: 27fcb013-820b-4a21-952f-fd667f84dea7
+
+	/// Modeled summary population. Source: aviation vw_airline_loss_summary. Undated; the Date slicer does not apply.
+	measure 'Modeled Summary Airline Loss USD' = SUM('aviation vw_airline_loss_summary'[estimated_loss_usd])
+		formatString: $#,0.00;($#,0.00);$0.00
+		displayFolder: Modeled summary
+		lineageTag: 5d404dc8-fb18-4d1a-93c4-fc2ddcf074a1
+
+	/// Modeled summary population. Source: aviation vw_airline_loss_summary. Undated; the Date slicer does not apply.
+	measure 'Modeled Summary Cancellations' = SUM('aviation vw_airline_loss_summary'[cancellations_count])
+		formatString: #,0
+		displayFolder: Modeled summary
+		lineageTag: b91e95d4-097d-4fb5-8e4d-e9313b0ce9b3
+
+	/// Modeled summary population. Source: aviation vw_airline_loss_summary. Undated; the Date slicer does not apply.
+	measure 'Modeled Summary Reroutes' = SUM('aviation vw_airline_loss_summary'[reroutes_count])
+		formatString: #,0
+		displayFolder: Modeled summary
+		lineageTag: 1bfa9ba8-cf9f-487f-9b7c-fac80fff9ba1
+
+	/// Unweighted mean across modeled summary airlines. Source: aviation vw_airline_loss_summary. Undated; the Date slicer does not apply.
+	measure 'Modeled Average Revenue Loss Pct' = AVERAGE('aviation vw_airline_loss_summary'[revenue_loss_pct]) / 100
+		formatString: 0.00%
+		displayFolder: Modeled summary
+		lineageTag: 1f970958-e6f3-4c28-ad9d-3242b39befe5
+
+	/// Modeled estimate population. Source: aviation vw_airline_loss_estimate. Undated; the Date slicer does not apply.
+	measure 'Estimated Daily Loss USD' = SUM('aviation vw_airline_loss_estimate'[estimated_daily_loss_usd])
+		formatString: $#,0.00;($#,0.00);$0.00
+		displayFolder: Modeled estimate
+		lineageTag: 2a6e8c4a-6d88-45f9-81d8-ccd951791ec4
+
+	/// Modeled estimate population. Source: aviation vw_airline_loss_estimate. Undated; the Date slicer does not apply.
+	measure 'Estimated Cancellations' = SUM('aviation vw_airline_loss_estimate'[cancelled_flights])
+		formatString: #,0
+		displayFolder: Modeled estimate
+		lineageTag: 3ddcc01f-d3b4-476d-972e-324b4f3f83a1
+
+	/// Modeled estimate population. Source: aviation vw_airline_loss_estimate. Undated; the Date slicer does not apply.
+	measure 'Estimated Reroutes' = SUM('aviation vw_airline_loss_estimate'[rerouted_flights])
+		formatString: #,0
+		displayFolder: Modeled estimate
+		lineageTag: 7932e8bb-c396-4aab-99ec-823117610deb
+
+	/// Modeled estimate population. Source: aviation vw_airline_loss_estimate. Undated; the Date slicer does not apply.
+	measure 'Estimated Fuel Cost USD' = SUM('aviation vw_airline_loss_estimate'[additional_fuel_cost_usd])
+		formatString: $#,0.00;($#,0.00);$0.00
+		displayFolder: Modeled estimate
+		lineageTag: 159e52c4-5a50-4053-9b0d-202167b8ea07
+
+	/// Modeled estimate population. Source: aviation vw_airline_loss_estimate. Undated; the Date slicer does not apply.
+	measure 'Estimated Passengers' = SUM('aviation vw_airline_loss_estimate'[passengers_impacted])
+		formatString: #,0
+		displayFolder: Modeled estimate
+		lineageTag: 107c5f38-3893-4456-8e07-c1ccd0761634
+
+	/// Ratio within the modeled estimate population. Source: aviation vw_airline_loss_estimate. Undated; the Date slicer does not apply.
+	measure 'Estimated Cancellations per Estimated Reroute' = DIVIDE([Estimated Cancellations], [Estimated Reroutes])
+		formatString: 0.00
+		displayFolder: Modeled estimate
+		lineageTag: 862973c6-c258-45c9-bf15-d74b38e4e150
+
+	/// Ratio within the modeled estimate population. Source: aviation vw_airline_loss_estimate. Undated; the Date slicer does not apply.
+	measure 'Estimated Passengers per Estimated Reroute' = DIVIDE([Estimated Passengers], [Estimated Reroutes])
+		formatString: 0.00
+		displayFolder: Modeled estimate
+		lineageTag: 71366db6-29ab-4c8e-8daa-9e11f3a8be6c
+
+	/// Ratio within the modeled estimate population. Source: aviation vw_airline_loss_estimate. Undated; the Date slicer does not apply.
+	measure 'Estimated Fuel Cost per Estimated Reroute' = DIVIDE([Estimated Fuel Cost USD], [Estimated Reroutes])
+		formatString: $#,0.00;($#,0.00);$0.00
+		displayFolder: Modeled estimate
+		lineageTag: e3dd836d-2861-4c8c-950a-26cd68c0b6eb
+
+	/// Simulated records; separate reported exposures. Source: aviation vw_airport_disruption. Uses the source record date and applicable dimensions.
+	measure 'Airport Flights Affected' = SUM('aviation vw_airport_disruption'[flights_affected])
+		formatString: #,0
+		displayFolder: Geographic exposure
+		lineageTag: ebbf2c22-b76a-47f8-8700-23638a75c00a
+
+	/// Simulated records; separate reported exposures. Source: aviation vw_airport_disruption. Uses the source record date and applicable dimensions.
+	measure 'Airport Disruption Records' = COUNTROWS('aviation vw_airport_disruption')
+		formatString: #,0
+		displayFolder: Geographic exposure
+		lineageTag: 44d5b6ba-0e4c-4d9f-a346-a6353bda279a
+
+	/// Simulated records; separate reported exposures. Source: aviation vw_airport_disruption. Uses the source record date and applicable dimensions.
+	measure 'Airport Disruption Hours' = SUM('aviation vw_airport_disruption'[duration_hours])
+		formatString: #,0.0
+		displayFolder: Geographic exposure
+		lineageTag: a2c3b1f5-c59d-4402-a036-6cdb51369e77
+
+	/// Simulated records; separate reported exposures. Source: aviation vw_airspace_closure. Uses the source record date and applicable dimensions.
+	measure 'Airspace Closure Records' = COUNTROWS('aviation vw_airspace_closure')
+		formatString: #,0
+		displayFolder: Geographic exposure
+		lineageTag: edcd7a1e-925c-48d3-be89-e5440ca8d9b7
+
+	/// Simulated records; separate reported exposures. Source: aviation vw_airspace_closure. Uses the source record date and applicable dimensions.
+	measure 'Airspace Closure Hours' = SUM('aviation vw_airspace_closure'[duration_hours])
+		formatString: #,0.0
+		displayFolder: Geographic exposure
+		lineageTag: cdb480fc-2ba0-4be6-ad53-050d97ddcc03
+
+	/// Simulated records; separate reported exposures. Source: aviation vw_airspace_closure. Uses the source record date and applicable dimensions.
+	measure 'Airspace Flights Affected' = SUM('aviation vw_airspace_closure'[flights_affected])
+		formatString: #,0
+		displayFolder: Geographic exposure
+		lineageTag: f2756e51-0475-4d40-a80c-0abc69f20916
+
+	/// Simulated records; separate reported exposures. Source: aviation conflict_events. Uses the source record date and applicable dimensions.
+	measure 'Conflict Events' = COUNTROWS('aviation conflict_events')
+		formatString: #,0
+		displayFolder: Geographic exposure
+		lineageTag: 620c8d7e-755e-4985-b7e8-0cdc1575c5f9
+
+	/// Simulated records; separate reported exposures. Source: aviation conflict_events. Uses the source record date and applicable dimensions.
+	measure 'Military Event Records' = COALESCE(CALCULATE([Conflict Events], 'aviation conflict_events'[event_type] = "Military"), 0)
+		formatString: #,0
+		displayFolder: Geographic exposure
+		lineageTag: 2710fbc3-7774-4bde-88bf-8b6ef53381f1
+
+	/// Simulated records; separate reported exposures. Source: Airport and airspace detail. Uses the source record date and applicable dimensions.
+	measure 'Affected Flights by Factor' = SWITCH(SELECTEDVALUE('Operational Factor'[Factor]), "Airport exposure", [Airport Flights Affected], "Airspace exposure", [Airspace Flights Affected])
+		formatString: #,0
+		displayFolder: Geographic exposure
+		lineageTag: 8478ce62-6857-4803-84f3-0e5eadfa1019
+
+	/// Daily route aggregate from simulated detail. Source: aviation vw_route_passenger_impact. Uses the source record date and applicable dimensions.
+	measure 'Corridor Detailed Reroutes' = SUM('aviation vw_route_passenger_impact'[rerouted_flights])
+		formatString: #,0
+		displayFolder: Route analysis
+		lineageTag: f51918c2-409b-481d-af5d-2f0fd8ccf264
+
+	/// Daily route aggregate from simulated detail. Source: aviation vw_route_passenger_impact. Uses the source record date and applicable dimensions.
+	measure 'Corridor Additional Distance Km' = SUM('aviation vw_route_passenger_impact'[additional_distance_km])
+		formatString: #,0
+		displayFolder: Route analysis
+		lineageTag: 5df14641-35d2-4b99-9557-8d17ded7a5a9
+
+	/// Daily route aggregate from simulated detail. Source: aviation vw_route_passenger_impact. Uses the source record date and applicable dimensions.
+	measure 'Corridor Extra Fuel Cost USD' = SUM('aviation vw_route_passenger_impact'[additional_fuel_cost_usd])
+		formatString: $#,0.00
+		displayFolder: Route analysis
+		lineageTag: 9408daf9-61f6-410f-9309-1d55352d32dc
+
+	/// Daily route aggregate from simulated detail. Source: aviation vw_route_passenger_impact. Uses the source record date and applicable dimensions.
+	measure 'Corridor Reroute Delay Hours' = SUM('aviation vw_route_passenger_impact'[delay_hours])
+		formatString: #,0.00
+		displayFolder: Route analysis
+		lineageTag: 8799b5bd-d840-497a-96e2-4a5667609d54
+
+	/// Daily route aggregate from simulated detail. Source: aviation vw_route_passenger_impact. Uses the source record date and applicable dimensions.
+	measure 'Corridor Detailed Cancellations' = SUM('aviation vw_route_passenger_impact'[cancelled_flights])
+		formatString: #,0
+		displayFolder: Route analysis
+		lineageTag: d4c5a6bc-5a96-47ac-9580-c7edbb118881
+
+	/// Daily route aggregate from simulated detail. Source: aviation vw_route_passenger_impact. Uses the source record date and applicable dimensions.
+	measure 'Corridor Cancellation Passengers' = SUM('aviation vw_route_passenger_impact'[passengers_affected])
+		formatString: #,0
+		displayFolder: Route analysis
+		lineageTag: 26b64619-6609-423a-828b-9972a3e2d537
+
+	column Placeholder
+		dataType: int64
+		isHidden
+		lineageTag: 0cb2d58c-d244-4434-8d1f-9c43565774c7
+		summarizeBy: none
+		sourceColumn: [Placeholder]
+
+	partition 'Report Measures' = calculated
+		mode: import
+		source = ROW("Placeholder", 1)
+

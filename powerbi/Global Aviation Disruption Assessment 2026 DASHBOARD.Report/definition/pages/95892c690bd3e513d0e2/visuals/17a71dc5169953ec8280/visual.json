@@ -20,15 +20,16 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "aviation vw_airport_disruption"
+                      "Entity": "Report Measures"
                     }
                   },
                   "Property": "Airport Flights Affected"
                 }
               },
-              "queryRef": "aviation vw_airport_disruption.Airport Flights Affected",
+              "queryRef": "Report Measures.Airport Flights Affected",
               "nativeQueryRef": "Airport Flights Affected",
-              "format": "#,0"
+              "format": "#,0",
+              "displayName": "Airport Flights Affected"
             }
           ]
         }
@@ -40,7 +41,7 @@
               "Measure": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "aviation vw_airport_disruption"
+                    "Entity": "Report Measures"
                   }
                 },
                 "Property": "Airport Flights Affected"
@@ -282,6 +283,13 @@
                   "Value": "''"
                 }
               }
+            },
+            "labelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
             }
           },
           "selector": {
@@ -294,6 +302,13 @@
               "expr": {
                 "Literal": {
                   "Value": "true"
+                }
+              }
+            },
+            "labelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
                 }
               }
             }
@@ -317,7 +332,7 @@
             }
           },
           "selector": {
-            "metadata": "aviation vw_airport_disruption.Airport Flights Affected"
+            "metadata": "Report Measures.Airport Flights Affected"
           }
         }
       ],
@@ -327,7 +342,7 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "false"
                 }
               }
             },
@@ -380,7 +395,7 @@
             }
           },
           "selector": {
-            "metadata": "aviation vw_airport_disruption.Airport Flights Affected"
+            "metadata": "Report Measures.Airport Flights Affected"
           }
         }
       ],

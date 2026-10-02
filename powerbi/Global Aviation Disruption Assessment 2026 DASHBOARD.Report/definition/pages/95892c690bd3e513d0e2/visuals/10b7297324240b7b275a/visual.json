@@ -40,14 +40,16 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "aviation flight_cancellations"
+                      "Entity": "Report Measures"
                     }
                   },
-                  "Property": "Total Cancellations"
+                  "Property": "Detailed Cancellations"
                 }
               },
-              "queryRef": "aviation flight_cancellations.Total Cancellations",
-              "nativeQueryRef": "Total Cancellations"
+              "queryRef": "Report Measures.Detailed Cancellations",
+              "nativeQueryRef": "Detailed Cancellations",
+              "displayName": "Records",
+              "format": "#,0"
             }
           ]
         }
@@ -59,10 +61,10 @@
               "Measure": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "aviation flight_cancellations"
+                    "Entity": "Report Measures"
                   }
                 },
-                "Property": "Total Cancellations"
+                "Property": "Detailed Cancellations"
               }
             },
             "direction": "Descending"

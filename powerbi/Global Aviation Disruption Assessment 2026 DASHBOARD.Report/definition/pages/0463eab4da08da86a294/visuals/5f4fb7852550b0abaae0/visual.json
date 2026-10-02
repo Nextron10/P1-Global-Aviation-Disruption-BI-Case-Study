@@ -20,15 +20,16 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "aviation vw_route_passenger_impact"
+                      "Entity": "Report Measures"
                     }
                   },
-                  "Property": "Total Passengers Impacted"
+                  "Property": "Detailed Passengers Affected"
                 }
               },
-              "queryRef": "aviation vw_route_passenger_impact.Total Passengers Impacted",
-              "nativeQueryRef": "Total Passengers Impacted",
-              "format": "#,0"
+              "queryRef": "Report Measures.Detailed Passengers Affected",
+              "nativeQueryRef": "Detailed Passengers Affected",
+              "format": "#,0",
+              "displayName": "Detailed Passengers Affected"
             }
           ]
         }
@@ -40,10 +41,10 @@
               "Measure": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "aviation vw_route_passenger_impact"
+                    "Entity": "Report Measures"
                   }
                 },
-                "Property": "Total Passengers Impacted"
+                "Property": "Detailed Passengers Affected"
               }
             },
             "direction": "Descending"
@@ -283,6 +284,13 @@
                   "Value": "''"
                 }
               }
+            },
+            "labelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
             }
           },
           "selector": {
@@ -295,6 +303,13 @@
               "expr": {
                 "Literal": {
                   "Value": "true"
+                }
+              }
+            },
+            "labelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
                 }
               }
             }
@@ -323,7 +338,7 @@
             }
           },
           "selector": {
-            "metadata": "aviation vw_route_passenger_impact.Total Passengers Impacted"
+            "metadata": "Report Measures.Detailed Passengers Affected"
           }
         }
       ],
@@ -393,7 +408,7 @@
             }
           },
           "selector": {
-            "metadata": "aviation vw_route_passenger_impact.Total Passengers Impacted"
+            "metadata": "Report Measures.Detailed Passengers Affected"
           }
         }
       ],
@@ -574,7 +589,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'PASSENGERS IMPACTED'"
+                  "Value": "'CANCELLATION PASSENGERS'"
                 }
               }
             },
@@ -629,6 +644,13 @@
               "expr": {
                 "Literal": {
                   "Value": "'''Segoe UI'', wf_segoe-ui_normal, helvetica, arial, sans-serif'"
+                }
+              }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
                 }
               }
             }

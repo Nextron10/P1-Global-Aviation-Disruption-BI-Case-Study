@@ -36,36 +36,35 @@
           "projections": [
             {
               "field": {
-                "Aggregation": {
+                "Measure": {
                   "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "aviation vw_airport_disruption"
-                        }
-                      },
-                      "Property": "duration_hours"
+                    "SourceRef": {
+                      "Entity": "Report Measures"
                     }
                   },
-                  "Function": 0
+                  "Property": "Airport Disruption Hours"
                 }
               },
-              "queryRef": "Sum(aviation vw_airport_disruption.duration_hours)",
-              "nativeQueryRef": "Sum of duration_hours"
+              "queryRef": "Report Measures.Airport Disruption Hours",
+              "nativeQueryRef": "Airport Disruption Hours",
+              "displayName": "Airport Disruption Hours",
+              "format": "#,0.0"
             },
             {
               "field": {
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "aviation vw_airport_disruption"
+                      "Entity": "Report Measures"
                     }
                   },
-                  "Property": "Airport Disruption Events"
+                  "Property": "Airport Disruption Records"
                 }
               },
-              "queryRef": "aviation vw_airport_disruption.Airport Disruption Events",
-              "nativeQueryRef": "Airport Disruption Events"
+              "queryRef": "Report Measures.Airport Disruption Records",
+              "nativeQueryRef": "Airport Disruption Records",
+              "displayName": "Airport Disruption Records",
+              "format": "#,0"
             }
           ]
         },
@@ -73,23 +72,19 @@
           "projections": [
             {
               "field": {
-                "Aggregation": {
+                "Measure": {
                   "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "aviation vw_airport_disruption"
-                        }
-                      },
-                      "Property": "flights_affected"
+                    "SourceRef": {
+                      "Entity": "Report Measures"
                     }
                   },
-                  "Function": 0
+                  "Property": "Airport Flights Affected"
                 }
               },
-              "queryRef": "Sum(aviation vw_airport_disruption.flights_affected)",
-              "nativeQueryRef": "Flights Affected",
-              "displayName": "Flights Affected"
+              "queryRef": "Report Measures.Airport Flights Affected",
+              "nativeQueryRef": "Airport Flights Affected",
+              "displayName": "Airport Flights Affected",
+              "format": "#,0"
             }
           ]
         }
@@ -98,18 +93,13 @@
         "sort": [
           {
             "field": {
-              "Aggregation": {
+              "Measure": {
                 "Expression": {
-                  "Column": {
-                    "Expression": {
-                      "SourceRef": {
-                        "Entity": "aviation vw_airport_disruption"
-                      }
-                    },
-                    "Property": "flights_affected"
+                  "SourceRef": {
+                    "Entity": "Report Measures"
                   }
                 },
-                "Function": 0
+                "Property": "Airport Flights Affected"
               }
             },
             "direction": "Descending"
@@ -604,7 +594,7 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "eb6018308aaa59d56deb",
+        "name": "4153b2dc568f4e2c952d",
         "field": {
           "Column": {
             "Expression": {
@@ -630,6 +620,11 @@
                         "Name": "a",
                         "Entity": "aviation vw_airport_disruption",
                         "Type": 0
+                      },
+                      {
+                        "Name": "m",
+                        "Entity": "Report Measures",
+                        "Type": 0
                       }
                     ],
                     "Select": [
@@ -649,18 +644,13 @@
                       {
                         "Direction": 2,
                         "Expression": {
-                          "Aggregation": {
+                          "Measure": {
                             "Expression": {
-                              "Column": {
-                                "Expression": {
-                                  "SourceRef": {
-                                    "Source": "a"
-                                  }
-                                },
-                                "Property": "flights_affected"
+                              "SourceRef": {
+                                "Source": "m"
                               }
                             },
-                            "Function": 0
+                            "Property": "Airport Flights Affected"
                           }
                         }
                       }
@@ -702,7 +692,8 @@
               }
             }
           ]
-        }
+        },
+        "howCreated": "User"
       }
     ]
   }

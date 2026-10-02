@@ -20,15 +20,16 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "aviation vw_airspace_closure"
+                      "Entity": "Report Measures"
                     }
                   },
                   "Property": "Airspace Closure Hours"
                 }
               },
-              "queryRef": "aviation vw_airspace_closure.Airspace Closure Hours",
+              "queryRef": "Report Measures.Airspace Closure Hours",
               "nativeQueryRef": "Airspace Closure Hours",
-              "format": "#,0"
+              "format": "#,0.0",
+              "displayName": "Airspace Closure Hours"
             }
           ]
         }
@@ -40,7 +41,7 @@
               "Measure": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "aviation vw_airspace_closure"
+                    "Entity": "Report Measures"
                   }
                 },
                 "Property": "Airspace Closure Hours"
@@ -282,6 +283,13 @@
                   "Value": "''"
                 }
               }
+            },
+            "labelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
             }
           },
           "selector": {
@@ -294,6 +302,13 @@
               "expr": {
                 "Literal": {
                   "Value": "true"
+                }
+              }
+            },
+            "labelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
                 }
               }
             }
@@ -310,7 +325,7 @@
             }
           },
           "selector": {
-            "metadata": "aviation vw_airspace_closure.Airspace Closure Hours"
+            "metadata": "Report Measures.Airspace Closure Hours"
           }
         }
       ],
@@ -320,7 +335,7 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "false"
                 }
               }
             },
@@ -385,7 +400,7 @@
             }
           },
           "selector": {
-            "metadata": "aviation vw_airspace_closure.Airspace Closure Hours"
+            "metadata": "Report Measures.Airspace Closure Hours"
           }
         }
       ],

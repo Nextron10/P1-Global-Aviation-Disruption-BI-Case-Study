@@ -17,80 +17,17 @@
           "projections": [
             {
               "field": {
-                "HierarchyLevel": {
+                "Column": {
                   "Expression": {
-                    "Hierarchy": {
-                      "Expression": {
-                        "PropertyVariationSource": {
-                          "Expression": {
-                            "SourceRef": {
-                              "Entity": "DimDate"
-                            }
-                          },
-                          "Name": "Variation",
-                          "Property": "Date"
-                        }
-                      },
-                      "Hierarchy": "Date Hierarchy"
+                    "SourceRef": {
+                      "Entity": "DimDate"
                     }
                   },
-                  "Level": "Year"
+                  "Property": "Year Month"
                 }
               },
-              "queryRef": "DimDate.Date.Variation.Date Hierarchy.Year",
-              "nativeQueryRef": "Date Year",
-              "active": false
-            },
-            {
-              "field": {
-                "HierarchyLevel": {
-                  "Expression": {
-                    "Hierarchy": {
-                      "Expression": {
-                        "PropertyVariationSource": {
-                          "Expression": {
-                            "SourceRef": {
-                              "Entity": "DimDate"
-                            }
-                          },
-                          "Name": "Variation",
-                          "Property": "Date"
-                        }
-                      },
-                      "Hierarchy": "Date Hierarchy"
-                    }
-                  },
-                  "Level": "Quarter"
-                }
-              },
-              "queryRef": "DimDate.Date.Variation.Date Hierarchy.Quarter",
-              "nativeQueryRef": "Date Quarter",
-              "active": false
-            },
-            {
-              "field": {
-                "HierarchyLevel": {
-                  "Expression": {
-                    "Hierarchy": {
-                      "Expression": {
-                        "PropertyVariationSource": {
-                          "Expression": {
-                            "SourceRef": {
-                              "Entity": "DimDate"
-                            }
-                          },
-                          "Name": "Variation",
-                          "Property": "Date"
-                        }
-                      },
-                      "Hierarchy": "Date Hierarchy"
-                    }
-                  },
-                  "Level": "Month"
-                }
-              },
-              "queryRef": "DimDate.Date.Variation.Date Hierarchy.Month",
-              "nativeQueryRef": "Date Month",
+              "queryRef": "DimDate.Year Month",
+              "nativeQueryRef": "Year Month",
               "active": true
             }
           ]
@@ -102,28 +39,32 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "aviation flight_cancellations"
+                      "Entity": "Report Measures"
                     }
                   },
-                  "Property": "Total Cancellations"
+                  "Property": "Detailed Cancellations"
                 }
               },
-              "queryRef": "aviation flight_cancellations.Total Cancellations",
-              "nativeQueryRef": "Total Cancellations"
+              "queryRef": "Report Measures.Detailed Cancellations",
+              "nativeQueryRef": "Detailed Cancellations",
+              "displayName": "Detailed Cancellations",
+              "format": "#,0"
             },
             {
               "field": {
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "aviation flight_reroutes"
+                      "Entity": "Report Measures"
                     }
                   },
-                  "Property": "Total Reroutes"
+                  "Property": "Detailed Reroutes"
                 }
               },
-              "queryRef": "aviation flight_reroutes.Total Reroutes",
-              "nativeQueryRef": "Total Reroutes"
+              "queryRef": "Report Measures.Detailed Reroutes",
+              "nativeQueryRef": "Detailed Reroutes",
+              "displayName": "Detailed Reroutes",
+              "format": "#,0"
             }
           ]
         },
@@ -134,14 +75,16 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "aviation conflict_events"
+                      "Entity": "Report Measures"
                     }
                   },
-                  "Property": "Military Events"
+                  "Property": "Military Event Records"
                 }
               },
-              "queryRef": "aviation conflict_events.Military Events",
-              "nativeQueryRef": "Military Events"
+              "queryRef": "Report Measures.Military Event Records",
+              "nativeQueryRef": "Military Event Records",
+              "displayName": "Military Event Records",
+              "format": "#,0"
             }
           ]
         }
@@ -182,7 +125,7 @@
             "axisType": {
               "expr": {
                 "Literal": {
-                  "Value": "'Scalar'"
+                  "Value": "'Categorical'"
                 }
               }
             },
@@ -541,20 +484,6 @@
               "expr": {
                 "Literal": {
                   "Value": "40D"
-                }
-              }
-            },
-            "lineChartType": {
-              "expr": {
-                "Literal": {
-                  "Value": "'smooth'"
-                }
-              }
-            },
-            "interpolationSmooth": {
-              "expr": {
-                "Literal": {
-                  "Value": "'monotoneX'"
                 }
               }
             },

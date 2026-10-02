@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "7e4fa41cb4b99d0c9e22",
   "position": {
-    "x": 488.11654484416238,
+    "x": 408,
     "y": 0,
     "z": 12000,
     "height": 107.80066445182723,
-    "width": 469.12258357781974,
+    "width": 352,
     "tabOrder": 1000
   },
   "visual": {
@@ -84,7 +84,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Region'"
+                  "Value": "'Entity Region'"
                 }
               }
             },
@@ -170,7 +170,7 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "false"
                 }
               }
             },
@@ -291,6 +291,13 @@
               "expr": {
                 "Literal": {
                   "Value": "false"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Entity Region'"
                 }
               }
             }

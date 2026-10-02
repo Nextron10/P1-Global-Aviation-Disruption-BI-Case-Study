@@ -37,23 +37,18 @@
           "projections": [
             {
               "field": {
-                "Aggregation": {
+                "Measure": {
                   "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "aviation vw_airport_disruption"
-                        }
-                      },
-                      "Property": "flights_affected"
+                    "SourceRef": {
+                      "Entity": "Report Measures"
                     }
                   },
-                  "Function": 0
+                  "Property": "Airport Flights Affected"
                 }
               },
-              "queryRef": "Sum(aviation vw_airport_disruption.flights_affected)",
-              "nativeQueryRef": "Flights Affected",
-              "displayName": "Flights Affected",
+              "queryRef": "Report Measures.Airport Flights Affected",
+              "nativeQueryRef": "Airport Flights Affected",
+              "displayName": "Airport Flights Affected",
               "format": "#,0"
             }
           ]
@@ -63,18 +58,13 @@
         "sort": [
           {
             "field": {
-              "Aggregation": {
+              "Measure": {
                 "Expression": {
-                  "Column": {
-                    "Expression": {
-                      "SourceRef": {
-                        "Entity": "aviation vw_airport_disruption"
-                      }
-                    },
-                    "Property": "flights_affected"
+                  "SourceRef": {
+                    "Entity": "Report Measures"
                   }
                 },
-                "Function": 0
+                "Property": "Airport Flights Affected"
               }
             },
             "direction": "Descending"
@@ -475,7 +465,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'FLIGHTS AFFECTED BY SEVERITY'"
+                  "Value": "'AIRPORT FLIGHTS BY AIRPORT SEVERITY'"
                 }
               }
             },

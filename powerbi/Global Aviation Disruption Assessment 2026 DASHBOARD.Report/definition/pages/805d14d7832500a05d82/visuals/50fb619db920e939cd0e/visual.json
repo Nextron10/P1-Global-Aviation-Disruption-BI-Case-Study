@@ -20,15 +20,16 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "aviation vw_airline_operational_financial"
+                      "Entity": "Report Measures"
                     }
                   },
-                  "Property": "Fuel Cost per Rerouted Flight"
+                  "Property": "Estimated Fuel Cost per Estimated Reroute"
                 }
               },
-              "queryRef": "aviation vw_airline_operational_financial.Fuel Cost per Rerouted Flight",
-              "nativeQueryRef": "Fuel Cost per Rerouted Flight",
-              "format": "\\$#,0.00;(\\$#,0.00);\\$#,0.00"
+              "queryRef": "Report Measures.Estimated Fuel Cost per Estimated Reroute",
+              "nativeQueryRef": "Estimated Fuel Cost per Estimated Reroute",
+              "format": "$#,0.00;($#,0.00);$0.00",
+              "displayName": "Estimated Fuel Cost per Estimated Reroute"
             }
           ]
         }
@@ -40,10 +41,10 @@
               "Measure": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "aviation vw_airline_operational_financial"
+                    "Entity": "Report Measures"
                   }
                 },
-                "Property": "Fuel Cost per Rerouted Flight"
+                "Property": "Estimated Fuel Cost per Estimated Reroute"
               }
             },
             "direction": "Descending"
@@ -314,7 +315,7 @@
             }
           },
           "selector": {
-            "metadata": "aviation vw_airline_operational_financial.Fuel Cost per Rerouted Flight"
+            "metadata": "Report Measures.Estimated Fuel Cost per Estimated Reroute"
           }
         }
       ],
@@ -324,7 +325,7 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "false"
                 }
               }
             },
@@ -377,7 +378,7 @@
             }
           },
           "selector": {
-            "metadata": "aviation vw_airline_operational_financial.Fuel Cost per Rerouted Flight"
+            "metadata": "Report Measures.Estimated Fuel Cost per Estimated Reroute"
           }
         }
       ],
@@ -557,7 +558,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'FUEL COST / REROUTE'"
+                  "Value": "'ESTIMATED FUEL COST / REROUTE'"
                 }
               }
             },

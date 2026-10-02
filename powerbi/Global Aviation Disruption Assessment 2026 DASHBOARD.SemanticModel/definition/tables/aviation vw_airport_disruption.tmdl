@@ -1,18 +1,6 @@
 table 'aviation vw_airport_disruption'
 	lineageTag: 061396f1-5f62-48fc-ad1e-abc8a2c439f2
 
-	measure 'Airport Flights Affected' =
-			
-			SUM('aviation vw_airport_disruption'[flights_affected])
-		formatString: 0
-		lineageTag: 93876736-309a-4ee4-be16-39d0a5e17a94
-
-	measure 'Airport Disruption Events' =
-			
-			COUNTROWS('aviation vw_airport_disruption')
-		formatString: 0
-		lineageTag: 85c24a37-9065-4a01-ac64-6a4b815ce08e
-
 	column airport_name
 		dataType: string
 		lineageTag: 2f21527e-3448-448d-8c69-b041d507b56b

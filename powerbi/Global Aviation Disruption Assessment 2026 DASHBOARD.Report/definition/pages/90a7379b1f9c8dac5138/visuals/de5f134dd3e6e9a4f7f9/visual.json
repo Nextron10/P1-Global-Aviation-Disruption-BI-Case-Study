@@ -17,22 +17,19 @@
           "projections": [
             {
               "field": {
-                "Aggregation": {
+                "Measure": {
                   "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "aviation vw_executive_kpi"
-                        }
-                      },
-                      "Property": "total_conflict_events"
+                    "SourceRef": {
+                      "Entity": "Report Measures"
                     }
                   },
-                  "Function": 0
+                  "Property": "Conflict Events"
                 }
               },
-              "queryRef": "Sum(aviation vw_executive_kpi.total_conflict_events)",
-              "nativeQueryRef": "Sum of total_conflict_events"
+              "queryRef": "Report Measures.Conflict Events",
+              "nativeQueryRef": "Conflict Events",
+              "displayName": "Conflict Events",
+              "format": "#,0"
             }
           ]
         }
@@ -41,18 +38,13 @@
         "sort": [
           {
             "field": {
-              "Aggregation": {
+              "Measure": {
                 "Expression": {
-                  "Column": {
-                    "Expression": {
-                      "SourceRef": {
-                        "Entity": "aviation vw_executive_kpi"
-                      }
-                    },
-                    "Property": "total_conflict_events"
+                  "SourceRef": {
+                    "Entity": "Report Measures"
                   }
                 },
-                "Function": 0
+                "Property": "Conflict Events"
               }
             },
             "direction": "Descending"
@@ -291,6 +283,13 @@
                   "Value": "''"
                 }
               }
+            },
+            "labelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
             }
           },
           "selector": {
@@ -303,6 +302,13 @@
               "expr": {
                 "Literal": {
                   "Value": "true"
+                }
+              }
+            },
+            "labelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
                 }
               }
             }
@@ -330,7 +336,7 @@
             }
           },
           "selector": {
-            "metadata": "Sum(aviation vw_executive_kpi.total_conflict_events)"
+            "metadata": "Report Measures.Conflict Events"
           }
         }
       ],
@@ -340,7 +346,7 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "false"
                 }
               }
             },
@@ -393,7 +399,7 @@
             }
           },
           "selector": {
-            "metadata": "Sum(aviation vw_executive_kpi.total_conflict_events)"
+            "metadata": "Report Measures.Conflict Events"
           }
         }
       ],
@@ -573,7 +579,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'TOTAL CONFLICT EVENTS'"
+                  "Value": "'CONFLICT RECORDS'"
                 }
               }
             },
@@ -628,6 +634,13 @@
               "expr": {
                 "Literal": {
                   "Value": "'''Segoe UI'', wf_segoe-ui_normal, helvetica, arial, sans-serif'"
+                }
+              }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
                 }
               }
             }

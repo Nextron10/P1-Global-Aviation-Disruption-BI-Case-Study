@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
   "name": "44e7b9f53caae490118c",
   "position": {
     "x": 624,
@@ -39,15 +39,15 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "aviation vw_airline_operational_financial"
+                      "Entity": "Report Measures"
                     }
                   },
-                  "Property": "Financial Fuel Cost"
+                  "Property": "Modeled Summary Reroutes"
                 }
               },
-              "queryRef": "aviation vw_airline_operational_financial.Financial Fuel Cost",
-              "nativeQueryRef": "Financial Fuel Cost",
-              "format": "\\$#,0.0;(\\$#,0.0);\\$#,0.0"
+              "queryRef": "Report Measures.Modeled Summary Reroutes",
+              "nativeQueryRef": "Modeled Summary Reroutes",
+              "displayName": "Modeled Summary Reroutes"
             }
           ]
         },
@@ -58,16 +58,16 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "aviation vw_airline_operational_financial"
+                      "Entity": "Report Measures"
                     }
                   },
-                  "Property": "Financial Cancellations"
+                  "Property": "Modeled Summary Cancellations"
                 }
               },
-              "queryRef": "aviation vw_airline_operational_financial.Financial Cancellations",
-              "nativeQueryRef": "Financial Cancellations",
+              "queryRef": "Report Measures.Modeled Summary Cancellations",
+              "nativeQueryRef": "Modeled Summary Cancellations",
               "active": true,
-              "format": "G"
+              "displayName": "Modeled Summary Cancellations"
             }
           ]
         },
@@ -78,15 +78,15 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "aviation vw_airline_operational_financial"
+                      "Entity": "Report Measures"
                     }
                   },
-                  "Property": "Estimated Airline Loss"
+                  "Property": "Modeled Summary Airline Loss USD"
                 }
               },
-              "queryRef": "aviation vw_airline_operational_financial.Estimated Airline Loss",
-              "nativeQueryRef": "Estimated Airline Loss",
-              "format": "\\$#,0.0;(\\$#,0.0);\\$#,0.0"
+              "queryRef": "Report Measures.Modeled Summary Airline Loss USD",
+              "nativeQueryRef": "Modeled Summary Airline Loss USD",
+              "displayName": "Modeled Summary Airline Loss USD"
             }
           ]
         }
@@ -377,7 +377,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'AIRLINE LOSS VS CANCELLATIONS'"
+                  "Value": "'MODELED SUMMARY LOSS VS SUMMARY CANCELLATIONS'"
                 }
               }
             },
@@ -403,6 +403,13 @@
               "expr": {
                 "Literal": {
                   "Value": "'left'"
+                }
+              }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
                 }
               }
             }

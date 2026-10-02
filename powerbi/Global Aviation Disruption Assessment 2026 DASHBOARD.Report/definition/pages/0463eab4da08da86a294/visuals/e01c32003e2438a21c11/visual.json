@@ -44,7 +44,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Regional exposure • Country impact • Corridor rerouting • Operational burden • Financial consequence",
+                    "value": "Regional exposure | Country impact | Corridor rerouting | Operational burden | Financial consequence",
                     "textStyle": {
                       "fontStyle": "italic",
                       "fontSize": "18pt",

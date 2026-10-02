@@ -1,25 +1,6 @@
 table 'aviation vw_route_passenger_impact'
 	lineageTag: 36702132-647e-47c1-a565-16188e41d09d
 
-	measure 'Total Passengers Impacted' =
-			
-			SUM('aviation vw_route_passenger_impact'[passengers_affected])
-		formatString: 0
-		lineageTag: f965431a-f6a7-4ff7-9d79-84f2426e699b
-
-	measure 'Total Additional Distance' =
-			
-			SUM('aviation vw_route_passenger_impact'[additional_distance_km])
-		formatString: 0
-		lineageTag: a995740f-3243-4e96-9749-d6f3d99571c5
-
-	measure 'Total Extra Fuel Cost' =
-			
-			SUM('aviation vw_route_passenger_impact'[additional_fuel_cost_usd])
-		lineageTag: f3432636-682d-4ff0-bebf-f26b2256ac6f
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
-
 	column origin_region
 		dataType: string
 		lineageTag: bdb111f7-0f37-4d98-97c6-b43fc381a6ea
@@ -124,11 +105,6 @@ table 'aviation vw_route_passenger_impact'
 		lineageTag: c26b47af-86aa-432d-bca2-b49d3833f9b5
 		summarizeBy: none
 		sourceColumn: date
-
-		variation Variation
-			isDefault
-			relationship: ff27409c-62e1-4af3-bc03-5e3178d16034
-			defaultHierarchy: LocalDateTable_ff70b0a5-7cfc-4c18-9de0-264a758b1226.'Date Hierarchy'
 
 		annotation SummarizationSetBy = Automatic
 

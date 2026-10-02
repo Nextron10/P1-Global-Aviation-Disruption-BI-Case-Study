@@ -20,15 +20,16 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "aviation vw_airline_operational_financial"
+                      "Entity": "Report Measures"
                     }
                   },
-                  "Property": "Average Revenue Loss %"
+                  "Property": "Modeled Average Revenue Loss Pct"
                 }
               },
-              "queryRef": "aviation vw_airline_operational_financial.Average Revenue Loss %",
-              "nativeQueryRef": "Average Revenue Loss %",
-              "format": "G"
+              "queryRef": "Report Measures.Modeled Average Revenue Loss Pct",
+              "nativeQueryRef": "Modeled Average Revenue Loss Pct",
+              "format": "0.00%",
+              "displayName": "Modeled Average Revenue Loss Pct"
             }
           ]
         }
@@ -40,10 +41,10 @@
               "Measure": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "aviation vw_airline_operational_financial"
+                    "Entity": "Report Measures"
                   }
                 },
-                "Property": "Average Revenue Loss %"
+                "Property": "Modeled Average Revenue Loss Pct"
               }
             },
             "direction": "Descending"
@@ -311,7 +312,7 @@
             }
           },
           "selector": {
-            "metadata": "aviation vw_airline_operational_financial.Average Revenue Loss %"
+            "metadata": "Report Measures.Modeled Average Revenue Loss Pct"
           }
         }
       ],
@@ -363,13 +364,13 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'%'"
+                  "Value": "'Summary airline mean'"
                 }
               }
             }
           },
           "selector": {
-            "metadata": "aviation vw_airline_operational_financial.Average Revenue Loss %"
+            "metadata": "Report Measures.Modeled Average Revenue Loss Pct"
           }
         }
       ],
@@ -543,7 +544,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'AVG REVENUE LOSS %'"
+                  "Value": "'MODELED MEAN REVENUE LOSS'"
                 }
               }
             },

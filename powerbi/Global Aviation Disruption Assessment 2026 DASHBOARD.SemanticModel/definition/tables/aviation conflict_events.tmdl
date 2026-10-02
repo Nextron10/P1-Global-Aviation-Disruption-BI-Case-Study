@@ -1,19 +1,6 @@
 table 'aviation conflict_events'
 	lineageTag: 4325468d-867a-4720-be82-8501d1d860a8
 
-	measure 'Military Events' =
-			
-			CALCULATE(
-			    COUNTROWS('aviation conflict_events'),
-			    'aviation conflict_events'[event_type] = "Military",
-			    TREATAS(
-			        VALUES(DimDate[Date]),
-			        'aviation conflict_events'[date]
-			    )
-			)
-		formatString: 0
-		lineageTag: 7b1c4072-87fd-497c-a672-4fcc24986132
-
 	column date
 		dataType: dateTime
 		formatString: Long Date
@@ -85,13 +72,11 @@ table 'aviation conflict_events'
 		mode: import
 		source =
 				let
+				    // Read the cleaned database records without changing their meaning.
 				    Source = PostgreSQL.Database("localhost", "aviation_bi"),
-				    aviation_conflict_events = Source{[Schema="aviation",Item="conflict_events"]}[Data],
-				    #"Replaced Value" = Table.ReplaceValue(aviation_conflict_events,"Very High","Severe",Replacer.ReplaceText,{"severity"}),
-				    #"Replaced Value1" = Table.ReplaceValue(#"Replaced Value","Medium","Moderate",Replacer.ReplaceText,{"severity"}),
-				    #"Filtered Rows" = Table.SelectRows(#"Replaced Value1", each true)
+				    Records = Source{[Schema="aviation",Item="conflict_events"]}[Data]
 				in
-				    #"Filtered Rows"
+				    Records
 
 	annotation PBI_NavigationStepName = Navigation
 

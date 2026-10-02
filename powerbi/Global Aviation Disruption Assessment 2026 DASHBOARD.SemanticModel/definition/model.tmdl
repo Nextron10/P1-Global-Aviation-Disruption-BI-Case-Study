@@ -7,32 +7,34 @@ model Model
 		legacyRedirects
 		returnErrorValuesAsNull
 
-annotation __PBI_TimeIntelligenceEnabled = 1
+annotation __PBI_TimeIntelligenceEnabled = 0
 
-annotation PBI_QueryOrder = ["aviation vw_airline_operational_financial","aviation vw_airport_disruption","aviation vw_airspace_closure","aviation vw_executive_kpi","aviation vw_geopolitical_daily_impact","aviation vw_route_passenger_impact","aviation vw_regional_vulnerability","aviation flight_cancellations","aviation flight_reroutes","aviation conflict_events"]
+annotation PBI_QueryOrder = ["aviation vw_airline_loss_summary", "aviation vw_airline_loss_estimate", "aviation vw_airport_disruption", "aviation vw_airspace_closure", "aviation vw_geopolitical_daily_impact", "aviation vw_route_passenger_impact", "aviation vw_regional_vulnerability", "aviation flight_cancellations", "aviation flight_reroutes", "aviation conflict_events"]
 
 annotation PBI_ProTooling = ["DevMode"]
 
-ref table 'aviation vw_airline_operational_financial'
+ref table 'aviation vw_airline_loss_summary'
+ref table 'aviation vw_airline_loss_estimate'
 ref table 'aviation vw_airport_disruption'
-ref table DateTableTemplate_570164b8-71bf-4e2d-97ce-9b16f0d426de
 ref table 'aviation vw_airspace_closure'
-ref table LocalDateTable_5be061df-08a9-479f-906a-b4bf52b2580b
-ref table 'aviation vw_executive_kpi'
 ref table 'aviation vw_geopolitical_daily_impact'
 ref table 'aviation vw_route_passenger_impact'
 ref table 'aviation vw_regional_vulnerability'
-ref table DimDate
-ref table LocalDateTable_498e5301-6f25-46e2-907d-2f6f25c9d717
-ref table DimAirline
-ref table DimRegion
-ref table DimCountry
 ref table 'aviation flight_cancellations'
 ref table 'aviation flight_reroutes'
-ref table DimSeverity
 ref table 'aviation conflict_events'
+ref table DimDate
+ref table DimAirline
+ref table DimCountry
+ref table DimRegion
+ref table DimAirportSeverity
+ref table DimConflictSeverity
+ref table DimOriginCountry
+ref table DimDestinationCountry
+ref table DimOriginRegion
+ref table DimDestinationRegion
+ref table 'Report Measures'
 ref table 'Operational Factor'
-ref table LocalDateTable_ff70b0a5-7cfc-4c18-9de0-264a758b1226
 
 ref cultureInfo en-IN
 

@@ -238,6 +238,8 @@ pgpass.conf
 *.tmp
 
 # Historical Word sources retained locally after consolidation into two authoritative documents.
+documentation/_archive/
+documentation/_private/
 documentation/Project Documentation.docx
 documentation/Cleaning Log - Python.docx
 documentation/Data Dictionary - SQL.docx

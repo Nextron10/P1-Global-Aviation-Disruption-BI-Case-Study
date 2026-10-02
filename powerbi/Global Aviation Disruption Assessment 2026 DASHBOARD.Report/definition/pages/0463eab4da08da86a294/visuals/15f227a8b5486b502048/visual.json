@@ -39,28 +39,32 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "aviation vw_airspace_closure"
+                      "Entity": "Report Measures"
                     }
                   },
                   "Property": "Airspace Closure Hours"
                 }
               },
-              "queryRef": "aviation vw_airspace_closure.Airspace Closure Hours",
-              "nativeQueryRef": "Airspace Closure Hours"
+              "queryRef": "Report Measures.Airspace Closure Hours",
+              "nativeQueryRef": "Airspace Closure Hours",
+              "displayName": "Airspace Closure Hours",
+              "format": "#,0.0"
             },
             {
               "field": {
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "aviation vw_airport_disruption"
+                      "Entity": "Report Measures"
                     }
                   },
-                  "Property": "Airport Disruption Events"
+                  "Property": "Airport Disruption Records"
                 }
               },
-              "queryRef": "aviation vw_airport_disruption.Airport Disruption Events",
-              "nativeQueryRef": "Airport Disruption Events"
+              "queryRef": "Report Measures.Airport Disruption Records",
+              "nativeQueryRef": "Airport Disruption Records",
+              "displayName": "Airport Disruption Records",
+              "format": "#,0"
             }
           ]
         },
@@ -71,28 +75,32 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "aviation vw_airport_disruption"
+                      "Entity": "Report Measures"
                     }
                   },
                   "Property": "Airport Flights Affected"
                 }
               },
-              "queryRef": "aviation vw_airport_disruption.Airport Flights Affected",
-              "nativeQueryRef": "Airport Flights Affected"
+              "queryRef": "Report Measures.Airport Flights Affected",
+              "nativeQueryRef": "Airport Flights Affected",
+              "displayName": "Airport Flights Affected",
+              "format": "#,0"
             },
             {
               "field": {
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "aviation vw_airspace_closure"
+                      "Entity": "Report Measures"
                     }
                   },
                   "Property": "Airspace Flights Affected"
                 }
               },
-              "queryRef": "aviation vw_airspace_closure.Airspace Flights Affected",
-              "nativeQueryRef": "Airspace Flights Affected"
+              "queryRef": "Report Measures.Airspace Flights Affected",
+              "nativeQueryRef": "Airspace Flights Affected",
+              "displayName": "Airspace Flights Affected",
+              "format": "#,0"
             }
           ]
         }
@@ -104,7 +112,7 @@
               "Measure": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "aviation vw_airport_disruption"
+                    "Entity": "Report Measures"
                   }
                 },
                 "Property": "Airport Flights Affected"
@@ -661,7 +669,7 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "cfe1eb7fd07d17010323",
+        "name": "9ca56524ce5d48a28fb3",
         "field": {
           "Column": {
             "Expression": {
@@ -684,13 +692,13 @@
                     "Version": 2,
                     "From": [
                       {
-                        "Name": "d",
+                        "Name": "a",
                         "Entity": "DimCountry",
                         "Type": 0
                       },
                       {
-                        "Name": "a1",
-                        "Entity": "aviation vw_airport_disruption",
+                        "Name": "m",
+                        "Entity": "Report Measures",
                         "Type": 0
                       }
                     ],
@@ -699,7 +707,7 @@
                         "Column": {
                           "Expression": {
                             "SourceRef": {
-                              "Source": "d"
+                              "Source": "a"
                             }
                           },
                           "Property": "country"
@@ -714,7 +722,7 @@
                           "Measure": {
                             "Expression": {
                               "SourceRef": {
-                                "Source": "a1"
+                                "Source": "m"
                               }
                             },
                             "Property": "Airport Flights Affected"
@@ -729,7 +737,7 @@
               "Type": 2
             },
             {
-              "Name": "d",
+              "Name": "a",
               "Entity": "DimCountry",
               "Type": 0
             }
@@ -743,7 +751,7 @@
                       "Column": {
                         "Expression": {
                           "SourceRef": {
-                            "Source": "d"
+                            "Source": "a"
                           }
                         },
                         "Property": "country"
@@ -759,7 +767,8 @@
               }
             }
           ]
-        }
+        },
+        "howCreated": "User"
       }
     ]
   }

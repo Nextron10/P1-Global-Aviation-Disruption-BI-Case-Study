@@ -19,10 +19,10 @@
               {
                 "textRuns": [
                   {
-                    "value": "*Refer project documentation | Simulated static case study; metrics show association, not causation.      ",
+                    "value": "Static simulated data | Detailed, summary and estimate populations differ | Financial values are undated | Association is not causation.",
                     "textStyle": {
                       "fontStyle": "italic",
-                      "fontSize": "14pt",
+                      "fontSize": "11pt",
                       "color": "#333333"
                     }
                   }

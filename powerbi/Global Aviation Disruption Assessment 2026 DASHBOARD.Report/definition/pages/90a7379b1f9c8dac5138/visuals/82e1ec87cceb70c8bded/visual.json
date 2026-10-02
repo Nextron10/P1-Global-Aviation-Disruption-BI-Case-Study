@@ -17,23 +17,19 @@
           "projections": [
             {
               "field": {
-                "Aggregation": {
+                "Measure": {
                   "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "aviation flight_reroutes"
-                        }
-                      },
-                      "Property": "flight_number"
+                    "SourceRef": {
+                      "Entity": "Report Measures"
                     }
                   },
-                  "Function": 5
+                  "Property": "Detailed Reroutes"
                 }
               },
-              "queryRef": "Min(aviation flight_reroutes.flight_number)",
-              "nativeQueryRef": "Count of flight_number",
-              "format": "#,0"
+              "queryRef": "Report Measures.Detailed Reroutes",
+              "nativeQueryRef": "Detailed Reroutes",
+              "format": "#,0",
+              "displayName": "Detailed Reroutes"
             }
           ]
         }
@@ -42,18 +38,13 @@
         "sort": [
           {
             "field": {
-              "Aggregation": {
+              "Measure": {
                 "Expression": {
-                  "Column": {
-                    "Expression": {
-                      "SourceRef": {
-                        "Entity": "aviation flight_reroutes"
-                      }
-                    },
-                    "Property": "flight_number"
+                  "SourceRef": {
+                    "Entity": "Report Measures"
                   }
                 },
-                "Function": 5
+                "Property": "Detailed Reroutes"
               }
             },
             "direction": "Descending"
@@ -293,6 +284,13 @@
                   "Value": "''"
                 }
               }
+            },
+            "labelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
             }
           },
           "selector": {
@@ -305,6 +303,13 @@
               "expr": {
                 "Literal": {
                   "Value": "true"
+                }
+              }
+            },
+            "labelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
                 }
               }
             }
@@ -332,7 +337,7 @@
             }
           },
           "selector": {
-            "metadata": "Min(aviation flight_reroutes.flight_number)"
+            "metadata": "Report Measures.Detailed Reroutes"
           }
         }
       ],
@@ -342,7 +347,7 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "false"
                 }
               }
             },
@@ -395,7 +400,7 @@
             }
           },
           "selector": {
-            "metadata": "Min(aviation flight_reroutes.flight_number)"
+            "metadata": "Report Measures.Detailed Reroutes"
           }
         }
       ],
@@ -575,7 +580,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'REROUTED FLIGHTS *'"
+                  "Value": "'DETAILED REROUTES'"
                 }
               }
             },
@@ -630,6 +635,13 @@
               "expr": {
                 "Literal": {
                   "Value": "'''Segoe UI'', wf_segoe-ui_normal, helvetica, arial, sans-serif'"
+                }
+              }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
                 }
               }
             }

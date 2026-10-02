@@ -1,4 +1,4 @@
-"""Clean conflict context while preserving the source location verbatim."""
+"""Clean conflict context and retain source locations after trimming spaces."""
 
 from pathlib import Path
 import sys

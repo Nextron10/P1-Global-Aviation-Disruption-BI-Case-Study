@@ -20,13 +20,13 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "aviation vw_airline_operational_financial"
+                      "Entity": "aviation vw_airline_loss_summary"
                     }
                   },
                   "Property": "airline_type"
                 }
               },
-              "queryRef": "aviation vw_airline_operational_financial.airline_type",
+              "queryRef": "aviation vw_airline_loss_summary.airline_type",
               "nativeQueryRef": "airline_type",
               "active": true
             }
@@ -84,7 +84,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Airline Type'"
+                  "Value": "'Summary Airline Type'"
                 }
               }
             },
@@ -170,7 +170,7 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "false"
                 }
               }
             },
@@ -291,6 +291,13 @@
               "expr": {
                 "Literal": {
                   "Value": "false"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Summary Airline Type'"
                 }
               }
             }

@@ -1,110 +1,141 @@
-relationship e4a4d95a-64e7-46c9-af28-bc5ad8a30278
-	joinOnDateBehavior: datePartOnly
-	fromColumn: 'aviation vw_airspace_closure'.closure_end_date
-	toColumn: LocalDateTable_5be061df-08a9-479f-906a-b4bf52b2580b.Date
-
-relationship 47c818c1-19dc-4af0-9311-5fc42c7f04d3
-	joinOnDateBehavior: datePartOnly
-	fromColumn: DimDate.Date
-	toColumn: LocalDateTable_498e5301-6f25-46e2-907d-2f6f25c9d717.Date
-
-relationship 11c2231d-95e0-fe0c-1726-a57da4698624
-	fromColumn: 'aviation vw_airline_operational_financial'.airline
-	toColumn: DimAirline.airline
-
-relationship 18bae6da-6783-dc78-eb65-5a6c994d5205
-	fromColumn: 'aviation vw_airport_disruption'.date
-	toColumn: DimDate.Date
-
-relationship dc9bf559-517c-8228-64cb-02f9b40b1c04
-	fromColumn: 'aviation vw_geopolitical_daily_impact'.date
-	toColumn: DimDate.Date
-
-relationship 8f95540c-4b78-0882-8c94-452521f94d89
-	fromColumn: 'aviation vw_airspace_closure'.closure_start_date
-	toColumn: DimDate.Date
-
-relationship 0693ef1c-1d87-767a-530d-de2b6557b740
-	fromColumn: 'aviation vw_airport_disruption'.country
-	toColumn: DimCountry.country
-
-relationship 1950c850-eb4b-1ccb-2dca-25ffb6d4eb6d
-	fromColumn: 'aviation vw_airspace_closure'.country
-	toColumn: DimCountry.country
-
-relationship 2530dead-02ff-775b-3195-3dcbaad84fd3
-	fromColumn: 'aviation vw_airline_operational_financial'.country
-	toColumn: DimCountry.country
-
-relationship 6b2468cd-2cc1-e81d-bc1d-f42fea5cda01
-	fromColumn: 'aviation vw_airline_operational_financial'.region
-	toColumn: DimRegion.region
-
-relationship 0c2f9d8e-326a-e458-e8c6-dba33802b7ec
-	fromColumn: 'aviation vw_airport_disruption'.region
-	toColumn: DimRegion.region
-
-relationship 98c71e5a-85a2-5eb4-03e5-3c09c6c87d87
-	fromColumn: 'aviation vw_airspace_closure'.region
-	toColumn: DimRegion.region
-
-relationship 5c3f1fd8-9c38-bf15-e638-44e82060fa32
-	fromColumn: 'aviation vw_regional_vulnerability'.region
-	toColumn: DimRegion.region
-
-relationship AutoDetected_60b2157b-afe4-40e7-8bad-cee93e9fa6dd
-	fromColumn: 'aviation flight_cancellations'.airline
-	toColumn: DimAirline.airline
-
-relationship AutoDetected_b81e3f7e-de15-44e5-b916-8c684dc8cb21
-	fromColumn: 'aviation flight_reroutes'.airline
-	toColumn: DimAirline.airline
-
-relationship cb1fbbbc-a61b-ff3e-7ea6-ea491717a4c9
+relationship a2bb9563-863f-4499-af74-7d11d3524aa6
 	fromColumn: 'aviation flight_cancellations'.date
 	toColumn: DimDate.Date
 
-relationship 4c8fb203-3c09-daf6-ee8b-8dd3a7b19526
+relationship 5c3c29a7-8c23-49cd-bf26-d3656350fc4b
 	fromColumn: 'aviation flight_reroutes'.date
 	toColumn: DimDate.Date
 
-relationship bada52c0-7be9-1df5-963e-f3011dc3ef75
-	fromColumn: 'aviation flight_reroutes'.origin_region
-	toColumn: DimRegion.region
+relationship 8ccb2e27-b057-4364-bbbe-eaef8cd7ffd1
+	fromColumn: 'aviation vw_airport_disruption'.date
+	toColumn: DimDate.Date
 
-relationship fbe70c13-bd98-4b7a-f3c8-a520066dc9a2
-	fromColumn: 'aviation flight_cancellations'.destination_region
-	toColumn: DimRegion.region
-
-relationship 0234265e-a1b4-f617-05e8-4acefdbfba46
-	fromColumn: 'aviation flight_cancellations'.destination_country
-	toColumn: DimCountry.country
-
-relationship 19050637-a59f-c09d-35aa-bd04a0d8d08b
-	fromColumn: 'aviation flight_reroutes'.origin_country
-	toColumn: DimCountry.country
-
-relationship a60ef738-565b-1956-4650-b8635d9062bb
-	fromColumn: 'aviation vw_airport_disruption'.severity_level
-	toColumn: DimSeverity.severity_level
-
-relationship 5aa846f0-fe8f-0073-647c-9141f5b0fbfe
-	isActive: false
+relationship cd738dec-30f8-46b6-8f16-d81c5850be33
 	fromColumn: 'aviation conflict_events'.date
 	toColumn: DimDate.Date
 
-relationship 4cef58f4-91a7-d786-1d0a-d391408cb766
+relationship 5ae8c330-147f-4d79-bd6d-8675956ec9e1
+	fromColumn: 'aviation vw_airspace_closure'.'Closure Start Date'
+	toColumn: DimDate.Date
+
+relationship c9513a91-a1bb-40e7-a620-e324efbe57de
+	fromColumn: 'aviation vw_geopolitical_daily_impact'.date
+	toColumn: DimDate.Date
+
+relationship 7b7fda7a-1d47-4109-a364-124a0001d143
+	fromColumn: 'aviation vw_route_passenger_impact'.date
+	toColumn: DimDate.Date
+
+relationship fe3e821e-082d-4c7a-966b-fa3281a5f50f
 	isActive: false
+	fromColumn: 'aviation vw_airspace_closure'.'Closure End Date'
+	toColumn: DimDate.Date
+
+relationship e3e1675d-069a-4d56-b9a0-55b92549a39d
+	fromColumn: 'aviation vw_airline_loss_summary'.airline
+	toColumn: DimAirline.airline
+
+relationship 384ff66a-54c5-4e5a-bdc1-aa01b7da2d30
+	fromColumn: 'aviation vw_airline_loss_estimate'.airline
+	toColumn: DimAirline.airline
+
+relationship 98acb220-b573-4600-aa42-416e71caff61
+	fromColumn: 'aviation flight_cancellations'.airline
+	toColumn: DimAirline.airline
+
+relationship e615f3cf-9b96-4753-9a7f-16ba1c752fac
+	fromColumn: 'aviation flight_reroutes'.airline
+	toColumn: DimAirline.airline
+
+relationship 891c9edf-cb5a-4f63-a965-ae04e444e91f
+	fromColumn: 'aviation vw_airline_loss_summary'.country
+	toColumn: DimCountry.country
+
+relationship 07844204-2529-4f31-a3a0-fa622e369598
+	fromColumn: 'aviation vw_airline_loss_estimate'.country
+	toColumn: DimCountry.country
+
+relationship 78acada7-d5e6-4ded-a156-f635b488d192
+	fromColumn: 'aviation vw_airport_disruption'.country
+	toColumn: DimCountry.country
+
+relationship 96bcb466-97e3-4d2e-8f91-06395446196e
+	fromColumn: 'aviation vw_airspace_closure'.country
+	toColumn: DimCountry.country
+
+relationship a5cd675a-28f6-4e11-8a13-1ac99898ce1f
 	fromColumn: 'aviation conflict_events'.country
 	toColumn: DimCountry.country
 
-relationship b79a6efe-bf06-cf44-e575-060570b0ff30
-	isActive: false
-	fromColumn: 'aviation conflict_events'.severity
-	toColumn: DimSeverity.severity_level
+relationship 315af512-89cb-4024-9fa3-1eaaf7d89325
+	fromColumn: 'aviation vw_airline_loss_summary'.region
+	toColumn: DimRegion.region
 
-relationship ff27409c-62e1-4af3-bc03-5e3178d16034
-	joinOnDateBehavior: datePartOnly
-	fromColumn: 'aviation vw_route_passenger_impact'.date
-	toColumn: LocalDateTable_ff70b0a5-7cfc-4c18-9de0-264a758b1226.Date
+relationship 49f40b4c-16db-4e47-b45e-48f25c0a5dc2
+	fromColumn: 'aviation vw_airport_disruption'.region
+	toColumn: DimRegion.region
+
+relationship 58dd72bc-b5d0-476a-8029-7ad5d716bd50
+	fromColumn: 'aviation vw_airspace_closure'.region
+	toColumn: DimRegion.region
+
+relationship e699b891-f02d-49f2-9c43-156569012c61
+	fromColumn: 'aviation vw_regional_vulnerability'.region
+	toColumn: DimRegion.region
+
+relationship b95ac5d9-37f2-4213-a1c7-38510467ff57
+	fromColumn: 'aviation flight_cancellations'.origin_country
+	toColumn: DimOriginCountry.origin_country
+
+relationship d723bbbb-2b9e-4296-b60b-a8339ad0ac1c
+	fromColumn: 'aviation flight_reroutes'.origin_country
+	toColumn: DimOriginCountry.origin_country
+
+relationship bd5ca7e4-39ad-422b-ae69-84b8e12c5b49
+	fromColumn: 'aviation vw_route_passenger_impact'.origin_country
+	toColumn: DimOriginCountry.origin_country
+
+relationship 2ff0c832-3ef0-4ec8-bb99-6e048892510c
+	fromColumn: 'aviation flight_cancellations'.destination_country
+	toColumn: DimDestinationCountry.destination_country
+
+relationship 426b6146-f840-49be-bd76-888b88cf370a
+	fromColumn: 'aviation flight_reroutes'.destination_country
+	toColumn: DimDestinationCountry.destination_country
+
+relationship e8fc8618-2524-40ec-ad7d-6b870c3386af
+	fromColumn: 'aviation vw_route_passenger_impact'.destination_country
+	toColumn: DimDestinationCountry.destination_country
+
+relationship a74f12ba-aef0-47ac-a706-95d11218d366
+	fromColumn: 'aviation flight_cancellations'.origin_region
+	toColumn: DimOriginRegion.origin_region
+
+relationship 759d3611-cc09-410c-88e3-522f886009e5
+	fromColumn: 'aviation flight_reroutes'.origin_region
+	toColumn: DimOriginRegion.origin_region
+
+relationship c4d57411-69fb-41bd-ab20-89d762d0589a
+	fromColumn: 'aviation vw_route_passenger_impact'.origin_region
+	toColumn: DimOriginRegion.origin_region
+
+relationship c6c588c6-37fc-4c60-9067-babe4a9e18ca
+	fromColumn: 'aviation flight_cancellations'.destination_region
+	toColumn: DimDestinationRegion.destination_region
+
+relationship 3b59552d-cd77-4795-9b31-4bcea1fe5b4d
+	fromColumn: 'aviation flight_reroutes'.destination_region
+	toColumn: DimDestinationRegion.destination_region
+
+relationship c5b00847-ef50-41f5-9047-f2483ae0e192
+	fromColumn: 'aviation vw_route_passenger_impact'.destination_region
+	toColumn: DimDestinationRegion.destination_region
+
+relationship 55893c5a-e308-43e7-9c02-318fffce3825
+	fromColumn: 'aviation vw_airport_disruption'.severity_level
+	toColumn: DimAirportSeverity.severity_level
+
+relationship 228b1644-b058-4383-9acd-a1ce0530331e
+	fromColumn: 'aviation conflict_events'.severity
+	toColumn: DimConflictSeverity.severity
 

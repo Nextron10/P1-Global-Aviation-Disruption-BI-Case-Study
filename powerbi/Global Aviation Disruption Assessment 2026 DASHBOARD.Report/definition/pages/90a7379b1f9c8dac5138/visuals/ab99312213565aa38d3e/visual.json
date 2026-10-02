@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
   "name": "ab99312213565aa38d3e",
   "position": {
     "x": 32,
@@ -84,28 +84,32 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "aviation flight_cancellations"
+                      "Entity": "Report Measures"
                     }
                   },
-                  "Property": "Total Cancellations"
+                  "Property": "Detailed Cancellations"
                 }
               },
-              "queryRef": "aviation flight_cancellations.Total Cancellations",
-              "nativeQueryRef": "Total Cancellations"
+              "queryRef": "Report Measures.Detailed Cancellations",
+              "nativeQueryRef": "Detailed Cancellations",
+              "displayName": "Detailed Cancellations",
+              "format": "#,0"
             },
             {
               "field": {
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "aviation flight_reroutes"
+                      "Entity": "Report Measures"
                     }
                   },
-                  "Property": "Total Reroutes"
+                  "Property": "Detailed Reroutes"
                 }
               },
-              "queryRef": "aviation flight_reroutes.Total Reroutes",
-              "nativeQueryRef": "Total Reroutes"
+              "queryRef": "Report Measures.Detailed Reroutes",
+              "nativeQueryRef": "Detailed Reroutes",
+              "displayName": "Detailed Reroutes",
+              "format": "#,0"
             }
           ]
         }
@@ -474,29 +478,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "5d60d01740007676651e",
-        "field": {
-          "HierarchyLevel": {
-            "Expression": {
-              "Hierarchy": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "DimDate"
-                  }
-                },
-                "Hierarchy": "Data Drill Hierarchy"
-              }
-            },
-            "Level": "Year"
-          }
-        },
-        "type": "Categorical",
-        "howCreated": "Drill"
-      }
-    ]
   }
 }

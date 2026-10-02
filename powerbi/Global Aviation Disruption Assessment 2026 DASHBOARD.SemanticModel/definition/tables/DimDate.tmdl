@@ -1,70 +1,67 @@
+/// Continuous calendar from the dated facts. Financial facts are undated.
 table DimDate
-	lineageTag: 4687004b-811c-43cf-bdac-2319b3cc5ef4
+	lineageTag: d9bce6dc-cc68-4535-893b-1ef4f9cd5a1f
+	dataCategory: Time
 
 	column Date
-		formatString: General Date
-		lineageTag: 4441e7d6-9c6f-464d-99c0-48794d98e56f
+		dataType: dateTime
+		isKey
+		formatString: dd MMM yyyy
+		lineageTag: 89274c1d-0547-4104-92bc-b6a6f8ad291d
 		summarizeBy: none
-		isNameInferred
 		sourceColumn: [Date]
 
-		variation Variation
-			isDefault
-			relationship: 47c818c1-19dc-4af0-9311-5fc42c7f04d3
-			defaultHierarchy: LocalDateTable_498e5301-6f25-46e2-907d-2f6f25c9d717.'Date Hierarchy'
-
-		annotation SummarizationSetBy = Automatic
-
 	column Year = YEAR(DimDate[Date])
-		formatString: 0
-		lineageTag: ddb8f4f7-992e-4ef0-86ab-cf6295b22ce0
-		summarizeBy: sum
-
-		annotation SummarizationSetBy = Automatic
+		dataType: int64
+		lineageTag: 357b1273-be22-43e6-aaef-4230b66ef8ec
+		summarizeBy: none
 
 	column Month = FORMAT(DimDate[Date], "MMM")
-		lineageTag: 05176105-35ea-4cf6-9521-c34565b799ff
+		dataType: string
+		lineageTag: 73e6ddac-2901-4ca4-a546-ea8851e2f43b
 		summarizeBy: none
 		sortByColumn: 'Month Number'
 
-		annotation SummarizationSetBy = Automatic
-
 	column 'Month Number' = MONTH(DimDate[Date])
-		formatString: 0
-		lineageTag: 6ddb797c-dc28-4c82-a05f-17a265f6e3ca
-		summarizeBy: sum
-
-		annotation SummarizationSetBy = Automatic
-
-	column 'Year Month' = FORMAT(DimDate[Date], "YYYY-MM")
-		lineageTag: 06100b21-a6cf-427a-a5c5-b40fb3731581
+		dataType: int64
+		lineageTag: 7470bbd6-2b30-4c55-b137-e269687ddf8a
 		summarizeBy: none
 
-		annotation SummarizationSetBy = Automatic
+	column 'Year Month' = FORMAT(DimDate[Date], "yyyy-MM")
+		dataType: string
+		lineageTag: 02de3f00-4d41-417c-8b77-6160c75fd2bf
+		summarizeBy: none
+
+	column Quarter = "Q" & FORMAT(DimDate[Date], "Q")
+		dataType: string
+		lineageTag: 47992c98-3ce9-48c4-8329-aefb4cd6faa1
+		summarizeBy: none
 
 	hierarchy 'Data Drill Hierarchy'
-		lineageTag: 8b2df780-f31f-4fab-8274-2eea75ee010c
+		lineageTag: 7d71d98a-aa38-44eb-9e1a-8219fed5d727
 
 		level Year
-			lineageTag: a881fe22-ca44-49a7-9aaf-fd2d18bfdcb7
+			lineageTag: 32e74d65-1c0b-4375-ab9d-f1f1b345b2fc
 			column: Year
 
 		level Month
-			lineageTag: 6cef4df6-eb13-4f66-95e1-5c68f45e1828
+			lineageTag: 99331cf4-84fa-44bc-812c-155cc11247f8
 			column: Month
 
 		level Date
-			lineageTag: 781845c3-aa56-46e1-bd48-9b140bd148f0
+			lineageTag: 81594932-e9b7-4925-8508-bbf27bbc4c1f
 			column: Date
 
 	partition DimDate = calculated
 		mode: import
 		source =
-				
-				CALENDAR(
-				    DATE(2026,1,1),
-				    DATE(2026,6,30)
+				VAR AllDates = UNION(
+				    SELECTCOLUMNS('aviation flight_cancellations', "Date", 'aviation flight_cancellations'[date]),
+				    SELECTCOLUMNS('aviation flight_reroutes', "Date", 'aviation flight_reroutes'[date]),
+				    SELECTCOLUMNS('aviation vw_airport_disruption', "Date", 'aviation vw_airport_disruption'[date]),
+				    SELECTCOLUMNS('aviation conflict_events', "Date", 'aviation conflict_events'[date]),
+				    SELECTCOLUMNS('aviation vw_airspace_closure', "Date", 'aviation vw_airspace_closure'[Closure Start Date]),
+				    SELECTCOLUMNS('aviation vw_airspace_closure', "Date", 'aviation vw_airspace_closure'[Closure End Date])
 				)
-
-	annotation PBI_Id = e3a12ad858e243a091b2ca74b9e4b6a0
+				RETURN CALENDAR(MINX(AllDates, [Date]), MAXX(AllDates, [Date]))
 

@@ -20,15 +20,16 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "aviation vw_route_passenger_impact"
+                      "Entity": "Report Measures"
                     }
                   },
-                  "Property": "Total Additional Distance"
+                  "Property": "Detailed Additional Distance Km"
                 }
               },
-              "queryRef": "aviation vw_route_passenger_impact.Total Additional Distance",
-              "nativeQueryRef": "Total Additional Distance",
-              "format": "#,0"
+              "queryRef": "Report Measures.Detailed Additional Distance Km",
+              "nativeQueryRef": "Detailed Additional Distance Km",
+              "format": "#,0",
+              "displayName": "Detailed Additional Distance Km"
             }
           ]
         }
@@ -40,10 +41,10 @@
               "Measure": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "aviation vw_route_passenger_impact"
+                    "Entity": "Report Measures"
                   }
                 },
-                "Property": "Total Additional Distance"
+                "Property": "Detailed Additional Distance Km"
               }
             },
             "direction": "Descending"
@@ -282,6 +283,13 @@
                   "Value": "''"
                 }
               }
+            },
+            "labelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
             }
           },
           "selector": {
@@ -294,6 +302,13 @@
               "expr": {
                 "Literal": {
                   "Value": "true"
+                }
+              }
+            },
+            "labelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
                 }
               }
             }
@@ -310,7 +325,7 @@
             }
           },
           "selector": {
-            "metadata": "aviation vw_route_passenger_impact.Total Additional Distance"
+            "metadata": "Report Measures.Detailed Additional Distance Km"
           }
         }
       ],
@@ -320,7 +335,7 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "false"
                 }
               }
             },
@@ -373,7 +388,7 @@
             }
           },
           "selector": {
-            "metadata": "aviation vw_route_passenger_impact.Total Additional Distance"
+            "metadata": "Report Measures.Detailed Additional Distance Km"
           }
         }
       ],
@@ -553,7 +568,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'ADDITIONAL DISTANCE'"
+                  "Value": "'DETAILED ADDITIONAL DISTANCE'"
                 }
               }
             },
@@ -608,6 +623,13 @@
               "expr": {
                 "Literal": {
                   "Value": "'''Segoe UI'', wf_segoe-ui_normal, helvetica, arial, sans-serif'"
+                }
+              }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
                 }
               }
             }

@@ -39,28 +39,32 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "aviation flight_cancellations"
+                      "Entity": "Report Measures"
                     }
                   },
-                  "Property": "Total Cancellations"
+                  "Property": "Detailed Cancellations"
                 }
               },
-              "queryRef": "aviation flight_cancellations.Total Cancellations",
-              "nativeQueryRef": "Total Cancellations"
+              "queryRef": "Report Measures.Detailed Cancellations",
+              "nativeQueryRef": "Detailed Cancellations",
+              "displayName": "Detailed Cancellations",
+              "format": "#,0"
             },
             {
               "field": {
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "aviation flight_reroutes"
+                      "Entity": "Report Measures"
                     }
                   },
-                  "Property": "Total Reroutes"
+                  "Property": "Detailed Reroutes"
                 }
               },
-              "queryRef": "aviation flight_reroutes.Total Reroutes",
-              "nativeQueryRef": "Total Reroutes"
+              "queryRef": "Report Measures.Detailed Reroutes",
+              "nativeQueryRef": "Detailed Reroutes",
+              "displayName": "Detailed Reroutes",
+              "format": "#,0"
             }
           ]
         }
@@ -72,10 +76,10 @@
               "Measure": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "aviation flight_cancellations"
+                    "Entity": "Report Measures"
                   }
                 },
-                "Property": "Total Cancellations"
+                "Property": "Detailed Cancellations"
               }
             },
             "direction": "Descending"
@@ -163,7 +167,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'CANCELLATIONS VS REROUTES BY AIRLINE'"
+                  "Value": "'DETAILED CANCELLATIONS AND REROUTES BY AIRLINE'"
                 }
               }
             },
@@ -189,6 +193,13 @@
               "expr": {
                 "Literal": {
                   "Value": "'left'"
+                }
+              }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
                 }
               }
             }
@@ -259,18 +270,105 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "6f172ae7c6ceb1d80400",
+        "name": "ab51c257d8cd4e9ea736",
         "field": {
           "Column": {
             "Expression": {
               "SourceRef": {
-                "Entity": "aviation vw_airport_disruption"
+                "Entity": "DimAirline"
               }
             },
-            "Property": "airport_name"
+            "Property": "airline"
           }
         },
         "type": "TopN",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "subquery",
+              "Expression": {
+                "Subquery": {
+                  "Query": {
+                    "Version": 2,
+                    "From": [
+                      {
+                        "Name": "a",
+                        "Entity": "DimAirline",
+                        "Type": 0
+                      },
+                      {
+                        "Name": "m",
+                        "Entity": "Report Measures",
+                        "Type": 0
+                      }
+                    ],
+                    "Select": [
+                      {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Source": "a"
+                            }
+                          },
+                          "Property": "airline"
+                        },
+                        "Name": "field"
+                      }
+                    ],
+                    "OrderBy": [
+                      {
+                        "Direction": 2,
+                        "Expression": {
+                          "Measure": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Source": "m"
+                              }
+                            },
+                            "Property": "Detailed Cancellations"
+                          }
+                        }
+                      }
+                    ],
+                    "Top": 5
+                  }
+                }
+              },
+              "Type": 2
+            },
+            {
+              "Name": "a",
+              "Entity": "DimAirline",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "a"
+                          }
+                        },
+                        "Property": "airline"
+                      }
+                    }
+                  ],
+                  "Table": {
+                    "SourceRef": {
+                      "Source": "subquery"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
         "howCreated": "User"
       }
     ]

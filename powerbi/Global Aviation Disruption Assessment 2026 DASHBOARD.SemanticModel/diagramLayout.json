@@ -10,19 +10,6 @@
       "nodes": [
         {
           "location": {
-            "x": 410.1118608901761,
-            "y": 1311.254403836223
-          },
-          "nodeIndex": "aviation vw_airline_operational_financial",
-          "nodeLineageTag": "1054dfcf-0aab-4305-9cc1-6ae956494925",
-          "size": {
-            "height": 300,
-            "width": 361.98819303272057
-          },
-          "zIndex": 8
-        },
-        {
-          "location": {
             "x": 413.423264166984,
             "y": 800.48702042465015
           },
@@ -46,19 +33,6 @@
             "width": 295.62394479353213
           },
           "zIndex": 9
-        },
-        {
-          "location": {
-            "x": 1255.5737658328853,
-            "y": 603.2629926664215
-          },
-          "nodeIndex": "aviation vw_executive_kpi",
-          "nodeLineageTag": "5b6ee9a1-e3f6-4d74-ad56-06c41dc229fe",
-          "size": {
-            "height": 300,
-            "width": 234
-          },
-          "zIndex": 14
         },
         {
           "location": {
@@ -179,19 +153,6 @@
         },
         {
           "location": {
-            "x": 4.2246937200536649,
-            "y": 1809.8641692552319
-          },
-          "nodeIndex": "DimSeverity",
-          "nodeLineageTag": "a3c40b37-9215-4066-bf4c-bcbe83337d5b",
-          "size": {
-            "height": 200,
-            "width": 234
-          },
-          "zIndex": 5
-        },
-        {
-          "location": {
             "x": 1596.5777650578314,
             "y": 1048.8868188774227
           },
@@ -215,6 +176,123 @@
             "width": 234
           },
           "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 1899.5448352323313,
+            "y": 0
+          },
+          "nodeIndex": "Report Measures",
+          "nodeLineageTag": "d79984db-72fd-4dfb-bd8d-b19075025af2",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2692.7880196016622,
+            "y": 26
+          },
+          "nodeIndex": "aviation vw_airline_loss_estimate",
+          "nodeLineageTag": "5ec62dec-8968-4136-826c-896305617ff8",
+          "size": {
+            "height": 248,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2296.1664274169966,
+            "y": 14
+          },
+          "nodeIndex": "aviation vw_airline_loss_summary",
+          "nodeLineageTag": "16ffe7c3-06d4-48ed-baa4-0a076af57357",
+          "size": {
+            "height": 272,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 3089.4096117863273,
+            "y": 50
+          },
+          "nodeIndex": "DimAirportSeverity",
+          "nodeLineageTag": "47011438-a2cc-472b-8c2a-ccbeb832956a",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 3486.0312039709925,
+            "y": 50
+          },
+          "nodeIndex": "DimConflictSeverity",
+          "nodeLineageTag": "378457b0-f69a-49fe-9d2a-2a507ec132b8",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 3882.6527961556581,
+            "y": 50
+          },
+          "nodeIndex": "DimDestinationCountry",
+          "nodeLineageTag": "bb5c660b-95c6-46ea-92cf-dc0d555d8107",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 4279.2743883403236,
+            "y": 50
+          },
+          "nodeIndex": "DimDestinationRegion",
+          "nodeLineageTag": "519cbc7e-d1b6-4d17-8877-cb69c9915788",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 4675.8959805249888,
+            "y": 50
+          },
+          "nodeIndex": "DimOriginCountry",
+          "nodeLineageTag": "a3bccd06-a39d-4971-9974-0d8859c475db",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 5072.5175727096548,
+            "y": 50
+          },
+          "nodeIndex": "DimOriginRegion",
+          "nodeLineageTag": "191784d8-34cf-4bbd-bd42-cc7ff5c8c077",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
         }
       ],
       "name": "All tables",

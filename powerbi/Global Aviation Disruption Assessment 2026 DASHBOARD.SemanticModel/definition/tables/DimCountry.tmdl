@@ -1,37 +1,21 @@
+/// Unique values from the listed source populations.
 table DimCountry
-	lineageTag: 4c28bf25-c418-423f-a2f3-8f59d484c771
+	lineageTag: d0c3bf5f-85b6-4a3a-a783-f0e83f2520e9
 
 	column country
-		lineageTag: 74a9758a-3c81-455a-b8f6-133ef2b094e9
+		dataType: string
+		lineageTag: ed1b1182-9083-4e4f-9f03-ab4fd4c5bccf
 		summarizeBy: none
-		isNameInferred
 		sourceColumn: [country]
-
-		annotation SummarizationSetBy = Automatic
 
 	partition DimCountry = calculated
 		mode: import
 		source =
-				
-				DISTINCT(
-				    UNION(
-				        SELECTCOLUMNS(
-				            'aviation vw_airline_operational_financial',
-				            "country",
-				            'aviation vw_airline_operational_financial'[country]
-				        ),
-				        SELECTCOLUMNS(
-				            'aviation vw_airport_disruption',
-				            "country",
-				            'aviation vw_airport_disruption'[country]
-				        ),
-				        SELECTCOLUMNS(
-				            'aviation vw_airspace_closure',
-				            "country",
-				            'aviation vw_airspace_closure'[country]
-				        )
-				    )
-				)
-
-	annotation PBI_Id = 0e3f462bb0864259938611abc80fd7b6
+				FILTER(DISTINCT(UNION(
+				    SELECTCOLUMNS('aviation vw_airline_loss_summary', "country", 'aviation vw_airline_loss_summary'[country]),
+				    SELECTCOLUMNS('aviation vw_airline_loss_estimate', "country", 'aviation vw_airline_loss_estimate'[country]),
+				    SELECTCOLUMNS('aviation vw_airport_disruption', "country", 'aviation vw_airport_disruption'[country]),
+				    SELECTCOLUMNS('aviation vw_airspace_closure', "country", 'aviation vw_airspace_closure'[country]),
+				    SELECTCOLUMNS('aviation conflict_events', "country", 'aviation conflict_events'[country])
+				)), NOT ISBLANK([country]))
 

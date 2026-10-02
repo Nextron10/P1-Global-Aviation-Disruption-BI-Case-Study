@@ -20,13 +20,13 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "aviation vw_regional_vulnerability"
+                      "Entity": "DimRegion"
                     }
                   },
                   "Property": "region"
                 }
               },
-              "queryRef": "aviation vw_regional_vulnerability.region",
+              "queryRef": "DimRegion.region",
               "nativeQueryRef": "region",
               "active": true
             }
@@ -36,24 +36,19 @@
           "projections": [
             {
               "field": {
-                "Aggregation": {
+                "Measure": {
                   "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "aviation vw_regional_vulnerability"
-                        }
-                      },
-                      "Property": "estimated_loss_usd"
+                    "SourceRef": {
+                      "Entity": "Report Measures"
                     }
                   },
-                  "Function": 0
+                  "Property": "Modeled Summary Airline Loss USD"
                 }
               },
-              "queryRef": "Sum(aviation vw_regional_vulnerability.estimated_loss_usd)",
-              "nativeQueryRef": "Sum of Estimated Loss USD",
-              "displayName": "Sum of Estimated Loss USD",
-              "format": "\\$#,0;(\\$#,0);\\$#,0"
+              "queryRef": "Report Measures.Modeled Summary Airline Loss USD",
+              "nativeQueryRef": "Modeled Summary Airline Loss USD",
+              "displayName": "Modeled Summary Airline Loss USD",
+              "format": "$#,0.00;($#,0.00);$0.00"
             }
           ]
         }
@@ -62,18 +57,13 @@
         "sort": [
           {
             "field": {
-              "Aggregation": {
+              "Measure": {
                 "Expression": {
-                  "Column": {
-                    "Expression": {
-                      "SourceRef": {
-                        "Entity": "aviation vw_regional_vulnerability"
-                      }
-                    },
-                    "Property": "estimated_loss_usd"
+                  "SourceRef": {
+                    "Entity": "Report Measures"
                   }
                 },
-                "Function": 0
+                "Property": "Modeled Summary Airline Loss USD"
               }
             },
             "direction": "Descending"
@@ -422,7 +412,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'ESTIMATED LOSS BY TOP 5 REGIONS'"
+                  "Value": "'MODELED SUMMARY LOSS BY TOP 5 REGIONS'"
                 }
               }
             },
@@ -592,12 +582,12 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "93b40ba0407b9a1c16ea",
+        "name": "bd92181e33fc47619806",
         "field": {
           "Column": {
             "Expression": {
               "SourceRef": {
-                "Entity": "aviation vw_regional_vulnerability"
+                "Entity": "DimRegion"
               }
             },
             "Property": "region"
@@ -616,7 +606,12 @@
                     "From": [
                       {
                         "Name": "a",
-                        "Entity": "aviation vw_regional_vulnerability",
+                        "Entity": "DimRegion",
+                        "Type": 0
+                      },
+                      {
+                        "Name": "m",
+                        "Entity": "Report Measures",
                         "Type": 0
                       }
                     ],
@@ -637,18 +632,13 @@
                       {
                         "Direction": 2,
                         "Expression": {
-                          "Aggregation": {
+                          "Measure": {
                             "Expression": {
-                              "Column": {
-                                "Expression": {
-                                  "SourceRef": {
-                                    "Source": "a"
-                                  }
-                                },
-                                "Property": "estimated_loss_usd"
+                              "SourceRef": {
+                                "Source": "m"
                               }
                             },
-                            "Function": 0
+                            "Property": "Modeled Summary Airline Loss USD"
                           }
                         }
                       }
@@ -661,7 +651,7 @@
             },
             {
               "Name": "a",
-              "Entity": "aviation vw_regional_vulnerability",
+              "Entity": "DimRegion",
               "Type": 0
             }
           ],
@@ -690,7 +680,8 @@
               }
             }
           ]
-        }
+        },
+        "howCreated": "User"
       }
     ]
   }

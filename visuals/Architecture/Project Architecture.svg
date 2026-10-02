@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="2270" viewBox="0 0 1800 2270"><rect width="1800" height="2270" fill="#f5f7fb"/>
+<defs><marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="5" orient="auto"><path d="M0 0L10 5L0 10" fill="#536579"/></marker></defs>
+<text x="900" y="65" text-anchor="middle" font-family="Arial" font-size="38" font-weight="bold" fill="#132847">GLOBAL AVIATION DISRUPTION ASSESSMENT 2026</text>
+<text x="900" y="110" text-anchor="middle" font-family="Arial" font-size="26" fill="#536579">Implemented static pipeline | Population separation is a design rule</text>
+<rect x="130" y="155" width="1540" height="180" rx="16" fill="white" stroke="#9eafc3" stroke-width="2"/>
+<text x="900" y="201" text-anchor="middle" font-family="Arial" font-size="30" font-weight="bold" fill="#132847">1. Business requirements</text>
+<text x="900" y="249" text-anchor="middle" font-family="Arial" font-size="25" font-weight="normal" fill="#132847">Static simulated portfolio case study</text>
+<text x="900" y="297" text-anchor="middle" font-family="Arial" font-size="25" font-weight="normal" fill="#132847">Separate detailed, summary and estimate populations</text>
+<path d="M900 338V371" stroke="#536579" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="130" y="380" width="1540" height="180" rx="16" fill="white" stroke="#9eafc3" stroke-width="2"/>
+<text x="900" y="426" text-anchor="middle" font-family="Arial" font-size="30" font-weight="bold" fill="#132847">2. Kaggle raw snapshot</text>
+<text x="900" y="474" text-anchor="middle" font-family="Arial" font-size="25" font-weight="normal" fill="#132847">Seven immutable CSV files</text>
+<text x="900" y="522" text-anchor="middle" font-family="Arial" font-size="25" font-weight="normal" fill="#132847">Source attribution and source limitations</text>
+<path d="M900 563V596" stroke="#536579" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="130" y="605" width="1540" height="180" rx="16" fill="white" stroke="#9eafc3" stroke-width="2"/>
+<text x="900" y="651" text-anchor="middle" font-family="Arial" font-size="30" font-weight="bold" fill="#132847">3. Python ETL</text>
+<text x="900" y="699" text-anchor="middle" font-family="Arial" font-size="25" font-weight="normal" fill="#132847">Seven scripts and shared helpers</text>
+<text x="900" y="747" text-anchor="middle" font-family="Arial" font-size="25" font-weight="normal" fill="#132847">Schema, dates, ranges, formulas and row preservation</text>
+<path d="M900 788V821" stroke="#536579" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="130" y="830" width="1540" height="180" rx="16" fill="white" stroke="#9eafc3" stroke-width="2"/>
+<text x="900" y="876" text-anchor="middle" font-family="Arial" font-size="30" font-weight="bold" fill="#132847">4. Clean UTF-8 files</text>
+<text x="900" y="924" text-anchor="middle" font-family="Arial" font-size="25" font-weight="normal" fill="#132847">Seven reproducible CSV outputs</text>
+<text x="900" y="972" text-anchor="middle" font-family="Arial" font-size="25" font-weight="normal" fill="#132847">Source location retained; three airline aliases aligned</text>
+<path d="M900 1013V1046" stroke="#536579" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="130" y="1055" width="1540" height="180" rx="16" fill="white" stroke="#9eafc3" stroke-width="2"/>
+<text x="900" y="1101" text-anchor="middle" font-family="Arial" font-size="30" font-weight="bold" fill="#132847">5. PostgreSQL aviation_bi</text>
+<text x="900" y="1149" text-anchor="middle" font-family="Arial" font-size="25" font-weight="normal" fill="#132847">Seven source-aligned aviation tables</text>
+<text x="900" y="1197" text-anchor="middle" font-family="Arial" font-size="25" font-weight="normal" fill="#132847">No declared primary or foreign keys</text>
+<path d="M900 1238V1271" stroke="#536579" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="130" y="1280" width="1540" height="180" rx="16" fill="white" stroke="#9eafc3" stroke-width="2"/>
+<text x="900" y="1326" text-anchor="middle" font-family="Arial" font-size="30" font-weight="bold" fill="#132847">6. SQL reporting layer</text>
+<text x="900" y="1374" text-anchor="middle" font-family="Arial" font-size="25" font-weight="normal" fill="#132847">Six analysis scripts and nine views</text>
+<text x="900" y="1422" text-anchor="middle" font-family="Arial" font-size="25" font-weight="normal" fill="#132847">Separate financial interfaces; compatible legacy views</text>
+<path d="M900 1463V1496" stroke="#536579" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="130" y="1505" width="1540" height="180" rx="16" fill="white" stroke="#9eafc3" stroke-width="2"/>
+<text x="900" y="1551" text-anchor="middle" font-family="Arial" font-size="30" font-weight="bold" fill="#132847">7. Power BI import model</text>
+<text x="900" y="1599" text-anchor="middle" font-family="Arial" font-size="25" font-weight="normal" fill="#132847">22 tables, 33 measures, 35 relationships</text>
+<text x="900" y="1647" text-anchor="middle" font-family="Arial" font-size="25" font-weight="normal" fill="#132847">Explicit geography, severity and date roles</text>
+<path d="M900 1688V1721" stroke="#536579" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="130" y="1730" width="1540" height="180" rx="16" fill="white" stroke="#9eafc3" stroke-width="2"/>
+<text x="900" y="1776" text-anchor="middle" font-family="Arial" font-size="30" font-weight="bold" fill="#132847">8. Four report pages</text>
+<text x="900" y="1824" text-anchor="middle" font-family="Arial" font-size="25" font-weight="normal" fill="#132847">Executive, financial, geopolitical and regional</text>
+<text x="900" y="1872" text-anchor="middle" font-family="Arial" font-size="25" font-weight="normal" fill="#132847">Four current page images; manual interaction acceptance remains open</text>
+<path d="M900 1913V1946" stroke="#536579" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="130" y="1955" width="1540" height="180" rx="16" fill="white" stroke="#9eafc3" stroke-width="2"/>
+<text x="900" y="2001" text-anchor="middle" font-family="Arial" font-size="30" font-weight="bold" fill="#132847">9. Portfolio evidence</text>
+<text x="900" y="2049" text-anchor="middle" font-family="Arial" font-size="25" font-weight="normal" fill="#132847">Two authoritative Word documents and audit records</text>
+<text x="900" y="2097" text-anchor="middle" font-family="Arial" font-size="25" font-weight="normal" fill="#132847">Verified descriptive findings; private study guide excluded</text>
+<text x="900" y="2220" text-anchor="middle" font-family="Arial" font-size="22" fill="#536579">Not live monitoring. Not an official ICAO project. Modelled values are not verified actuals.</text></svg>

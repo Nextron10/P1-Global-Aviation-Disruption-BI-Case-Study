@@ -20,15 +20,16 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "aviation vw_airline_operational_financial"
+                      "Entity": "Report Measures"
                     }
                   },
-                  "Property": "Cancellations per Rerouted Flight"
+                  "Property": "Estimated Cancellations per Estimated Reroute"
                 }
               },
-              "queryRef": "aviation vw_airline_operational_financial.Cancellations per Rerouted Flight",
-              "nativeQueryRef": "Cancellations per Rerouted Flight",
-              "format": "0.00"
+              "queryRef": "Report Measures.Estimated Cancellations per Estimated Reroute",
+              "nativeQueryRef": "Estimated Cancellations per Estimated Reroute",
+              "format": "0.00",
+              "displayName": "Estimated Cancellations per Estimated Reroute"
             }
           ]
         }
@@ -40,10 +41,10 @@
               "Measure": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "aviation vw_airline_operational_financial"
+                    "Entity": "Report Measures"
                   }
                 },
-                "Property": "Cancellations per Rerouted Flight"
+                "Property": "Estimated Cancellations per Estimated Reroute"
               }
             },
             "direction": "Descending"
@@ -306,7 +307,7 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "false"
                 }
               }
             },
@@ -359,7 +360,7 @@
             }
           },
           "selector": {
-            "metadata": "aviation vw_airline_operational_financial.Cancellations per Rerouted Flight"
+            "metadata": "Report Measures.Estimated Cancellations per Estimated Reroute"
           }
         }
       ],
@@ -539,7 +540,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'CANCELLATIONS / REROUTE'"
+                  "Value": "'EST. CANCELLATIONS / REROUTE'"
                 }
               }
             },

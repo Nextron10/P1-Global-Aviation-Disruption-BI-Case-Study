@@ -1,0 +1,14 @@
+/// Unique values from the listed source populations.
+table DimAirportSeverity
+	lineageTag: 47011438-a2cc-472b-8c2a-ccbeb832956a
+
+	column severity_level
+		dataType: string
+		lineageTag: 8be40031-1c76-4758-8725-15427b81b62d
+		summarizeBy: none
+		sourceColumn: [severity_level]
+
+	partition DimAirportSeverity = calculated
+		mode: import
+		source = FILTER(DISTINCT(SELECTCOLUMNS('aviation vw_airport_disruption', "severity_level", 'aviation vw_airport_disruption'[severity_level])), NOT ISBLANK([severity_level]))
+
