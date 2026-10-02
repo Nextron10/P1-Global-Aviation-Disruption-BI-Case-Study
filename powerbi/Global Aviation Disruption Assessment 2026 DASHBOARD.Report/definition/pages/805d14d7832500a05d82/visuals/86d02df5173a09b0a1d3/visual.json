@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
   "name": "86d02df5173a09b0a1d3",
   "position": {
-    "x": 1414.3823709721403,
+    "x": 1426.6813481110285,
     "y": 8.3986710963455273,
     "z": 15000,
     "height": 102.57009966777409,
-    "width": 425.61762902785966
+    "width": 429.31865188897149
   },
   "visual": {
     "visualType": "slicer",
@@ -83,7 +83,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Summary Airline Type'"
+                  "Value": "'Airline Type'"
                 }
               }
             },

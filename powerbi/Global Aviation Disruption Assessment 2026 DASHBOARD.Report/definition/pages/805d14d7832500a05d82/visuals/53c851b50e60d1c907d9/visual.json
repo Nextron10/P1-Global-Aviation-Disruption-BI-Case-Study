@@ -1,13 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
   "name": "53c851b50e60d1c907d9",
   "position": {
     "x": 0,
     "y": 0,
     "z": 2000,
     "height": 174,
-    "width": 292,
-    "tabOrder": 0
+    "width": 294.53913043478258
   },
   "visual": {
     "visualType": "cardVisual",
@@ -28,8 +27,8 @@
               },
               "queryRef": "Report Measures.Modeled Average Revenue Loss Pct",
               "nativeQueryRef": "Modeled Average Revenue Loss Pct",
-              "format": "0.00%",
-              "displayName": "Modeled Average Revenue Loss Pct"
+              "displayName": "Modeled Average Revenue Loss Pct",
+              "format": "0.00%"
             }
           ]
         }
@@ -665,6 +664,20 @@
               "expr": {
                 "Literal": {
                   "Value": "0D"
+                }
+              }
+            },
+            "left": {
+              "expr": {
+                "Literal": {
+                  "Value": "5D"
+                }
+              }
+            },
+            "right": {
+              "expr": {
+                "Literal": {
+                  "Value": "5D"
                 }
               }
             }

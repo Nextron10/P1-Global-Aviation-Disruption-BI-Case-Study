@@ -22,7 +22,7 @@
                     "value": "  ",
                     "textStyle": {
                       "fontStyle": "italic",
-                      "fontSize": "12pt",
+                      "fontSize": "11pt",
                       "color": "#333333"
                     }
                   },
@@ -30,14 +30,14 @@
                     "value": "Operational records cover 27 February–7 June 2026 | Conflict events cover a wider period ",
                     "textStyle": {
                       "fontStyle": "italic",
-                      "fontSize": "12pt"
+                      "fontSize": "11pt"
                     }
                   },
                   {
-                    "value": "| Static simulated data | Detailed, summary and estimate populations differ | Financial values are undated | Association is not causation.",
+                    "value": "| Static simulated data | Detailed, summary and estimate populations differ | Financial values are undated | Association is not causation.       ",
                     "textStyle": {
                       "fontStyle": "italic",
-                      "fontSize": "12pt",
+                      "fontSize": "11pt",
                       "color": "#333333"
                     }
                   }

@@ -1,13 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
   "name": "71a12445dd02582c1a6b",
   "position": {
-    "x": 940.57338890670076,
+    "x": 948.752287940672,
     "y": 0.730946189237585,
     "z": 5000,
     "height": 173.47789557911594,
-    "width": 283.78326386662394,
-    "tabOrder": 3000
+    "width": 286.25094442198588
   },
   "visual": {
     "visualType": "cardVisual",
@@ -28,8 +27,8 @@
               },
               "queryRef": "Report Measures.Estimated Cancellations per Estimated Reroute",
               "nativeQueryRef": "Estimated Cancellations per Estimated Reroute",
-              "format": "0.00",
-              "displayName": "Estimated Cancellations per Estimated Reroute"
+              "displayName": "Estimated Cancellations per Estimated Reroute",
+              "format": "0.00"
             }
           ]
         }

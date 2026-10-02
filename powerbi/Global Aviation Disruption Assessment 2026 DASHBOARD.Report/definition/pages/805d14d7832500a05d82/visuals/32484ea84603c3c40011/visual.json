@@ -1,13 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
   "name": "32484ea84603c3c40011",
   "position": {
-    "x": 1249.2866944533503,
+    "x": 1260.1500570138141,
     "y": 0.62652530506073845,
     "z": 6000,
     "height": 173.47789557911594,
-    "width": 283.78326386662394,
-    "tabOrder": 4000
+    "width": 286.25094442198588
   },
   "visual": {
     "visualType": "cardVisual",
@@ -28,8 +27,8 @@
               },
               "queryRef": "Report Measures.Modeled Summary Airline Loss USD",
               "nativeQueryRef": "Modeled Summary Airline Loss USD",
-              "format": "$#,0.00;($#,0.00);$0.00",
-              "displayName": "Modeled Summary Airline Loss USD"
+              "displayName": "Modeled Summary Airline Loss USD",
+              "format": "$#,0.00;($#,0.00);$0.00"
             }
           ]
         }

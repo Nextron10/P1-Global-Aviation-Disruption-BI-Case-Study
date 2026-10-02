@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
   "name": "0a5cb3f16709b07dc333",
   "position": {
     "x": 0,
@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Static simulated data | Detailed, summary and estimate populations differ | Financial values are undated | Association is not causation.",
+                    "value": "Static simulated data | Detailed, summary and estimate populations differ | Financial values are undated | Association is not causation.         ",
                     "textStyle": {
                       "fontStyle": "italic",
                       "fontSize": "11pt",

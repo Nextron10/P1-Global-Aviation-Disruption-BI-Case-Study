@@ -327,7 +327,7 @@
             "fillTransparency": {
               "expr": {
                 "Literal": {
-                  "Value": "40D"
+                  "Value": "30D"
                 }
               }
             }

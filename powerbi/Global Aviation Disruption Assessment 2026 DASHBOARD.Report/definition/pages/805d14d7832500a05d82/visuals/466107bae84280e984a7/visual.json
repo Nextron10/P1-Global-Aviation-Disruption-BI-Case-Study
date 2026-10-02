@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "466107bae84280e984a7",
   "position": {
     "x": 1008.0000000000001,
@@ -370,48 +370,6 @@
           ]
         },
         "howCreated": "User"
-      },
-      {
-        "name": "1958b64072c914d892c7",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "DimAirline"
-              }
-            },
-            "Property": "airline"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "36089a39aa0b5e507953",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Report Measures"
-              }
-            },
-            "Property": "Detailed Cancellations"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "59484a18c777e793ab07",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Report Measures"
-              }
-            },
-            "Property": "Detailed Reroutes"
-          }
-        },
-        "type": "Advanced"
       }
     ]
   }

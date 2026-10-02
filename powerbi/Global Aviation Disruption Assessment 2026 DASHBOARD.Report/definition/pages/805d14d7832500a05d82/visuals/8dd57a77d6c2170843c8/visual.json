@@ -1,13 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
   "name": "8dd57a77d6c2170843c8",
   "position": {
-    "x": 316.93004168002562,
+    "x": 319.68595508593887,
     "y": 0.41768353670721581,
     "z": 3000,
     "height": 174,
-    "width": 290,
-    "tabOrder": 1000
+    "width": 292.52173913043475
   },
   "visual": {
     "visualType": "cardVisual",
@@ -28,8 +27,8 @@
               },
               "queryRef": "Report Measures.Estimated Fuel Cost USD",
               "nativeQueryRef": "Estimated Fuel Cost USD",
-              "format": "$#,0.00;($#,0.00);$0.00",
-              "displayName": "Estimated Fuel Cost USD"
+              "displayName": "Estimated Fuel Cost USD",
+              "format": "$#,0.00;($#,0.00);$0.00"
             }
           ]
         }
