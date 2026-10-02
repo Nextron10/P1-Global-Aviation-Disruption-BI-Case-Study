@@ -13,20 +13,21 @@ annotation PBI_QueryOrder = ["aviation vw_airline_loss_summary", "aviation vw_ai
 
 annotation PBI_ProTooling = ["DevMode"]
 
-ref table 'aviation vw_airline_loss_summary'
-ref table 'aviation vw_airline_loss_estimate'
 ref table 'aviation vw_airport_disruption'
 ref table 'aviation vw_airspace_closure'
 ref table 'aviation vw_geopolitical_daily_impact'
 ref table 'aviation vw_route_passenger_impact'
 ref table 'aviation vw_regional_vulnerability'
+ref table DimDate
+ref table DimAirline
+ref table DimRegion
+ref table DimCountry
 ref table 'aviation flight_cancellations'
 ref table 'aviation flight_reroutes'
 ref table 'aviation conflict_events'
-ref table DimDate
-ref table DimAirline
-ref table DimCountry
-ref table DimRegion
+ref table 'Operational Factor'
+ref table 'aviation vw_airline_loss_estimate'
+ref table 'aviation vw_airline_loss_summary'
 ref table DimAirportSeverity
 ref table DimConflictSeverity
 ref table DimOriginCountry
@@ -34,7 +35,6 @@ ref table DimDestinationCountry
 ref table DimOriginRegion
 ref table DimDestinationRegion
 ref table 'Report Measures'
-ref table 'Operational Factor'
 
 ref cultureInfo en-IN
 

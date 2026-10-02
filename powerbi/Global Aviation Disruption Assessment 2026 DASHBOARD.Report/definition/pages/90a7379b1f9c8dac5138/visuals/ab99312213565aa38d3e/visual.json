@@ -6,7 +6,7 @@
     "y": 432,
     "z": 2000,
     "height": 304,
-    "width": 784,
+    "width": 736,
     "tabOrder": 2000
   },
   "visual": {
@@ -375,6 +375,44 @@
           },
           "selector": {
             "metadata": "aviation flight_reroutes.Total Reroutes"
+          }
+        },
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 9,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Report Measures.Detailed Cancellations"
+          }
+        },
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 2,
+                      "Percent": -0.25
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Report Measures.Detailed Reroutes"
           }
         }
       ]

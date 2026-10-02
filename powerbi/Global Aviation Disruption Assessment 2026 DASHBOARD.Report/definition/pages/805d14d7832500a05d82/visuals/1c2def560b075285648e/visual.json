@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
   "name": "1c2def560b075285648e",
   "position": {
     "x": 631.86008336005125,
@@ -28,8 +28,8 @@
               },
               "queryRef": "Report Measures.Estimated Daily Loss USD",
               "nativeQueryRef": "Estimated Daily Loss USD",
-              "format": "$#,0.00;($#,0.00);$0.00",
-              "displayName": "Estimated Daily Loss USD"
+              "displayName": "Estimated Daily Loss USD",
+              "format": "$#,0.00;($#,0.00);$0.00"
             }
           ]
         }
@@ -326,7 +326,7 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "true"
                 }
               }
             },

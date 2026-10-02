@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
   "name": "6544d76615174bb3a376",
   "position": {
     "x": 764.95681645304842,
@@ -28,8 +28,8 @@
               },
               "queryRef": "Report Measures.Airspace Closure Hours",
               "nativeQueryRef": "Airspace Closure Hours",
-              "format": "#,0.0",
-              "displayName": "Airspace Closure Hours"
+              "displayName": "Airspace Closure Hours",
+              "format": "#,0"
             }
           ]
         }
@@ -335,7 +335,7 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "true"
                 }
               }
             },

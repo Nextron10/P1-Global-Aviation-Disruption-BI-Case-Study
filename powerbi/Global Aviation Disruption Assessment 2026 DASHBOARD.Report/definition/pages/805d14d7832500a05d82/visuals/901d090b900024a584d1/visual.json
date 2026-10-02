@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
   "name": "901d090b900024a584d1",
   "position": {
     "x": 1280,
@@ -47,8 +47,8 @@
               },
               "queryRef": "Report Measures.Estimated Fuel Cost per Estimated Reroute",
               "nativeQueryRef": "Estimated Fuel Cost per Estimated Reroute",
-              "format": "$#,0.00;($#,0.00);$0.00",
-              "displayName": "Estimated Fuel Cost per Estimated Reroute"
+              "displayName": "Estimated Fuel Cost per Estimated Reroute",
+              "format": "$#,0.00;($#,0.00);$0.00"
             }
           ]
         }
@@ -261,7 +261,7 @@
             "bold": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "false"
                 }
               }
             },

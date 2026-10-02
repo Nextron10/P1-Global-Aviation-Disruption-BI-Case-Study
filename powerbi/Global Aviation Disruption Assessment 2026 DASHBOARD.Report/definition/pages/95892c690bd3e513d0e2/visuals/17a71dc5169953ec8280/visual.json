@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
   "name": "17a71dc5169953ec8280",
   "position": {
     "x": 1138.6983355435907,
@@ -28,8 +28,8 @@
               },
               "queryRef": "Report Measures.Airport Flights Affected",
               "nativeQueryRef": "Airport Flights Affected",
-              "format": "#,0",
-              "displayName": "Airport Flights Affected"
+              "displayName": "Airport Flights Affected",
+              "format": "#,0"
             }
           ]
         }
@@ -342,7 +342,7 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "true"
                 }
               }
             },

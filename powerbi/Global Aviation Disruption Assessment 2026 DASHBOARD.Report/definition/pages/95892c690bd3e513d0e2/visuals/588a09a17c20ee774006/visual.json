@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
   "name": "588a09a17c20ee774006",
   "position": {
     "x": 544,
@@ -47,8 +47,8 @@
               },
               "queryRef": "Report Measures.Affected Flights by Factor",
               "nativeQueryRef": "Affected Flights by Factor",
-              "format": "#,0",
-              "displayName": "Affected Flights by Factor"
+              "displayName": "Affected Flights by Factor",
+              "format": "#,0"
             }
           ]
         }
@@ -290,10 +290,17 @@
                 "color": {
                   "expr": {
                     "ThemeDataColor": {
-                      "ColorId": 2,
-                      "Percent": -0.25
+                      "ColorId": 7,
+                      "Percent": 0.2
                     }
                   }
+                }
+              }
+            },
+            "fillTransparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "20D"
                 }
               }
             }

@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
   "name": "5d48327250f94239ac70",
   "position": {
     "x": 947.83368057429311,
@@ -28,8 +28,8 @@
               },
               "queryRef": "Report Measures.Detailed Extra Fuel Cost USD",
               "nativeQueryRef": "Detailed Extra Fuel Cost USD",
-              "format": "$#,0.00;($#,0.00);$0.00",
-              "displayName": "Detailed Extra Fuel Cost USD"
+              "displayName": "Detailed Extra Fuel Cost USD",
+              "format": "$#,0.00;($#,0.00);$0.00"
             }
           ]
         }
@@ -328,7 +328,7 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "true"
                 }
               }
             },
