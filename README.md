@@ -1,178 +1,155 @@
 # Global Aviation Disruption Assessment 2026
 
-Static, simulated portfolio case study using Python, PostgreSQL, SQL, and Power BI.
+A business intelligence portfolio project that uses **Python, PostgreSQL and Power BI** to analyse aviation disruption records, regional exposure and modeled financial scenarios.
 
-## Project purpose
+The project follows seven Kaggle datasets from raw CSV files through cleaning, SQL analysis and a four-page interactive report. Its main analytical challenge is preserving different source populations so that similar-looking metrics are not combined into misleading results.
 
-Seven aviation-disruption datasets describe operational records, airport and airspace exposure, financial scenarios, and geopolitical context at different grains. The project demonstrates how to clean and reconcile the datasets without forcing incompatible populations to agree.
+> **Data context:** This is a static case study using simulated and modeled data. It is not a live aviation system, an official assessment or evidence of real-world causal effects.
 
-The analysis is descriptive. It is not a live monitoring system, a production deployment, an official aviation assessment, or evidence of causality.
+## Dashboard preview
 
-## Data source and licensing
+![Executive Overview dashboard](visuals/PowerBI_SS/01_Executive_Overview.png)
 
-- Source: [Kaggle — Global Civil Aviation Disruption 2026 Iran–US War](https://www.kaggle.com/datasets/zkskhurram/global-civil-aviation-disruption2026-iranus-war)
-- Snapshot: seven source files downloaded in the first week of August 2026
-- Data classification: static simulated and modeled data
-- Dataset license: CC BY-SA 4.0
-- Repository code license: MIT
+| Report page | What it shows |
+|---|---|
+| [Executive Overview](visuals/PowerBI_SS/01_Executive_Overview.png) | Detailed cancellations, passengers, reroutes, fuel cost, airport exposure and event context |
+| [Modeled Financial Scenarios](visuals/PowerBI_SS/02_Modeled_Financial_Scenarios.png) | Separate airline-loss summaries and daily estimates, with population-specific ratios |
+| [Geopolitical & Operational Disruption](visuals/PowerBI_SS/03_Geopolitical_Operational_Disruption.png) | Disruption timelines, cancellation reasons, airport impact and airspace closures |
+| [Regional Risk & Corridor Vulnerability](visuals/PowerBI_SS/04_Regional_Corridor_Vulnerability.png) | Directional route corridors, additional distance and separate regional exposures |
 
-This is an independent portfolio project, not an official or endorsed aviation assessment.
+## Business questions
 
-## Architecture
+- Where and when are detailed cancellation and reroute records concentrated?
+- What passenger, distance, fuel-cost and delay burdens appear in those records?
+- Which airports and airspace closures have the highest reported exposure?
+- Which airlines and regions show the greatest modeled financial exposure?
+- How do disruption counts differ between military-event and other dates within shared source coverage?
 
-![Project architecture](visuals/Architecture/Project%20Architecture.png)
+## Selected findings
 
-Population separation is a design principle: detailed records, modeled summaries, and modeled estimates remain distinct.
+These figures describe the supplied snapshot, not verified aviation activity or audited financial losses.
 
-## Source-of-truth matrix
+- **Operational detail:** 2,200 cancellation records contain 575,710 affected passengers. The separate reroute dataset has 1,500 records, 2.20 million additional kilometres, USD 11.66 million in extra fuel cost and 4,706.30 delay hours.
+- **Airport concentration:** The Middle East accounts for 56.12% of reported airport-affected flights within the airport dataset.
+- **Route concentration:** Europe to Middle East is the leading detailed reroute corridor, with 196 records, or 13.07% of that dataset. The reverse direction is a separate corridor.
+- **Financial scenarios:** The 70-airline modeled summary reports USD 21.41 billion in loss. A separate 35-airline estimate reports USD 48.84 million in daily loss; these values are not one financial series.
+- **Event-date comparison:** Within the shared 100-day operational window, mean cancellations are 21.08 on military-event dates and 22.07 on other dates. This descriptive comparison does not establish a conflict effect.
 
-| Business concept | Authoritative source | Grain and population | Date scope |
-|---|---|---|---|
-| Detailed cancellations and passengers | `flight_cancellations` | 2,200 simulated cancellation records | 27 February–7 June 2026 |
-| Detailed reroutes, distance, fuel, and delay | `flight_reroutes` | 1,500 simulated reroute records | 28 February–7 June 2026 |
-| Modeled airline loss and revenue loss | `airline_losses` | 70-airline undated modeled summary | No date supplied |
-| Modeled summary cancellations and reroutes | `airline_losses` | 70-airline undated modeled summary | No date supplied |
-| Estimated daily exposure | `airline_losses_estimate` | 35-airline undated modeled estimate | No date supplied |
-| Airport exposure | `airport_disruptions` | 227 airport disruption records | 27 February–7 June 2026 |
-| Airspace exposure | `airspace_closures` | 84 closure records | Starts: 28 February–7 June; ends through 17 June 2026 |
-| Conflict-event context | `conflict_events` | 82 contextual event records | 15 December 2025–8 June 2026 |
+See the [Executive Findings](documentation/Global%20Aviation%20Disruption%20Assessment%20Executive%20Findings.docx) for source definitions, calculations and interpretation limits.
 
-The supplied snapshot contains 6,030 modeled-summary cancellations and 2,200 detailed cancellation records. It also contains 4,539 modeled-summary reroutes and 1,500 detailed reroute records. These are different source populations, not totals that should be forced to match.
-
-The financial estimate table is not an aggregation of the modeled-summary table. Airport-affected and airspace-affected flights cannot be deduplicated because there is no shared flight identifier. Forty-two conflict records remain without a country because the source does not provide a defensible country value.
-
-## Repository structure
+## Technical approach
 
 ```text
-.vscode/                 Shared editor configuration
-data/raw/                Seven immutable Kaggle source files
-data/clean/              Seven reproducible UTF-8 clean files
-documentation/           Business requirements, technical reference, and audit records
-powerbi/                 Four-page Power BI project in Import mode
-python/etl/              Seven dataset ETL scripts
-python/utils/            Shared validation and path helpers
-sql/01_database/         Database, schema, and source-aligned tables
-sql/02_loading/          Transactional UTF-8 reload
-sql/03_validation/       Post-load and view reconciliation
-sql/04_analysis/         Six business-question analysis files
-sql/05_views/            Authoritative, supporting, and compatibility views
-visuals/Architecture/    Current project architecture
-visuals/ERD/             PostgreSQL structure and Power BI semantic-model diagram
-visuals/PowerBI_SS/      Four verified report-page images
+Kaggle CSV snapshot
+    → Python cleaning and validation
+    → Clean UTF-8 CSV files
+    → PostgreSQL analytical tables
+    → SQL analysis and reporting views
+    → Power BI Import model
+    → Four report pages
 ```
 
-## Reproduce the clean data
+| Layer | Implementation |
+|---|---|
+| Python | Seven source-specific ETL scripts and shared helpers; schema, date, range, formula and row-preservation checks |
+| PostgreSQL | Seven source-aligned tables, explicit constraints and transactional UTF-8 loading |
+| SQL | Six analytical scripts, population-specific financial views and post-load reconciliation |
+| Power BI | Import mode, explicit DAX measures, one-direction relationships and separate origin/destination geography |
+| Validation | Raw-to-clean reconciliation, clean-to-database equality, control totals and representative model-filter tests |
 
-Prerequisites: Python 3.12 or later, PostgreSQL with the `psql` client, and Power BI Desktop with PBIP support. Source-package ETL reproduction was checked using Python 3.14.6 and pandas 3.0.3. Run the following commands from the repository root.
+The [architecture diagram](visuals/Architecture/Project%20Architecture.png) shows the pipeline. The [database and semantic-model diagram](visuals/ERD/ERD%20-1.png) distinguishes PostgreSQL tables from Power BI relationships.
 
-```powershell
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1
-python -m pip install -r requirements.txt
-python python/etl/01_airline_losses_etl.py
-python python/etl/02_airline_losses_estimate_etl.py
-python python/etl/03_airport_disruptions_etl.py
-python python/etl/04_airspace_closures_etl.py
-python python/etl/05_conflict_events_etl.py
-python python/etl/06_flight_cancellations_etl.py
-python python/etl/07_flight_reroutes_etl.py
+### Skills demonstrated
+
+- Data profiling, cleaning and reproducible ETL
+- SQL aggregation, joins, views and validation
+- Data-grain and metric-population reconciliation
+- Power BI modeling, DAX and filter-context design
+- Business requirements, metric documentation and evidence-based interpretation
+
+## Data reconciliation: the key design decision
+
+The source files describe related concepts but do not prove a shared population.
+
+| Metric population | Source | Size |
+|---|---|---|
+| Detailed cancellations and cancellation passengers | `flight_cancellations` | 2,200 records |
+| Detailed reroutes, distance, fuel and delay | `flight_reroutes` | 1,500 records |
+| Modeled airline-loss summary | `airline_losses` | 70 airlines |
+| Modeled daily airline estimates | `airline_losses_estimate` | 35 airlines |
+| Airport disruption exposure | `airport_disruptions` | 227 records |
+| Airspace closure exposure | `airspace_closures` | 84 records |
+| Conflict-event context | `conflict_events` | 82 records |
+
+For example, the modeled summary contains 6,030 cancellations and 4,539 reroutes, while the detailed datasets contain 2,200 and 1,500 records. These differences are retained and labeled; neither source is rewritten to force agreement. Financial ratios use values from the same financial population.
+
+Airport and airspace affected-flight counts remain separate because no shared flight identifier supports deduplication. The 42 conflict records without a defensible country remain available without invented geography.
+
+## Repository
+
+```text
+data/
+  raw/             Original source CSVs
+  clean/           Reproducible UTF-8 outputs
+python/
+  etl/             Seven cleaning scripts
+  utils/           Shared validation helpers
+sql/
+  01_database/     Database, schema and tables
+  02_loading/      Transactional psql loader
+  03_validation/   Post-load and view checks
+  04_analysis/     Six analytical scripts
+  05_views/        Reporting interfaces
+powerbi/           PBIP report and semantic-model source
+documentation/     Business, technical, findings and audit documents
+visuals/           Dashboard images, architecture and model diagrams
 ```
 
-Each script resolves paths from the repository, validates the expected schema, preserves its expected row count, and writes one UTF-8 clean CSV.
+## Run locally
 
-## Rebuild PostgreSQL
+**Requirements:** Python 3.12 or later, PostgreSQL with `psql`, and Power BI Desktop with PBIP support. ETL reproduction was checked with Python 3.14.6 and pandas 3.0.3.
 
-The examples use the local `postgres` role. Replace it with your own authorized PostgreSQL role if needed, and enter the password at the prompt. Do not store credentials in the repository. Run these commands from the repository root only when setting up or deliberately rebuilding this project's database.
+1. Clone the repository and create a local Python environment:
 
-```powershell
-psql -h localhost -U postgres -d postgres -f sql/01_database/01_create_database.sql
-psql -h localhost -U postgres -d aviation_bi -f sql/01_database/02_create_schema.sql
-psql -h localhost -U postgres -d aviation_bi -f sql/01_database/03_create_tables.sql
-psql -h localhost -U postgres -d aviation_bi -f sql/02_loading/01_load_data.psql
-psql -h localhost -U postgres -d aviation_bi -f sql/05_views/01_create_views.sql
-psql -h localhost -U postgres -d aviation_bi -f sql/03_validation/01_validation.sql
-```
+   ```powershell
+   python -m venv .venv
+   .\.venv\Scripts\Activate.ps1
+   python -m pip install -r requirements.txt
+   ```
 
-`03_create_tables.sql` rebuilds only the seven tables in schema `aviation` and their dependent views. `01_load_data.psql` performs the static truncate-and-reload in one transaction, uses explicit column lists, and stops on errors. Recreate the views before running validation.
+2. Run the seven scripts in `python/etl/` in numeric order. They generate the corresponding clean CSV files.
+3. Set up the local `aviation_bi` database: database → schema → tables → load → views → validation → analysis. Run the loader, `sql/02_loading/01_load_data.psql`, with **psql**, not a SQL query editor.
+4. Open [the PBIP project](powerbi/Global%20Aviation%20Disruption%20Assessment%202026%20DASHBOARD.pbip). Keep its `.Report` and `.SemanticModel` folders beside it.
+5. Connect Power BI to `localhost` / `aviation_bi`, enter your local PostgreSQL credentials and refresh the imported data.
 
-The `.psql` extension is intentional. The loader contains psql client commands such as `\copy` and `\set`. Run it with psql or the pgAdmin PSQL Tool, not the pgAdmin Query Tool. The remaining SQL files are ordinary PostgreSQL scripts.
+**Rebuild warning:** Table creation and loading replace this project's existing table data. Use them only for deliberate local setup or rebuilding, not against an unrelated database. Never store credentials in source files.
 
-## Run SQL analysis
-
-After validation, run the scripts in `sql/04_analysis/` in numeric order:
-
-1. Airport disruption concentration and time pattern
-2. Modeled airline financial scenario
-3. Modeled airline estimate and population coverage
-4. Descriptive geopolitical temporal comparison
-5. Regional and route exposure
-6. Executive population reconciliation
-
-Each file states its business question, source, grain, population, date scope, calculation, and limitation.
-
-## Reporting views
-
-- Authoritative: `vw_airline_loss_summary`, `vw_airline_loss_estimate`
-- Supporting: `vw_airport_disruption`, `vw_airspace_closure`, `vw_geopolitical_daily_impact`, `vw_regional_vulnerability`, `vw_route_passenger_impact`
-- Deprecated compatibility: `vw_airline_operational_financial`, `vw_executive_kpi`
-
-The deprecated SQL views remain for compatibility with earlier report versions. The corrected PBIP no longer imports them. New work uses the separate population-specific financial views. Keeping the old SQL objects does not make them authoritative.
-
-## Power BI status
-
-Open `powerbi/Global Aviation Disruption Assessment 2026 DASHBOARD.pbip`. Keep its `.Report` and `.SemanticModel` folders beside the project file. Connect to your local `aviation_bi` database through Power BI's data-source settings, enter your own PostgreSQL credentials, and refresh the imported data.
-
-The report has four pages:
-
-1. Executive Overview
-2. Modeled Financial Scenarios
-3. Geopolitical & Operational Disruption
-4. Regional Risk & Corridor Vulnerability
-
-The semantic model separates financial populations and uses explicit origin and destination geography. Undated financial values do not change with date selections. Airspace date filtering uses closure start dates and sums complete record durations.
-
-The calendar includes conflict context from December 2025, but cancellation and airport records start on 27 February 2026 and reroutes start on 28 February. Earlier blank operational selections mean no records are available in this snapshot, not confirmed zero disruption. Financial scenarios are undated.
-
-Data, SQL and model checks pass within the tested scope. Manual report interaction and accessibility acceptance remain with the report author. Independent setup from a fresh Git clone on another laptop was not tested and is outside the agreed final check scope. See the audit for the verification boundaries.
-
-### Report preview
-
-- [Executive Overview](visuals/PowerBI_SS/01_Executive_Overview.png)
-- [Modeled Financial Scenarios](visuals/PowerBI_SS/02_Modeled_Financial_Scenarios.png)
-- [Geopolitical and Operational Disruption](visuals/PowerBI_SS/03_Geopolitical_Operational_Disruption.png)
-- [Regional Risk and Corridor Vulnerability](visuals/PowerBI_SS/04_Regional_Corridor_Vulnerability.png)
-
-These images show the checked report snapshot. Refresh them after the final Power BI edits; PDF and report exports are managed separately by the report author.
+The [Technical Documentation](documentation/Global%20Aviation%20Disruption%20Assessment%20Technical%20Documentation.docx) contains the complete commands, execution order, connection instructions and troubleshooting.
 
 ## Documentation
 
-- [Business requirements and analytical framework](documentation/Global%20Aviation%20Disruption%20Assessment%20Business%20Requirements.docx)
-- [Technical implementation and validation documentation](documentation/Global%20Aviation%20Disruption%20Assessment%20Technical%20Documentation.docx)
-- [Descriptive executive findings and limitations](documentation/Global%20Aviation%20Disruption%20Assessment%20Executive%20Findings.docx)
-- [Remediation change log](documentation/Remediation%20Change%20Log.md)
-- [Architecture](visuals/Architecture/)
-- [Database structure and Power BI semantic model](visuals/ERD/ERD%20-1.png)
-- [Editable diagram source](visuals/ERD/ERD%20-1.svg)
-- [Technical, business and combined audit](documentation/Complete%20Project%20Audit.md)
-- [Audit file inventory](documentation/Audit%20File%20Inventory.csv)
+| Document | Purpose |
+|---|---|
+| [Business Requirements](documentation/Global%20Aviation%20Disruption%20Assessment%20Business%20Requirements.docx) | Problem statement, objectives, scope, KPI definitions and acceptance criteria |
+| [Technical Documentation](documentation/Global%20Aviation%20Disruption%20Assessment%20Technical%20Documentation.docx) | Data lineage, transformations, schemas, views, model definitions and local setup |
+| [Executive Findings](documentation/Global%20Aviation%20Disruption%20Assessment%20Executive%20Findings.docx) | Verified descriptive results and their limitations |
 
-The two core documents define business requirements and technical implementation. Executive findings are a separate descriptive results document, not another implementation manual. Audit evidence and correction history remain separate. Historical documents and private study notes are excluded from GitHub.
+Supporting verification records: [complete audit](documentation/Complete%20Project%20Audit.md), [file inventory](documentation/Audit%20File%20Inventory.csv) and [change log](documentation/Remediation%20Change%20Log.md). Private study notes and historical documents are excluded from GitHub.
 
-## GitHub source-control policy
+## Interpretation and verification limits
 
-Commit the PBIP source files, including report definitions, semantic-model TMDL, themes, and `.platform` files. Do not commit Power BI `.pbi` folders, local settings, cache files, PBIX/PBIT binaries, virtual environments, credentials, database backups, Word lock files, or document-render output. The project `.gitignore` covers these local artifacts.
+- Operational records begin in late February 2026; the wider calendar starts in December 2025 for conflict context. Earlier blank operational selections mean unavailable snapshot records, not confirmed zero disruption.
+- Financial summaries and estimates are undated and do not change with date selections.
+- Airspace date filters select closure start dates and sum complete durations, not hours prorated into the selected period.
+- Estimated passengers per estimated reroute is a population-exposure ratio, not aircraft occupancy.
+- No forecasting, causal attribution, mitigation effectiveness or official endorsement is claimed.
+- Automated checks and representative model tests are recorded in the audit. Full manual interaction/accessibility acceptance and fresh-laptop setup are not claimed as passed.
 
-## Known limitations
+## Source and licenses
 
-- Static simulated and modeled source data with no external operational verification
-- No shared flight or event identifier across all datasets
-- Undated financial summary and estimate tables
-- Different source-defined populations and regional vocabularies
-- Incomplete conflict-event country coverage
-- Temporal association does not establish causality
-- No forecasting, optimization, official recommendations, or live monitoring
-- Airspace date selection uses closure start date and sums whole closure durations, not hours prorated within the selected period
-- Estimated passenger-to-reroute ratios describe population exposure; they are not rerouted-flight occupancy
+Data: [Kaggle — Global Civil Aviation Disruption 2026 Iran–US War](https://www.kaggle.com/datasets/zkskhurram/global-civil-aviation-disruption2026-iranus-war). All seven files were downloaded in the first week of August 2026.
+
+The dataset is attributed under **CC BY-SA 4.0**. Repository code is licensed under [MIT](LICENSE); that license does not replace the dataset license.
 
 ## Authors
 

@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
   "name": "2170912132ff10f77b66",
   "position": {
     "x": 0,
@@ -19,10 +19,25 @@
               {
                 "textRuns": [
                   {
-                    "value": "Static simulated data | Detailed, summary and estimate populations differ | Financial values are undated | Association is not causation.",
+                    "value": "  ",
                     "textStyle": {
                       "fontStyle": "italic",
-                      "fontSize": "11pt",
+                      "fontSize": "14pt",
+                      "color": "#333333"
+                    }
+                  },
+                  {
+                    "value": "Operational records cover 27 February–7 June 2026 | Conflict events cover a wider period ",
+                    "textStyle": {
+                      "fontStyle": "italic",
+                      "fontSize": "14pt"
+                    }
+                  },
+                  {
+                    "value": "| Static simulated data | Detailed, summary and estimate populations differ | Financial values are undated | Association is not causation.",
+                    "textStyle": {
+                      "fontStyle": "italic",
+                      "fontSize": "14pt",
                       "color": "#333333"
                     }
                   }
